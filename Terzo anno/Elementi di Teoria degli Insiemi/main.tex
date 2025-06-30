@@ -1247,10 +1247,34 @@ originale in una formula esplicita:
     ogni suo segmento iniziale proprio è generato da un elemento $a \in A$. 
 \end{problem}
 
+\begin{solution}
+    Si supponga che $(A, <)$ è ben ordinato. Sia $X \subsetneq A$ un segmento iniziale proprio di $A$.
+    Poiché $X$ è proprio, $A \setminus X$ \underline{non} è vuoto, quindi ne esiste il minimo, detto $a$.
+    Mostriamo che $X = A_a$. Se $x \in A_a$, allora $x < a$, dunque $x \in X$; altrimenti $x$ apparterrebbe a
+    $X \setminus A$ e sarebbe contemporaneamente il suo minimo, $\Lightning$. Viceversa, se $x \in X$,
+    se fosse $a \leq x$, si avrebbe $a \in X$, essendo $A$ un segmento iniziale, $\Lightning$. Dunque
+    $x < a$, ossia $x \in A_a$; si conclude allora che $X = A_a$. \medskip
+
+
+    Si supponga che ogni segmento iniziale proprio è generato da un elemento in $A$. Sia $X$ un sottinsieme
+    \underline{non} vuoto di $A$. I minoranti stretti di $X$ sono allora un segmento iniziale proprio di $A$, e
+    dunque sono generati da un elemento $a \in A$. Mostriamo che $a = \min X$. Sia $x \in X$. Se fosse
+    $x < a$, allora $x$ apparterrebbe ad $A_a$, ovverosia sarebbe un minorante stretto di $X$, $\Lightning$. Dunque
+    $a \leq x$ per ogni $x \in X$. Se $a$ non appartenesse ad $X$, allora sarebbe $a < x$ per ogni $x \in X$, e dunque
+    si avrebbe $a \in A_a$, $\Lightning$. Dunque $x$ appartiene ad $X$ e ne è minorante debole, ovverosia è il minimo
+    di $X$.
+\end{solution}
+
 \begin{problem}{Unicità dell'isomorfismo d'ordine tra insiemi ben ordinati}{problem-37}
     Siano $(A, <)$ e $(B, \prec)$ insiemi ben ordinati isomorfi tra loro. Si dimostri che
     esiste un solo isomorfismo tra i due.
 \end{problem}
+
+\begin{solution}
+    Se $\varphi$ e $\psi$ sono due isomorfismi da $A$ a $B$, allora $\varphi \circ \psi\inv$ è un automorfismo
+    di $A$. Poiché l'unico automorfismo di $A$ è l'identità, si ha allora $\varphi \circ \psi\inv = \id_A$, ossia
+    $\varphi = \psi$.
+\end{solution}
 
 \begin{problem}{Gli insiemi totalmente ordinati finiti sono isomorfi a un $(n, \in)$}{problem-38}
     Sia $(A, <)$ un insieme totalmente ordinato finito. Si dimostri che se $\abs{A} \cong \abs{n}$, allora
@@ -1266,7 +1290,7 @@ originale in una formula esplicita:
     Sia $(A, <)$ un insieme totalmente ordinato e infinito. Si mostri che sono equivalenti:
 
     \begin{enumerate}[(i.)]
-        \item $(A, <) \cong (\omega, in)$.
+        \item $(A, <) \cong (\omega, \in)$.
         \item Ogni segmento iniziale proprio di $A$ è finito.
         \item Ogni sottinsieme infinito di $A$ non ammette massimo. 
     \end{enumerate}
@@ -1277,9 +1301,26 @@ originale in una formula esplicita:
 \end{problem}
 
 \begin{problem}{Una catena di insiemi totalmente ordinati induce un insieme totalmente ordinato limite}{problem-42}
-    Sia $\{A_i\}_{i \in I}$ una catena di insiemi totalmente ordinati su $I$ totalmente ordinato. Si mostri che
+    Sia $\{A_i\}_{i \in I}$ una catena di insiemi totalmente ordinati compatibili tra loro, su $I$ totalmente ordinato. Si mostri che
     $\bigcup_{i \in I} A_i$ con l'ordinamento indotto dagli $A_i$ è totalmente ordinato.
 \end{problem}
+
+\begin{solution}
+    Si mostrano separatamente le varie proprietà.
+
+    \begin{enumerate}
+        \item[$\boxed{\text{Riflessività}}$] Se $i \in I$ è tale per cui $a \in A_i$, allora $a \leq_i a$, e quindi $a \leq a$.
+        \item[$\boxed{\text{Simmetria}}$] Se $a$ e $b$ sono elementi
+    di $\bigcup_{i \in I} A_i$, detti $i$ e $j$ gli indici in $I$ per cui $a \in A_i$ e $b \in A_j$, detto $k = \max\{i, j\}$,
+    $a$ e $b$ sono entrambi elementi di $A_k$. Se $a \leq b$ e $b \leq a$, allora, dalla compatibilità e dalla totalità
+    di $\leq_k$, $a \leq_i b$ e $b \leq_i a$, dunque $a = b$ per la riflessività di $\leq_i$.
+        \item[$\boxed{\text{Transitività}}$] Analogamente a prima, se $a$, $b$ e $c$ sono elementi di $\bigcup_{i \in I} A_i$ si può trovare un indice
+    $k \in I$ per cui $a$, $b$, $c \in A_k$. Dunque, se $a \leq b$ e $b \leq c$, per compatibilità e totalità di $\leq_k$,
+    $a \leq_k b$ e $b \leq_k c$, dunque $a \leq_k c$ per transitività di $\leq_k$, e infine $a \leq c$.
+        item[$\boxed{\text{Totalità}}$] Come prima, si può trovare un indice $k$ per cui $a$, $b \in A_k$. Per la totalità
+            di $\leq_k$, allora $a$ e $b$ sono confrontabili, e quindi lo sono anche su $\leq$.
+    \end{enumerate}
+\end{solution}
 
 \begin{problem}{Proprietà distributiva a destra dell'isomorfismo tra buoni ordini}{problem-43}
     Siano $A$, $B$ e $C$ tre insiemi ben ordinati. Si mostri che:
@@ -1289,6 +1330,12 @@ originale in una formula esplicita:
 \begin{problem}{$\Fun(\omega, \omega)$ con l'ordine della minima differenza \underline{non} è ben ordinato}{problem-44}
     Si mostri che $\Fun(\omega, \omega)$ con l'ordine della minima differenza \underline{non} è un insieme ben ordinato.
 \end{problem}
+
+\begin{solution}
+    Per ogni $i \in \omega$, sia $d_i : \omega \to \omega$ tale per cui $d_i(j) = \delta_{ij}$, dove
+    $\delta_{ij}$ è il delta di Dirac. Allora $d_0 > d_1 > d_2 > \cdots$ è una catena discendente infinita in $\Fun(\omega, \omega)$,
+    che quindi \underline{non} è ben ordinato.
+\end{solution}
 
 \begin{problem}{Unione e intersezione di ordinali sono ordinali, e corrispondono all'estremo superiore e al minimo}{problem-45}
     Sia $A \neq \emptyset$ un insieme di ordinali. Si mostri che $\bigcup A$ corrisponde all'estremo superiore $\sup A$ e che
@@ -1303,10 +1350,34 @@ originale in una formula esplicita:
     Sia $\alpha$ un ordinale. Si mostri che $0 + \alpha = \alpha$.
 \end{problem}
 
+\begin{solution}
+    Mostriamo la tesi per induzione transfinita sulla seguente formula:
+    \[ \Psi(\alpha) = \forall x (x \in (0 + \alpha) \iff x \in \alpha). \]
+
+    \begin{enumerate}
+        \item[$\boxed{\Psi(0)}$] Banale, dal momento che entrambi gli insiemi
+            in considerazione sono quelli vuoti.
+        \item[$\boxed{\Psi(\alpha + 1)}$] $0 + (\alpha + 1)$ è per definizione
+            $(0 + \alpha) + 1$. Per ipotesi induttiva allora
+            $(0 + \alpha) + 1 = \alpha + 1$.
+        \item[$\boxed{\Psi(\lambda) \text{ limite}}$] $0 + \lambda$ è definizione
+            $\bigcup_{\alpha < \lambda} (0 + \alpha)$. Per ipotesi induttiva,
+            tali $0 + \alpha$ sono uguali ad $\alpha$, e quindi
+            $0 + \lambda$ coincide con $\bigcup_{\alpha < \lambda} \alpha = \bigcup \lambda = \lambda$.
+    \end{enumerate}
+\end{solution}
+
 \begin{problem}{La somma tra ordinali è associativa}{problem-48}
     Siano $\alpha$, $\beta$ e $\gamma$ ordinali. Allora:
     \[ \alpha + (\beta + \gamma) = (\alpha + \beta) + \gamma. \]
 \end{problem}
+
+\begin{solution}
+    La tesi è immediatamente implicata dal fatto che per gli ordinali
+    $\alpha \cong \beta \implies \alpha = \beta$ e che la somma tra ordinali
+    corrisponde alla somma tra insiemi ben ordinati, per i quali vale:
+    \[ A + (B + C) \cong (A + B) + C. \]
+\end{solution}
 
 \begin{problem}{Il prodotto tra ordinali è isomorfo al prodotto tra ordinali intesi come buoni ordini}{problem-49}
     Siano $\alpha$ e $\beta$ ordinali. Allora:
@@ -1317,8 +1388,8 @@ originale in una formula esplicita:
     Siano $\alpha$, $\beta$ e $\gamma$ ordinali con $\alpha \neq 0$. Si mostri che:
 
     \begin{enumerate}[(i.)]
-        \item $\alpha^\beta \alpha^\gamma = \alpha^(\beta + \gamma)$.
-        \item $(\alpha^\beta)^\gamma = \alpha^(\beta \cdot \gamma)$.
+        \item $\alpha^\beta \alpha^\gamma = \alpha^{\beta + \gamma}$.
+        \item ${(\alpha^\beta)}^\gamma = \alpha^{\beta \cdot \gamma}$.
     \end{enumerate}
 \end{problem}
 
@@ -1347,8 +1418,16 @@ originale in una formula esplicita:
     \[ \alpha \cdot (\beta + \gamma) = \alpha \cdot \beta + \alpha \cdot \gamma. \]
 \end{problem}
 
+\begin{solution}
+    La tesi è immediatamente implicata dal fatto che per gli ordinali
+    $\alpha \cong \beta \implies \alpha = \beta$ e che il prodotto e la somma tra ordinali
+    corrispondono al prodotto (vd. \textit{Problema 49}) e alla somma tra insiemi ben ordinati, per i quali vale:
+    \[ A \times (B + C) \cong (A \times B) + (A \times C), \]
+    per il \textit{Problema 43}.
+\end{solution}
+
 \begin{problem}{Forme normali di Cantor di $(\omega + 3) \cdot n$, $(\omega + 3)^2$, $(\omega + 3)^n$ e $(\omega + 3)^{\omega + 3}$}{problem-54}
-    Si calcolino le forme normali di Cantor di:
+    Dato $n \in \omega$, si calcolino le forme normali di Cantor di:
 
     \begin{tasks}[label=(\roman*.), label-width=19.4064pt](4)
         \task $(\omega + 3) \cdot n$,
@@ -1358,6 +1437,59 @@ originale in una formula esplicita:
     \end{tasks}
 \end{problem}
 
+\begin{solution}
+    Mostriamo le varie richieste separatamente.
+
+    \begin{enumerate}[(i.)]
+        \item $(\omega + 3) \cdot 0 = 0$, banalmente. Altrimenti $n$ è un successore, e allora:
+        \begin{eqnarray*}
+            (\omega + 3) \cdot n
+            &=& \underbrace{(\omega + 3) + \ldots + (\omega + 3)}_{n \text{ volte}} \\[2ex]
+            &=& \omega + \underbrace{(3 + \omega) + \ldots + (3 + \omega)}_{n-1 \text{ volte}} + 3 \\[2ex]
+            &=& \omega + \underbrace{\omega + \ldots + \omega}_{n-1 \text{ volte}} + 3 \\[2ex]
+            &=& \omega \cdot n + 3.
+        \end{eqnarray*}
+
+        \item Osserviamo che:
+        \begin{eqnarray*}
+            (\omega + 3)^2
+            &=& (\omega + 3) (\omega + 3) \\
+            &=& (\omega + 3) \omega + (\omega + 3) 3 \\
+            &=& (\omega + 3) \omega + \omega \cdot 3 + 3.
+        \end{eqnarray*}
+
+        Inoltre vale che:
+        \[ \omega^2 \leq (\omega + 3) \omega \leq (\omega + \omega) \omega = (\omega \cdot 2) \cdot \omega = \omega \cdot (2 \cdot \omega) = \omega^2, \]
+        da cui $(\omega + 3) \omega = \omega^2$, dove si è usato che $2 \cdot \omega = \omega$. Dunque $(\omega + 3)^2 = \omega^2 + \omega \cdot 3 + 3$.
+    
+        \item Mostriamo per induzione che:
+        \[ (\omega + 3)^n = \omega^n + \omega^{n-1} \cdot 3 + \omega^{n-2} \cdot 3 + \ldots + \omega \cdot 3 + 3, \]
+        per ogni $n \geq 2$. Per $n = 2$, la tesi è già stata dimostrata. Assumiamo ora la tesi per $n$ e dimostriamola
+        per $n+1$:
+        \begin{eqnarray*}
+            (\omega + 3)^{n + 1}
+            &=& (\omega + 3)^{1 + n} \\
+            &=& (\omega + 3) (\omega + 3)^n \\
+            &=& (\omega + 3) (\omega^n + \omega^{n-1} \cdot 3 + \omega^{n-2} \cdot 3 + \ldots + \omega \cdot 3 + 3) \\
+            &=& \omega^{n+1} + \omega^n \cdot 3 + \omega^{n-1} \cdot 3 + \ldots + \omega^2 \cdot 3 + (\omega + 3) 3 \\
+            &=& \omega^{n+1} + \omega^n \cdot 3 + \omega^{n-1} \cdot 3 + \ldots + \omega^2 \cdot 3 + \omega \cdot 3 + 3,
+        \end{eqnarray*}
+        dove si è usato che $(\omega + 3) \omega^i = \omega^{i+1}$, analogamente a come fatto per il punto precedente.
+
+        \item Calcoliamo innanzitutto $(\omega + 3) ^ \omega$. Osserviamo che:
+        \[ \omega^\omega \leq (\omega + 3)^\omega \leq (\omega + \omega)^\omega \leq (\omega \cdot \omega)^\omega = {(\omega^2)}^\omega = \omega^{2 \cdot \omega} = \omega^\omega, \]
+        da cui si deduce che $(\omega + 3)^\omega = \omega^\omega$. Dunque:
+        \begin{eqnarray*}
+            (\omega + 3) ^ {\omega + 3}
+            &=& (\omega + 3)^\omega (\omega + 3)^3 \\
+            &=& \omega^\omega (\omega + 3)^3 \\
+            &=& \omega^\omega (\omega^3 + \omega^2 \cdot 3 + \omega \cdot 3 + 3) \\
+            &=& \omega^{\omega + 3} + \omega^{\omega + 2} \cdot 3 + \omega^{\omega + 3} \cdot 3 + \omega^\omega \cdot 3,
+        \end{eqnarray*}
+        dove si è usato il punto precedente per calcolare $(\omega + 3)^3$.
+    \end{enumerate}
+\end{solution}
+
 \begin{problem}{Equivalenza tra la ricorsione transfinita per casi e la ricorsione transfinita con una sola dichiarazione}{problem-55}
     Si mostri che sono equivalenti la ricorsione transfinita per casi e quella che impiega invece una sola funzione classe.
 \end{problem}
@@ -1365,6 +1497,15 @@ originale in una formula esplicita:
 \begin{problem}{Assorbimento a sinistra per ordinali finiti di $\omega$}{problem-56}
     Si mostri che $n + \omega = \omega$ per ogni $n \in \omega$.
 \end{problem}
+
+\begin{solution}
+    Mostriamo la tesi per induzione su $n$. Innanzitutto $0 + \omega = \omega$, per il \textit{Problema 56}. Per $n = 1$,
+    $1 + \omega = \omega$; infatti un isomorfismo tra $\{*\} + \omega$ e $\omega$ è dato mappando $*$ a $0$ e
+    $n$ a $S(n) = n+1$. Assumiamo ora
+    la tesi per $n \geq 1$ e mostriamola per $n+1$:
+    \[ (n + 1) + \omega = n + (1 + \omega) = n + \omega = \omega, \]
+    dove si è usata l'associatività della somma (vd. \textit{Problema 48}).
+\end{solution}
 
 \begin{problem}{Caratterizzazione degli ordinali che rispettano \underline{sulla somma} la proprietà di assorbimento a sinistra per ordinali più piccoli}{problem-57}
     Sia $\alpha \neq 0$ un ordinale. Si mostri che sono equivalenti:
@@ -1474,7 +1615,7 @@ originale in una formula esplicita:
     \end{enumerate}
 \end{problem}
 
-\begin{problem}{$V_* = \bigcup_{\alpha \in \ORD} V_\alpha$ è una classe propria}{problem-70}
+\begin{problem}{$V_* = \bigcup_{\alpha \in \ORD} V_\alpha$ è una classe propria}{problem-71}
     Sia $V_* := \bigcup_{\alpha \in \ORD} V_\alpha$. Si mostri che $V_*$ è una classe propria.
 \end{problem}
 
