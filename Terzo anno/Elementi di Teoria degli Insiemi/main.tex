@@ -1,0 +1,1493 @@
+\documentclass[letterpaper, 11pt]{extarticle}
+
+\input{preamble}
+\input{format}
+\input{commands}
+
+\usepackage{thmtools}
+\usepackage{tasks}
+\usepackage{setspace}
+
+\begin{document}
+
+\begin{LARGE}
+    \textsf{\textbf{Esercizi di Elementi di Teoria degli Insiemi}}
+\end{LARGE}
+
+\vspace{0.2ex}
+
+\begin{Large}
+    \textsf{\textbf{Anno accademico 2024-25}}
+\end{Large}
+
+\vspace{1.5ex}
+
+\begin{large}
+    \textsf{\textbf{Studente:}} \text{Gabriel Antonio Videtta (matricola \texttt{654839})} --  \href{mailto:g.videtta1@studenti.unipi.it}{\texttt{g.videtta1@studenti.unipi.it}}
+\end{large}
+
+\vspace{-0.5ex}
+
+\tcblistof[\section*]{prob}{Indice dei problemi}
+
+\vspace{1ex}
+
+\linespread{1.3}
+
+\begin{problem}{Coppia di Kuratowski e altre definizioni di coppie ordinate}{problem-1}
+Si considerino le seguenti possibili definizioni di coppie ordinate:
+
+\begin{enumerate}[(a.)]
+    \item $(a, b)_K := \{ \{a\}, \{a, b\}\}$ (Kuratowski),
+    \item $(a, b)_1 := \{\{a, \emptyset\}, \{b, \{\emptyset\}\}\}$ (Haussdorf),
+    \item $(a, b)_2 := \{\{\{a\}, \emptyset\}, \{\{b\}\}\}$ (Wiener),
+    \item $(a, b)_3 := \{\{a\}, \{b, \emptyset\}\}$ (Quine),
+    \item $(a, b)_4 := \{a, \{b\}\}$,
+    \item $(a, b)_5 := \{\{a, \emptyset\}, b\}$.
+\end{enumerate}
+
+Si dimostri che $(a, b)_K$, $(a, b)_1$, $(a, b)_2$ e $(a, b)_3$ soddisfano
+la proprietà caratterizzante di una coppia ordinata, ovverosia
+$(a, b) = (a', b') \iff a = a' \land b = b'$. Si mostri che $(a, b)_4$ e
+$(a, b)_5$ invece non la soddisfano.
+\end{problem}
+
+\begin{solution}
+Per il principio di sostituzione, se $a = a'$ e $b = b'$, $(a, b) = (a', b')$ è
+sicuramente vero. Mostriamo che per $(a, b)_K$, $(a, b)_1$, $(a, b)_2$ e $(a, b)_3$ vale anche il viceversa, ossia che
+$(a, b) = (a', b') \implies a = a' \land b = b'$. Per $(a, b)_4$ e
+$(a, b)_5$ mostriamo invece un controesempio alla proprietà caratterizzante di
+una coppia ordinata.
+
+\begin{enumerate}[(a.)]
+    \item Se $(a, b)_K = (a', b')_K$, allora $\{a\} = \bigcap (a, b)_K = \bigcap (a', b')_K = \{a'\}$, e ciò è possibile solo se $a = a'$. Analogamente $\{a, b\} =
+    \bigcup (a, b)_K = \bigcup (a', b')_K = \{a, b'\}$, dove si è utilizzato che
+    $a' = a$. Se $b = a$, $b' \in \{a, b'\} = \{a, b\} = \{a\}$ implica che $b' = a = b$. Se invece $b \neq a$, $b \in \{a, b\} = \{a, b'\}$: se per assurdo $b \neq b'$,
+    allora si avrebbe necessariamente $a = b$, \Lightning. Quindi $b = b'$, da cui
+    la tesi.
+    \item Sia $(a, b)_1 = (a', b')_1$. Dividiamo la dimostrazione in più casi.
+    
+    \begin{itemize}
+        \item Se $b = \emptyset$, allora, affinché $\{a', \emptyset\}$ sia elemento di $(a, b)_1$, deve valere $a' = a$ o $a' = \{\emptyset\}$. Dividiamo ancora in due casi.
+    
+        \begin{itemize}
+            \item  Sia dunque $a' = \{\emptyset\}$. Se per assurdo $a \neq \{\emptyset\}$, si avrebbe necessariamente $b' = \emptyset$, e dunque $\{\{a, \emptyset\}, \{\emptyset, \{\emptyset\}\}=(a, b)_1=(a', b')_1=\{\{\emptyset, \{\emptyset\}\}$, che è impossibile dato che $a \neq \{\emptyset\}$. Quindi $a = \{\emptyset\} = a'$. Affinché $\{b', \{\emptyset\}\}$ sia elemento di $(a, b)_1$, deve valere anche $b = b'$ o $b = \emptyset$; dacché $b' = \emptyset$, in entrambi i casi si ottiene
+            $b = b'$.
+
+            \item Se invece $a' = a$ con $a' \neq \{\emptyset\}$, allora l'unico elemento in $(a, b)_1$ che contiene $\{\emptyset\}$ è $\{\emptyset, \{\emptyset\}\}$, e in $(a', b')_1$ è $\{b', \{\emptyset\}\}$, da cui necessariamente $b' = \emptyset = b$. Dunque $a = a'$ e $b = b'$.
+        \end{itemize}
+
+        In entrambi i casi si ha dunque $a = a'$ e $b = b'$.
+
+        \item Se $a = \{\emptyset\}$, affinché $\{b', \{\emptyset\}\}$ sia elemento di $(a, b)_1$, deve valere $b' = \emptyset$ o $b' = b$. Dividiamo ancora in due casi.
+
+        \begin{itemize}
+            \item Sia dunque $b' = \emptyset$. Se per assurdo 
+            $b \neq \emptyset$, si avrebbe necessariamente $a' = \{\emptyset\}$, e dunque $\{\{b, \{\emptyset\}\}, \{\emptyset, \{\emptyset\}\}=(a, b)_1=(a', b')_1=\{\{\emptyset, \{\emptyset\}\}$, che è impossibile dato che $b \neq \emptyset$. Quindi $b = \emptyset = b'$. Affinché $\{a', \emptyset\}$ sia elemento di $(a, b)_1$, deve valere anche $a = a'$ o $a' = \{\emptyset\}$; dacché $a = \{\emptyset\}$, in entrambi i casi si ottiene
+            $a = a'$.
+
+            \item Se invece $b' = b$ con $b' \neq \emptyset$, allora l'unico elemento in $(a, b)_1$ che contiene $\emptyset$ è $\{\{\emptyset\}, \emptyset\}$, e in $(a', b')_1$ è $\{a', \emptyset\}$, da cui necessariamente $a' = \emptyset = a$. Dunque $a = a'$ e $b = b'$.
+        \end{itemize}
+
+        In entrambi i casi si ha dunque $a = a'$ e $b = b'$.
+
+        \item Se $a \neq \{\emptyset\}$ e $b \neq \emptyset$, allora l'unico elemento in $(a, b)_1$ che contiene $\{\emptyset\}$ è $\{b, \{\emptyset\}\}$, e poiché $\{b', \{\emptyset\}\} \in (a', b')_1 = (a, b)_1$, da cui necessariamente $b' = b$, dacché $b \neq \{\emptyset\}$. Analogamente l'unico elemento in $(a, b)_1$ che contiene $\emptyset$ è $\{a, \emptyset\}$, e poiché $\{a', \emptyset\} \in (a', b')_1 = (a, b)_1$, da cui necessariamente $a' = a$, dacché $a \neq \emptyset$.
+    \end{itemize}
+
+    In tutti i casi si ottiene $a = a'$ e $b = b'$, da cui la tesi.
+
+    \item Sia $(a, b)_2 = (a', b')_2$. In $(a, b)_2$ l'unico elemento contenente un
+    insieme vuoto è $\{\{a\}, \emptyset\}$ (né $\{a\}$ né $\{b\}$ sono vuoti, uno contiene $a$, l'altro $b$), e analogamente in $(a', b')_2$ è
+    $\{\{a'\}, \emptyset\}$. Poiché $\{a\}$ e $\{a'\}$ sono entrambi non vuoti
+    e $(a, b)_2 = (a' b')_2$, necessariamente $a = a'$. Analogamente, l'unico
+    elemento di $(a, b)_2$ che non contiene un insieme vuoto è $\{\{b\}\}$,
+    mentre in $(a', b')_2$ è $\{\{b'\}\}$, da cui $b = b'$, e dunque la tesi.
+
+    \item Sia $(a, b)_3 = (a', b')_3$. Distinguiamo più casi.
+
+    \begin{itemize}
+        \item Se $a = \emptyset$ e $b = \emptyset$, $(a, b)_3 = \{\{\emptyset\}\}$.
+        Necessariamente $b = \emptyset$, altrimenti $(a', b')_3$ conterrebbe un
+        insieme di due elementi, mentre $(a, b)_3$ contiene un solo singoletto.
+        Allo stesso modo $a = \emptyset$, altrimenti $(a', b')_3$ conterrebbe due
+        elementi, mentre $(a, b)_3$ ha un solo singoletto.
+
+        \item Se $a = \emptyset$, ma $b \neq \emptyset$, allora $b' \neq \emptyset$: se infatti per assurdo $b' = \emptyset$, allora $(a', b')_3$ conterrebbe solo singoletti, mentre $(a, b)_3$ contiene un insieme di due elementi, dacché $b \neq \emptyset$. Dal momento che in $(a, b)_3$ l'unico insieme di due elementi è $\{b, \emptyset\}$, mentre in $(a', b')_3$ è $\{b', \emptyset\}$, da cui $b = b'$. Infine, anche i singoletti $\{a\}$ e $\{a'\}$ dei due insiemi sono uguali, e quindi $a = a'$.
+
+        \item Se $a \neq \emptyset$, ma $b = \emptyset$, allora necessariamente $b' = \emptyset = b$: altrimenti $(a', b')_3$ conterrebbe un insieme di due elementi, mentre $(a, b)_3$ contiene solo singoletti. Poiché $a \neq \emptyset$, $(a, b)_3$ ha due elementi, e dunque $a' \neq \emptyset$:
+        altrimenti $(a', b')_3$ avrebbe un singolo elemento, mentre $(a, b)_3$ ne
+        ha due. Allora, poiché $a \neq \emptyset$, $a' \neq \emptyset$ e $b = b' = \emptyset$,
+        deduciamo che necessariamente deve valere $a = a'$.
+
+        \item Se $a \neq \emptyset$ e $b \neq \emptyset$, allora $b' \neq \emptyset$: altrimenti $(a', b')_3$ conterrebbe solo singoletti, mentre $(a, b)_3$ contiene
+        un insieme di due elementi. Dal momento che $b \neq \emptyset$, $b' \neq \emptyset$ e in
+        $(a, b)_3$ l'unico insieme di due elementi è $\{b, \emptyset\}$, mentre
+        in $(a', b')_3$ è $\{b', \emptyset\}$, allora necessariamente $b = b'$.
+        Analogamente l'unico singoletto contenuto in $(a, b)_3$ deve essere uguale
+        a quello contenuto in $(a', b')_3$, ossia $\{a\} = \{a'\}$, da cui $a = a'$.
+    \end{itemize}
+
+    In tutti i casi si ottiene $a = a'$ e $b = b'$, da cui la tesi.
+
+    \item $(\{\emptyset\}, \{\emptyset\})_4 = \{\{\emptyset\}, \{\{\emptyset\}\}\} = (\{\{\emptyset\}\}, \emptyset)_4$; tuttavia $\{\emptyset\} \neq \emptyset$, perché $\emptyset \in \{\emptyset\}$, ma $\emptyset \notin \emptyset$. Dunque
+    $(a, b)_4$ non soddisfa la proprietà caratterizzante delle coppie ordinate.
+
+    \item $(\{\emptyset\}, \{\emptyset\})_5 = \{\{\{\emptyset\}, \emptyset\}, \{\emptyset\}\} = (\emptyset, \{\{\emptyset\}, \emptyset\})_5$, ma come abbiamo
+    appena visto $\{\emptyset\} \neq \emptyset$. Dunque
+    $(a, b)_4$ non soddisfa la proprietà caratterizzante delle coppie ordinate.
+\end{enumerate}
+\end{solution}
+
+\begin{problem}{Formula esplicita per la coppia di Kuratowski}{problem-2}
+    Si scriva una formula esplicita per $(a, b) = \{\{a\}, \{a, b\}\}$.
+\end{problem}
+
+\begin{solution} Trasformiamo tramite opportune sostituzioni la formula
+originale in una formula esplicita:
+
+    \begin{itemize}[$\leadsto$]
+        \item[] $(a, b) = \{\{a\}, \{a, b\}\}$
+        \item $\forall x (x \in (a, b) \iff x \in \{\{a\}, \{a, b\}\})$ (estensionalità)
+        \item $\forall x (x \in (a, b) \iff (x = \{a\} \lor x = \{a, b\})$
+        \item $\forall x (x \in (a, b) \iff (\forall y (y \in x \iff y \in \{a\}) \lor \forall y (y \in x \iff y \in \{a, b\}))$ (estensionalità)
+        \item $\forall x (x \in (a, b) \iff (\forall y (y \in x \iff y = a) \lor \forall y (y \in x \iff (y = a \lor y = b)))$.
+    \end{itemize}
+\end{solution}
+
+\begin{problem}{Dominio e immagine di una relazione sono insiemi}{problem-3}
+    Si dimostri che $\dom(\rel) = \{ x \mid \exists y ((x, y) \in \rel) \}$ e $\imm(\rel) = \{ y \mid \exists x ((x, y) \in \rel) \}$ sono effettivamente insiemi.
+\end{problem}
+
+\begin{solution}
+    Si osserva che $\bigcup (a, b) = \{a, b\}$, e quindi $\bigcup \left( \bigcup \rel \right)$
+    -- che è un insieme per l'assioma dell'unione -- contiene indistintamente elementi del dominio e dell'immagine di $\rel$. Possiamo allora utilizzare l'assioma
+    di separazione per mostrare che $\dom(\rel)$ e $\imm(\rel)$ sono insiemi:
+
+    \begin{enumerate}[(i.)]
+        \item $\dom(\rel) = \{ x \in \bigcup \left( \bigcup \rel \right) \mid \exists y ((x, y) \in \rel) \}$,
+        \item $\imm(\rel) = \{ y \in \bigcup \left( \bigcup \rel \right)  \mid \exists x ((x, y) \in \rel) \}$.
+    \end{enumerate}
+\end{solution}
+
+\begin{problem}{Forme equivalenti dell'assioma di scelta (1)}{problem-4}
+    Si dimostrino che le seguenti asserzioni sono tra loro equivalenti:
+
+    \begin{enumerate}[(i.)]
+        \item $\forall I \, \forall \sigma ((\exists x (x \in I) \land \sigma\,\text{$I$-successione} \land \forall j (j \in I \implies \exists y(y \in \sigma(j)))) \implies \exists z (z \in \bigtimes_{i \in I} \sigma(i)))$ (assioma di scelta, \AC),
+        
+        \item $\forall \FF ((\forall c (c \in \FF \implies \exists d (d \in c)) \land \forall a \forall b ((a \in \FF \land b \in \FF \land \lnot(\forall y(y \in a \iff y \in b))) \implies \lnot \exists z(z \in a \land z \in b))) \implies \exists X( \forall F(F \in \FF \implies \exists a(a \in X \land a \in F \land \forall b((b \in X \land b \in F) \implies \forall w(w \in a \iff w \in b))))))$ ($\forall \FF$ famiglia di insiemi non vuoti a due a due disgiunti, $\exists X$ tale che $\forall F \in \FF$ vale che $\abs{X \cap F} = 1$),
+
+        \item $\forall f ((f \in \Fun(A, B) \land f\text{ surgettiva}) \implies \exists g (g \in \Fun(B, A) \land f \circ g = \id_B))$ (per funzioni surgettive esiste un'inversa destra),
+
+        \item $\forall X (\exists z(z \in X) \implies \exists f (f \in \Fun(\PP(X) \setminus \{\emptyset\}, X) \land \forall y(y \in \PP(X) \setminus \{\emptyset\} \implies f(y) \in y)))$ (esiste sempre una funzione di scelta sulle parti).
+    \end{enumerate}
+\end{problem}
+
+\begin{solution}
+    Mostriamo l'equivalenza di (i.) con tutte le altre asserzioni\footnote{
+        Avremmo potuto dimostrare anche solo 4 implicazioni invece che 6, seguendo
+        un ciclo di implicazioni della forma (i.) $\implies$ (ii.) $\implies$ (iii.) $\implies$ (iv.) $\implies$ (i.), ma per comodità e spirito di esercizio si
+        è preferito riportare tutte le equivalenze con la formulazione originale
+        di \AC.
+    }.
+
+    \begin{itemize}
+        \item[\fbox{(i.) $\implies$ (ii.)}] Sia $\FF$ una famiglia di insiemi non vuoti a due a due disgiunti. Se $\FF$ è vuota, la tesi è banale. Se $\FF$ non
+        è vuota, si può considerare la $\FF$-successione $\id_\FF$. Poiché gli elementi
+        di $\FF$ sono non vuoti, $\bigtimes_{f \in \FF} \id_\FF(f) = \bigtimes_{f \in \FF} f \neq \emptyset$ per l'assioma di scelta. Sia dunque $g \in \bigtimes_{f \in \FF} f$. Consideriamo $X = \{ y \in \bigcup \FF \mid \exists x (x \in \FF \land y = g(x)) \} = g(\FF)$, che è un'insieme per l'assioma di separazione. \smallskip
+
+        Sia $F \in \FF$. Allora $g(F) \in X$. Mostriamo che se $y$ è un insieme tale per cui $y \in X$ e $y \in F$, allora $y = g(F)$. Dacché $y \in X$, esiste
+        $z \in \FF$ tale per cui $y = g(z)$. Poiché $g \in \bigtimes_{f \in \FF} f$,
+        $g(z) \in z$; allo stesso tempo $g(z) = y \in F$. Se $z$ fosse diverso da $F$,
+        $g(z)$ sarebbe un elemento di $z \cap F$, che per ipotesi è l'insieme vuoto,
+        \Lightning. Quindi $z = F$, e dunque $y = g(F)$. Dunque $\abs{X \cap F} = 1$.
+
+        \item[\fbox{(ii.) $\implies$ (i.)}] Sia $\sigma$ una $I$-successione tale per cui
+        $\sigma(i)$ è non vuoto per ogni $i \in I$. Consideriamo la famiglia di
+        insiemi $\FF := \{ y \in \PP(\PP(\PP(\bigcup \{I, \bigcup \imm \sigma\}))) \mid \exists i (i \in I \land y = \{i\} \times \sigma(i)) \}$. Allora $\FF$ è una famiglia di insiemi non vuoti
+        a due a due disgiunti (infatti due elementi distinti di $\FF$ hanno elementi con prima coordinata diversa, e quindi sono diversi per la proprietà
+        caratterizzante delle coppia ordinata di Kuratowski).
+        Dunque esiste un insieme $X$ tale per cui $\abs{X \cap (\{i\} \times \sigma(i))} = 1$ per ogni $i \in I$. Si può allora costruire una funzione
+        $f : I \to \bigcup_{i \in I} \sigma(i)$ tale per cui $f(i) \in \sigma(i)$
+        prendendo come $f(i)$ come l'unico elemento in $\abs{X \cap (\{i\} \times \sigma(i))}$ -- tale funzione è un insieme perché questa definizione è
+        traducibile in formula e perché tale $f \in \Fun(I, \bigcup_{i \in I} \sigma(i))$, dove quest'ultimo è un insieme (e dunque si può applicare
+        l'assioma di separazione). Allora $\bigtimes_{i \in I} \sigma(i) \neq \emptyset$, ovverosia l'assioma di scelta è vero.
+
+        \item[\fbox{(i.) $\implies$ (iii.)}] Sia $f : A \to B$ una funzione surgettiva.
+        Sia $\sigma : B \to \PP(A)$ tale per cui $\sigma(b) = f\inv(b)$. Poiché
+        $f$ è surgettiva, $\sigma(b) \neq \emptyset$ per ogni $b \in B$. Allora,
+        per l'assioma di scelta, $\bigtimes_{b \in B} \sigma(b) \neq \emptyset$.
+        Sia $g \in \bigtimes_{b \in B} \sigma(b)$. Dal momento che
+        $g(b) \in f\inv(b)$, $f(g(b)) = b$ per ogni $b \in B$, ovverosia
+        $g$ è un'inversa destra di $f$.
+
+        \item[\fbox{(iii.) $\implies$ (i.)}] Sia $\sigma$ una $I$-successione tale per
+        cui $\sigma(i) \neq \emptyset$ per ogni $i \in I$. Consideriamo
+        l'insieme $A = \{ y \in I \times \bigcup \imm \sigma \mid \exists i (i \in I \land \exists b (b \in \sigma(i) \land y = (i, b) )) \}$. Possiamo allora
+        costruire una funzione $f : A \to I$ tale per cui $(i, b) \mapsto i$, ovverosia
+        $f = \pi_1 \circ \iota$, dove
+        $\iota$ è l'immersione di $A$ in
+        $I \times \bigcup \imm \sigma$ e $\pi_1$ è la proiezione indotta dalla
+        prima coordinata di $I \times \bigcup \imm \sigma$. Chiaramente $f$ è
+        surgettiva dal momento che $\sigma(i) \neq \emptyset$ per ogni $i \in I$.
+        Allora $f$ ammette un'inversa destra $g : I \to A$. Se allora $\pi_2$ è la proiezione indotta dalla seconda coordinata di $I \times \bigcup \imm \sigma$, $h = \pi_2 \circ \iota \circ g$ è una funzione da $I$ a $\bigcup \imm \sigma$
+        tale per cui, per costruzione, $h(i) \in \sigma(i)$, ovverosia
+        $h \in \bigtimes_{i \in I} \sigma(i)$, che dunque non è vuoto.
+
+        \item[\fbox{(i.) $\implies$ (iv.)}] Consideriamo la $\left(\PP(X) \setminus \{\emptyset\}\right)$-successione $\id_{\PP(X) \setminus \{\emptyset\}}$. Poiché a $\PP(X)$ è
+        stato tolto l'insieme vuoto $\emptyset$, ogni suo elemento è non vuoto.
+        Pertanto $\bigtimes_{Y \in \PP(X) \setminus \{\emptyset\}} Y \neq \emptyset$
+        per l'assioma di scelta, ossia esiste $f : \PP(X) \setminus \{\emptyset\} \to \bigcup \imm \id_{\PP(X) \setminus \{\emptyset\}} = \bigcup_{Y \in \PP(X) \setminus \{\emptyset\}} Y = X$ tale per cui $f(y) \in \id_{\PP(X) \setminus \{\emptyset\}}(y) = y$ per $y \in \PP(X) \setminus \{\emptyset\}$, ossia
+        $f$ è la funzione di scelta cercata.
+
+        \item[\fbox{(iv.) $\implies$ (i.)}] Sia $\sigma$ una $I$-successione tale per cui
+        $\sigma(i) \neq \emptyset$ per ogni $i \in I$. Consideriamo allora
+        $X = \bigcup \imm \sigma$, per il quale vale $\sigma(i) \subseteq X$ per
+        ogni $i \in I$, ovverosia $\sigma(i) \in \PP(X) \setminus \{\emptyset\}$ (infatti i $\sigma(i)$ sono \underline{non} vuoti). Allora esiste una funzione di scelta $f : \PP(X) \setminus \{\emptyset\} \to X$. Sia $h : I \to \bigcup_{i \in I} \sigma(i)$ definita in modo tale che
+        $h(i) = f(\sigma(i))$. Dacché $f$ è una funzione di scelta, $h(i) = f(\sigma(i)) \in \sigma(i)$, ossia $h$ è ben definita sul suo codominio ed
+        è un elemento di $\bigtimes_{i \in I} \sigma(i)$, che dunque non è vuoto.
+    \end{itemize}
+\end{solution}
+
+\begin{problem}{Composizione di relazioni e di funzioni}{problem-5}
+    Si dia una opportuna definizione di composizione per le relazioni $\RR$ e $\RR'$ con $\imm(\rel) = \dom(\rel')$ e si mostri
+    che per tale definizione la composizione di relazioni che sono funzioni è ancora una funzione e che tale composizione coincide con l'usuale composizione di funzioni.
+\end{problem}
+
+\begin{solution}
+    Siano $\rel$ e $\rel'$ due relazioni. Definiamo $\rel' \circ \rel$ in modo tale che
+    i suoi elementi siano le coppie $(x, y)$ con $x \in \dom(\rel)$ e $y \in \imm(\rel')$
+    tale per cui $\exists z (z \in \imm(\rel) \land (x, z) \in \rel \land (z, y) \in \rel')$, dove ricordiamo che $\imm(\rel) = \dom(\rel')$. In altre parole:
+    \[
+        \rel' \circ \rel = \{ c \in \dom(\rel) \times \imm(\rel') \mid \varphi(c) \},
+    \]
+    dove:
+    \[
+        \varphi(c) = \exists x \exists y (x \in \dom(\rel) \land y \in \imm(\rel') \land c = (x, y) \land \exists z (z \in \imm(\rel) \land (x, z) \in \rel \land (z, y) \in \rel')).
+    \]
+    Osserviamo innanzitutto che $\rel' \circ \rel$ è un insieme, per l'assioma
+    della separazione. Successivamente, notiamo che $\rel' \circ \rel$ è una relazione,
+    essendo un insieme di coppie ordinate, che $\imm(\rel' \circ \rel) \subseteq \imm(\rel')$ e che $\dom(\rel' \circ \rel) = \dom(\rel)$ -- dove si è usato ancora
+    che $\imm(\rel) = \dom(\rel')$. \smallskip
+
+    Siano ora $g := \rel$ e $f := \rel'$ funzioni. Mostriamo che $f \circ g$ è
+    una funzione. Sia $x \in \dom(f \circ g) = \dom(g)$ e supponiamo che, date $y$ e $y'$ in $\imm(\rel' \circ \rel) \subseteq \imm(\rel')$, $(x, y)$ e $(x, y')$ appartengano
+    entrambe a $f \circ g$. Allora esistono $z$ e $z'$ in $\imm(\rel)$ tali per cui
+    $(x, z)$, $(x, z')$ appartengano entrambe a $g$ e $(z, y)$, $(z', y')$ appartengano
+    a $f$. Dal momento che $g$ è una funzione, dalla prime due appartenenze si
+    ricava $z = z'$; dacché anche $f$ è una funzione, dalle seconde due, sostituendo $z = z'$, si ricava $y = y'$, ovverosia $f \circ g$ è una funzione. \smallskip
+
+    Mostriamo che tale composizione coincide con l'usuale composizione di funzioni,
+    ovverosia verifichiamo che $(f \circ g)(x) = f(g(x))$ per ogni $x \in \dom(g)$.
+    Sappiamo che $(x, g(x)) \in g$ e che $(g(x), f(g(x))) \in f$, allora --
+    per definizione di $f \circ g$ -- $(x, f(g(x))) \in f \circ g$. Poiché
+    $f \circ g$ è una funzione, si deve allora avere necessariamente
+    $(f \circ g)(x) = f(g(x))$.
+\end{solution}
+
+\begin{problem}{La classe delle funzioni da $A$ a $B$ è un insieme}{problem-6}
+    Si dimostri che $\Fun(A, B) = \{ f \mid f \text{ funzione da } A \text{ a } B \}$ è un insieme.
+\end{problem}
+
+\begin{solution}
+    Poiché $f \in \Fun(A, B)$ ha dominio $A$ e immagine $B$, allora
+    $f \subseteq A \times B$, ovverosia $f \in \PP(A \times B)$. Dunque,
+    $\Fun(A, B)$ è un insieme per l'assioma di separazione, dacché:
+    \[
+        \Fun(A, B) = \{ f \in \PP(A \times B) \mid f \text{ funzione da } A \text{ a } B \},
+    \]
+    dove usiamo che ``$f$ funzione da $A$ a $B$'' è effettivamente una formula ammissibile (ossia si può sviluppare usando i simboli primitivi della nostra teoria).
+\end{solution}
+
+\begin{problem}{$\{a, b, c\}$ è un insieme}{problem-7}
+    Si dimostri che $\{a, b, c\}$ è un insieme.
+\end{problem}
+
+\begin{solution}
+    Usiamo gli assiomi di ZF per dimostrare che $\{a, b, c\}$ è un insieme,
+    sapendo che $a$, $b$ e $c$ sono insiemi. Per l'assioma della coppia esistono
+    gli insiemi $\{a, b\}$ e $\{c, c\} = \{c\}$. Ancora per l'assioma della coppia
+    esiste $\{\{a, b\}, \{c\}\}$. Allora per l'assioma dell'unione esiste
+    $\bigcup \{\{a, b\}, \{c\}\} = \{a, b, c\}$, come desideravamo.
+\end{solution}
+
+\begin{problem}{Forme equivalenti dell'assioma di scelta (2)}{problem-8}
+    Si mostri che l'assioma di scelta è equivalente alla seguente asserzione:
+    \[
+        \bigcap_{i \in I} \bigcup_{j \in J} A_{i,j} = \bigcup_{f \in \Fun(I, J)} \,\bigcap_{i \in I} A_{i, f(i)}, \qquad \forall (A_{i,j} \mid i \in I, \, j \in J). \quad (*)
+    \]
+\end{problem}
+
+\begin{solution}
+    Mostriamo le due implicazioni separatamente.
+
+    \begin{itemize}
+        \item [\fbox{\AC $\implies$ $(*)$}] Sia $x \in \bigcap_{i \in I} \bigcup_{j \in J} A_{i,j}$. Allora per ogni $i_0 \in I$, esiste $j_0 \in J$ tale per cui
+        $x \in A_{i_0, j_0}$. In altre parole l'insieme $B_i = \{j \in J \mid x \in A_{i,j}\}$ \underline{non} è vuoto per ogni $i \in I$. Per l'assioma di scelta
+        $\bigtimes_{i \in I} B_i$ \underline{non} è vuoto. Sia dunque $h \in \bigtimes_{i \in I} B_i$. Per costruzione $x \in A_{i, h(i)}$ per ogni
+        $i \in I$, e dunque $x \in \bigcap_{i \in I} A_{i, f(i)} \subseteq \bigcup_{f \in \Fun(I, J)} \,\bigcap_{i \in I} A_{i, f(i)}$. Pertanto vale
+        $x \in \bigcap_{i \in I} \bigcup_{j \in J} A_{i,j} \implies x \in \bigcup_{f \in \Fun(I, J)} \,\bigcap_{i \in I} A_{i, f(i)}$. \smallskip
+
+        Sia $x \in \bigcup_{f \in \Fun(I, J)} \,\bigcap_{i \in I} A_{i, f(i)}$. Allora esiste $f \in \Fun(I, J)$ tale per cui $x \in A_{i, f(i)} \subseteq \bigcup_{j \in J} A_{i,j}$ per ogni $i \in I$. Pertanto $x \in \bigcap_{i \in I} \bigcup_{j \in J} A_{i,j}$. Dunque vale $x \in \bigcup_{f \in \Fun(I, J)} \,\bigcap_{i \in I} A_{i, f(i)} \implies x \in \bigcap_{i \in I} \bigcup_{j \in J} A_{i,j}$. \smallskip
+
+        Infine, per l'assioma di estensionalità, si conclude che:
+        \[
+            \bigcap_{i \in I} \bigcup_{j \in J} A_{i,j} = \bigcup_{f \in \Fun(I, J)} \,\bigcap_{i \in I} A_{i, f(i)}.
+        \]
+
+        \item [\fbox{$(*)$ $\implies$ \AC}] Mostriamo che $(*)$ implica l'esistenza di
+        una funzione di scelta sulle parti di un qualsiasi insieme \underline{non} vuoto, che sappiamo essere equivalente ad \AC. Sia dunque $X$ un insieme \underline{non} vuoto. Consideriamo $I = \PP(X) \setminus \{\emptyset\}$
+        e $J = X$. Sia $A_{i, j} = \{X\}$ se $j \in i$, e $\emptyset$ altrimenti. Allora vale che:
+        \[
+            \bigcap_{i \in I} \bigcup_{j \in J} A_{i,j} = \bigcap_{\substack{Y \subseteq X \\ Y \neq \emptyset}} \bigcup_{x \in X} A_{Y\!\!, \,x} =
+             \bigcap_{\substack{Y \subseteq X \\ Y \neq \emptyset}} \{X\} = \{X\},
+        \]
+        dove la penultima uguaglianza è dovuta al fatto che gli $Y$ sono stati
+        scelti non vuoti (e quindi esiste almeno un elemento $x$ dentro ogni $Y$,
+        per cui $A_{Y\!\!, \,x} = \{X\}$). \smallskip
+
+        Per $(*)$ vale allora che:
+        \[ \{X\} = \bigcap_{\substack{Y \subseteq X \\ Y \neq \emptyset}} \bigcup_{x \in X} A_{Y\!\!, \,x} = \bigcup_{f \in \Fun(\PP(X) \setminus \{\emptyset\}, X)} \bigcap_{\substack{Y \subseteq X \\ Y \neq \emptyset}} A_{Y\!\!, \,f(Y)}, \]
+        ovverosia esiste $f \in \Fun(\PP(X) \setminus \{\emptyset\}, X)$ tale per
+        cui $X \in A_{Y\!\!, \,f(Y)}$ per ogni $Y \in \PP(X) \setminus \{\emptyset\}$.
+        Questo è possibile solo se $A_{Y\!\!, \,f(Y)} = \{X\}$ per ogni $Y$, ovverosia
+        per costruzione se $f(Y) \in Y$. Dunque $f$ è una funzione di scelta sulle parti di $X$,
+        da cui la tesi.
+    \end{itemize}
+\end{solution}
+
+\begin{problem}{La classe degli insiemi equipotenti è propria}{problem-9}
+    Si mostri che, dato $y \neq \emptyset$, $E_y = \{ x \mid \abs{x} = \abs{y} \}$ \underline{non} è un insieme.
+\end{problem}
+
+\begin{solution}
+    Sia $x$ un insieme. Poiché $y \neq \emptyset$, esiste $z \in y$. Per l'assioma
+    della separazione, $y \setminus \{z\} = \{ x \in y \mid x \neq z \}$ è un
+    insieme. Per l'assioma della coppia esistono $\{x, x\} = \{x\}$ e
+    $\{y \setminus \{z\}, \{x\}\}$, dunque, per l'assioma dell'unione,
+    esiste $\bigcup \{y \setminus \{z\}, \{x\}\} = (y \setminus \{z\}) \cup \{x\}$.
+    $(y \setminus \{z\}) \cup \{x\}$ è in bigezione con $y$ tramite la mappa
+    che manda tutti gli elementi diversi da $x$ in sé stessi e $x$ in $z$,
+    quindi $\abs{(y \setminus \{z\}) \cup \{x\}} = \abs{y}$, ovverosia
+    $(y \setminus \{z\}) \cup \{x\} \in E_y$. Dunque
+    $x \in (y \setminus \{z\}) \cup \{x\} \in E_y$, ovverosia ogni insieme
+    è elemento di un elemento in $E_y$. Pertanto, se $E_y$ fosse un insieme,
+    per l'assioma dell'unione si avrebbe $\bigcup E_y = \UU$, ovverosia la classe
+    di tutti gli insiemi sarebbe un insieme, ma questo è falso, \Lightning. Dunque
+    $E_y$ non è un insieme.
+\end{solution}
+
+\begin{problem}{Una bigezione esplicita tra $[0, 1)$ e $(0, 1)$}{problem-10}
+    Si trovi una bigezione esplicita tra $[0,1)$ e $(0,1)$.
+\end{problem}
+
+\begin{solution}
+    Sfruttando l'idea che abbiamo utilizzato per costruire una bigezione tra
+    $\RR$ e $\RR \setminus \{0\}$ possiamo costruire direttamente una bigezione
+    tra $[0, 1)$ e $(0, 1)$, come segue:
+    \[
+        f(x) = \begin{cases}
+            \frac{1}{2} & \se x = 0, \\
+            x & \se x \neq 0 \text{ e } 1/x \notin \NN, \\
+            \frac{1}{\frac{1}{x}+1} & \se x \neq 0 \text{ e } 1/x \in \NN.
+        \end{cases}
+    \]
+    In questo modo, i numeri non naturali vengono mandati in loro stessi,
+    $0$ viene mandato in $\frac{1}{2}$ (e dacché $1 \notin [0, 1)$ ciò non
+    crea problemi), $\frac{1}{2}$ viene mappato a $\frac{1}{3}$,
+    $\frac{1}{3}$ a $\frac{1}{4}$, etc... -- seguendo l'analoga filosofia
+    adottata nel caso di $\RR$ e $\RR \setminus \{0\}$, in cui fissavamo
+    i non naturali e mandavamo i naturali nei loro successivi.
+\end{solution}
+
+\begin{problem}{Prodotto, unione a intersezione nulla, spazi di funzioni e parti di insiemi equipotenti sono equipotenti}{problem-11}
+    Siano $A$ e $A'$ tali che $\abs{A} = \abs{A'}$. Siano
+    $B$ e $B'$ tali che $\abs{B} = \abs{B'}$. Si mostri allora che:
+
+    \begin{enumerate}[(i.)]
+        \item $\abs{A \times B} = \abs{A' \times B'}$,
+        \item $\abs{A \cup B} = \abs{A' \cup B'}$, se $A \cap B = A' \cap B' = \emptyset$,
+        \item $\abs{\Fun(A, B)} = \abs{\Fun(A', B')}$,
+        \item $\abs{\PP(A)} = \abs{\PP(A')}$.
+    \end{enumerate}
+    Mostrare che prodotto, parti, unione, spazio delle funzioni di insiemi equipotenti sono equipotenti.
+\end{problem}
+
+\begin{solution}
+    Sia $f : A \to A'$ una bigezione, così come $g : B \to B'$.
+    Dimostriamo la tesi punto per punto.
+
+    \begin{enumerate}[(i.)]
+        \item La mappa $A \times B \ni (a, b) \mapsto (f(a), g(b)) \in A' \times B'$ è
+        una funzione la cui inversa è $A' \times B' \ni (a', b') \mapsto (f\inv(a'), g\inv(b')) \in A \times B$, dunque è una bigezione. Allora $\abs{A \times B} = \abs{A' \times B'}$.
+
+        \item Dal momento che $A \cap B = \emptyset$, la funzione $h : A \cup B \to A' \cup B'$ tale per cui:
+        \[
+            h(x) = \begin{cases}
+                f(x) & \se x \in A, \\
+                g(x) & \se x \in B.
+            \end{cases}
+        \]
+        è ben definita. \smallskip
+        
+        Chiaramente $h$ è suriettiva, dal momento che lo sono sia $f$
+        che $g$. Se $x$ e $y$ in $A \cup B$ sono tali che $h(x) = h(y)$, allora $h(x)$ e $h(y)$ devono appartenere entrambi ad
+        $A'$ o entrambi a $B'$ dal momento che $A' \cap B' = \emptyset$. Per lo
+        stesso motivo $x$ e $y$ devono necessariamente appartenere entrambe o $A$ o a $B$, e dunque deve valere o $f(x) = f(y)$ (se $x$, $y \in A$) o
+        $g(x) = g(y)$ (se $x$, $y \in B$), da cui si deduce a prescindere che vale
+        $x = y$, da cui l'iniettività di $h$. Poiché $h$ è iniettiva e suriettiva,
+        $h$ è una bigezione. Dunque $\abs{A \cup B} = \abs{A' \cup B'}$.
+
+        \item Costruiamo $F : \Fun(A, B) \to \Fun(A', B')$ tale per cui
+        $F(h) = g \circ h \circ f\inv$. Mostriamo che $F$ è effettivamente una
+        bigezione.
+
+        \[\begin{tikzcd}
+        	A && B \\
+        	\\
+        	{A'} && {B'}
+        	\arrow["h", from=1-1, to=1-3]
+        	\arrow["f"', tail, two heads, from=1-1, to=3-1]
+        	\arrow["g", tail, two heads, from=1-3, to=3-3]
+        	\arrow["{F(h)}"', from=3-1, to=3-3]
+        \end{tikzcd}\]
+
+        Sia $G : \Fun(A', B') \to \Fun(A, B)$ tale per cui $G(k) = g\inv \circ k \circ f$. Mostriamo che $F$ e $G$ sono una l'inversa destra dell'altra:
+
+        \begin{itemize}
+            \item $F(G(k)) = F(g\inv \circ k \circ f) = g \circ g\inv \circ k \circ f \circ f\inv = \id_{B'} \circ k \circ \id_{A'} = k$, ovverosia
+            $G$ è inversa destra di $F$.
+
+            \item $G(F(h)) = G(g \circ h \circ f\inv) = g\inv \circ g \circ h \circ f\inv \circ f = \id_B \circ h \circ \id_A = h$, ovverosia $F$ è
+            inversa destra di $G$.
+        \end{itemize}
+
+        Allora $G$ è l'inversa di $F$, e dunque $F$ è una bigezione. Si conclude
+        pertanto che $\abs{\Fun(A, B)} = \abs{\Fun(A', B')}$.
+
+        \item Dal momento che $\abs{\PP(A)} = \abs{\Fun(A, \{0, 1\})}$,
+        che $\abs{\PP(A')} = \abs{\Fun(A', \{0, 1\})}$ e che -- dal punto (iii.) --
+        $\abs{\Fun(A, \{0, 1\})} = \abs{\Fun(A', \{0, 1\})}$, allora, per
+        transitività, vale che $\abs{\PP(A)} = \abs{\PP(A')}$. \smallskip
+        
+        In alternativa, possiamo costruire $F : \PP(A) \to \PP(A')$ tale per cui $F(C) = \{ y \in A' \mid \exists x (x \in C \land y = f(x))\}$ per $C \subseteq A$, ovverosia
+        $F(C)$ è l'immagine di $C$ tramite $f$. $F$ ammette come inversa
+        $G : \PP(A') \to \PP(A)$ tale per cui $G(D) = \{ z \in A \mid f(z) \in D \}$
+        per $D \subseteq A'$,
+        ovverosia la controimmagine di $D$ tramite $f$. \smallskip
+
+        Mostriamo che $F$ e $G$ sono l'una l'inversa destra dell'altra:
+
+        \begin{itemize}
+            \item $G(F(C)) = G(\{ y \in A' \mid \exists x (x \in C \land y = f(x))\})
+            = \{ z \in A \mid f(z) \in \{ y \in A' \mid \exists x (x \in C \land y = f(x))\} \} = \{ z \in A \mid f(z) \in A' \land \exists x (x \in C \land f(z) = f(x)) \}$. \smallskip
+            
+            Dal momento che $f(z) \in A'$ è sempre vera e che $f(z) = f(x) \iff z=x$ per l'iniettività di $f$,
+            l'insieme $G(F(C))$ si riscrive come $\{ z \in A \mid \exists x (x \in C \land z = x) \} = \{ z \in A \mid z \in C \} = C$, dunque $F$ è inversa
+            destra di $G$.
+
+            \item $F(G(D)) = F(\{ z \in A \mid f(z) \in D \}) = \{ y \in A' \mid \exists x (x \in \{ z \in A \mid f(z) \in D \} \land y = f(x))\} = \{ y \in A' \mid \exists x (x \in A \land f(x) \in D \land y = f(x)) \}$. \smallskip
+
+            Sostituendo $y = f(x)$ in $f(x) \in D$ ($\leadsto y \in D$), portando fuori $y \in D$ fuori dalle condizioni di esistenza (è indipendente dalla variabile $x$) e sfruttando che $\exists x (x \in A \land y = f(x))$ per $y \in A'$ è sempre vera per la suriettività di $f$,
+            si riscrive $F(G(D))$ come $\{ y \in A' \mid y \in D \land \exists x (x \in A \land y = f(x)) \} = \{ y \in A' \mid y \in D \} = D$, dunque
+            $G$ è inversa destra di $F$.
+        \end{itemize}
+
+        Allora $G$ è l'inversa di $F$, e dunque $F$ è una bigezione. Si conclude
+        pertanto ancora che $\abs{\PP(A)} = \abs{\PP(A')}$.
+    \end{enumerate}
+\end{solution}
+
+\begin{problem}{Una bigezione da $\NN$ ad $A \subseteq \NN$ infinito}{problem-12}
+    Sia $A \subseteq \NN$ un insieme infinito. Si dimostri che la funzione $f : \NN \to A$
+    definita di seguito per ricorsione numerabile è una bigezione:
+    \[
+        f(n) = \begin{cases}
+            \min(A) & \se n = 1, \\
+            \min(A \setminus \{ f(1), \ldots, f(n-1) \}) & \altrimenti.
+        \end{cases}
+    \]
+\end{problem}
+
+\begin{solution}
+    Mostriamo che, dato $n \in \NN$, $f(n) < f(n+1)$,
+    da cui si deduce che $f$ è strettamente crescente e dunque iniettiva. Sia $B = A \setminus \{ f(1), \ldots, f(n-1) \}$. Allora $f(n) = \min(B)$
+    e $f(n+1) = \min(B \setminus \{ f(n) \}$. In
+    particolare $f(n+1)$ è dunque un numero naturale
+    distinto da $f(n)$ e appartenente a $B$; essendo
+    allora $f(n)$ il minimo di $B$, $f(n) < f(n+1)$. \smallskip
+
+    Infine mostriamo che $f$ è surgettiva. Supponiamo
+    per assurdo che $f$ non lo sia: allora
+    $\imm f \neq A$, dunque $A \setminus \imm f$ --
+    essendo sottinsieme di $\NN$ -- ammette un minimo $a$.
+    Sicuramente $a \neq \min(A)$, perché $f(1) = \min(A)$;
+    in particolare $a > \min(A)$.
+    Allora $[\min(A), a)_A$ non è vuoto ed ammette
+    dunque un massimo $a' \in A$. Poiché $a' < a$,
+    essendo $a$ il minimo di $A \setminus \imm f$,
+    necessariamente $a' \in \imm f$, ovverosia
+    esiste $n \in \NN$ tale per cui $f(n) = \min (A \setminus \{f(1), \ldots, f(n-1)\}) = a'$. Allora
+    $f(n+1) = \min (A \setminus \{f(1), \ldots, f(n-1), a'\})$. Dal momento che $a \notin \imm f$, sicuramente
+    $a \in A \setminus \{f(1), \ldots, f(n-1), a'\}$.
+    Essendo $a$ il successore di $a'$ in $A$, allora
+    $a$ è anche il minimo di $a \in A \setminus \{f(1), \ldots, f(n-1), a'\}$, e dunque $f(n+1) = a$, ovverosia
+    $a \in \imm f$, \Lightning. Quindi $f$ è surgettiva. \smallskip
+
+    Dal momento che $f$ è sia iniettiva che surgettiva,
+    allora $f$ è bigettiva.
+\end{solution}
+
+\begin{problem}{Una funzione iniettiva da $\Fun(\NN, \{0, 1\})$ in $[0, 1)$}{problem-13}
+    Si dimostri che la funzione da $\Fun(\NN, \{0, 1\})$ in $[0, 1)$ che associa a $f$ la serie $\sum_{n \in \NN} \frac{f(n)}{10^n}$ è iniettiva.
+\end{problem}
+
+\begin{solution}
+    Siano $f$ e $g$ elementi di $\Fun(\NN, \{0, 1\})$ tali per cui $\sum_{n \in \NN} \frac{f(n)}{10^n}$ $=$ $\sum_{n \in \NN} \frac{g(n)}{10^n}$. Supponiamo
+    $f \neq g$. Allora $\{ n \in \NN \mid f(n) \neq g(n) \}$, che dunque non è vuoto, ammette per il principio del buon ordinamento un minimo
+    $n_0$ per cui $f(n_0) \neq g(n_0)$. Allora, eliminando i termini uguali precedenti
+    a $n_0$ e moltiplicando per $10^{n_0}$ si ottiene:
+    \[
+        f(n_0) + \sum_{n \in \NN} \frac{f(n_0 + n)}{10^n} = g(n_0) + \sum_{n \in \NN} \frac{g(n_0 + n)}{10^n},
+    \]
+    da cui:
+    \[
+        f(n_0) - g(n_0) = \sum_{n \in \NN} \frac{g(n_0 + n) - f(n_0 + n)}{10^n}.
+    \]
+    Stimando $f(n_0) - g(n_0)$ sapendo che $f(n_0 + n)$, $g(n_0 + n)$ appartengono
+    a $\{0, 1\}$, si ottiene:
+    \[
+        -\frac{1}{9} = \sum_{n \in \NN} -\frac{1}{10^n} \leq f(n_0) - g(n_0) \leq \sum_{n \in \NN} \frac{1}{10^n} = \frac{1}{9}.
+    \]
+    Poiché $f(n_0) - g(n_0)$ è un naturale tra $-1$, $0$ e $1$, ciò implica che
+    sia $0$, ossia $f(n_0) = g(n_0)$, \Lightning. Quindi $f = g$, ossia
+    la funzione indicata nella tesi è iniettiva.
+\end{solution}
+
+\begin{problem}{Se $X$ è infinito, allora $\abs{\Fin(X)} = \abs{\FSeq(X)} = \abs{X}$ (\AC)}{problem-14}
+    Si assuma di sapere che \AC~è equivalente ad affermare che $\abs{X \times X} = \abs{X}$ per ogni $X$ infinito. Assumendo allora \AC, si dimostri che, dato $X$ infinito,
+    $\abs{\Fin(X)} = \abs{\FSeq(X)} = \abs{X}$.
+\end{problem}
+
+\begin{solution}
+    Poiché vale \AC, esiste una funzione di scelta $f : \PP(X) \setminus \{\emptyset\} \to X$, ovvero sia $f$ è una funzione tale per cui $f(Y) \in Y$ per $Y \in \PP(X) \setminus \{\emptyset\}$. \smallskip
+    
+    Mostriamo in ordine i seguenti risultati:
+    \begin{tasks}[label=(\roman*.), label-width=19.4064pt](3)
+        \task $\abs{X} \leq \abs{\Fin(X)}$,
+        \task $\abs{\Fin(X)} \leq \abs{\FSeq(X)}$,
+        \task $\abs{\FSeq(X)} \leq \abs{X}$.
+    \end{tasks}
+
+    \begin{enumerate}[(i.)]
+        \item Sia $F_1 : X \to \Fin(X)$ tale per cui
+        $x \mapsto \{x\}$. Chiaramente $F_1$ è iniettiva,
+        dunque $\abs{X} \leq \abs{\Fin(X)}$.
+
+        \item Poiché $X$ è infinito, in particolare $X$ \underline{non} è
+        vuoto. Sia dunque $c$ un elemento di $X$.
+        Sia $Y \in \Fin(X)$ \underline{non} vuoto. Se $n = \abs{Y}$, allora
+        si può definire per ricorsione numerabile la funzione $f_Y : n \to Y$ tale per cui:
+        \[
+            f_Y(i) = \begin{cases}
+                f(Y) & \se i = 0, \\
+                f(Y \setminus \{f_Y(0), \ldots, f_Y(i-1)\}) & \altrimenti.
+            \end{cases}
+        \]
+        Possiamo dunque definire $F_2 : \Fin(X) \to \FSeq(X)$ in modo
+        tale che $F_2(\emptyset) = (c)$ e $F_2(Y) = (c, f_Y(0), \ldots, f_Y(\abs{Y} - 1))$. Mostriamo che $F_2$ è iniettiva. \smallskip
+
+        Innanzitutto se $F_2(Y) = F_2(Y')$, deve chiaramente
+        valere o $Y = Y' = \emptyset$ o $\abs{Y} = \abs{Y'} = n$.
+        Allora, per la proprietà caratterizzante delle coppie ordinate,
+        deve valere $f_Y(0) = f_{Y'}(0)$, ..., $f_Y(n-1) = f_{Y'}(n-1)$.
+        Poiché $f_Y$ e $f_{Y'}$ sono funzioni surgettive, vale che:
+        \[ Y = \imm f_Y = \{ f_Y(0), \ldots, f_Y(n-1) \} = \{ f_{Y'}(0), \ldots, f_{Y'}(n-1) \} = \imm f_{Y'} = Y'. \]\
+        Dunque $F_2$ è iniettiva, da cui $\abs{\Fin(X)} \leq \abs{\FSeq(X)}$.
+
+        \item Osserviamo innanzitutto che $\FSeq(X) = \bigcup_{n \in \NN} X^n$.
+        Poiché $X$ \underline{non} è vuoto esiste un elemento $c \in X$.
+        Allora $\abs{X} \leq \abs{\{c\} \times X} \leq \abs{\NN \times X} \leq \abs{X \times X} = \abs{X}$, dove si è usato che $X$ si immerge
+        in modo naturale in $\{c\} \times X$, che $\{c\} \leq \NN$ dacché
+        $\NN$ è \underline{non} vuoto, e che $X$, essendo infinito, ammette
+        una funzione surgettiva su $\NN$. Pertanto, per il teorema di
+        Cantor-Bernstein, vale che $\abs{\NN \times X} = \abs{X}$. \smallskip
+
+        Dal momento che $X$ è infinito, sappiamo che $\abs{X^n} = \abs{X}$
+        applicando ricorsivamente $\abs{X \times X} = \abs{X}$, che sappiamo
+        essere vero grazie all'assioma di scelta. Quindi $\bige(X^n, X)$ è
+        \underline{non} vuoto. Allora, ancora per l'assioma di scelta,
+        $\bigtimes_{n \in \NN} \bige(X^n, X)$ è \underline{non} vuoto.
+        Sia $(f_i \mid i \in \NN) \in \bigtimes_{n \in \NN} \bige(X^n, X)$.
+        Costruiamo $F_3 : \FSeq(X) \to \NN \times X$ in
+        modo tale che $F_3((x_1, \ldots, x_n)) = (n, f_n((x_1, \ldots, x_n)))$. \smallskip
+
+        Mostriamo che $F_3$ è iniettiva. Se $F_3((x_1, \ldots, x_n)) = F_3((y_1, \ldots, y_m))$, allora $(n, f_n((x_1, \ldots, x_n))) = (m, f_n((y_1, \ldots, y_m)))$. Per la proprietà caratterizzante delle coppie ordinate,
+        dalle prime coordinate si ricava $m = n$, e poi dalle seconde si
+        deduce che $f_n((x_1, \ldots, x_n)) = f_n((y_1, \ldots, y_n))$,
+        e dunque che $(x_1, \ldots, x_n) = (y_1, \ldots, y_n)$. Dunque
+        $F_3$ è iniettiva, da cui $\abs{\FSeq(X)} \leq \abs{\NN \times X}$. \smallskip
+
+        Per quanto detto prima $\abs{\NN \times X} = \abs{X}$, dunque
+        $\abs{\FSeq(X)} \leq \abs{X}$.
+    \end{enumerate}
+
+    Infine, applicando il teorema di Cantor-Bernstein sulla catena:
+    \[
+        \abs{X} \leq \abs{\Fin(X)} \leq \abs{\FSeq(X)} \leq \abs{X},
+    \]
+    si ottiene esattamente la tesi.
+\end{solution}
+
+\begin{problem}{$\abs{X} \leq \abs{Y}$ $\implies$ $\abs{\Fin(X)} \leq \abs{\Fin(Y)}$ e $\abs{\FSeq(X)} \leq \abs{\FSeq(Y)}$}{problem-15}
+    Siano $X$ e $Y$ insiemi non vuoti tali per cui $\abs{X} \leq \abs{Y}$. Si
+    mostri che $\abs{\Fin(X)} \leq \abs{\Fin(Y)}$ e che
+    $\abs{\FSeq(X)} \leq \abs{\FSeq(Y)}$.
+\end{problem}
+
+\begin{solution}
+    Sia $f : X \to Y$ una funzione iniettiva. Allora $f$ induce
+    due funzioni $F : \Fin(X) \to \Fin(Y)$ e $S : \FSeq(X) \to \FSeq(Y)$, dove $F(Z) = f(Z)$, per $Z \in \Fin(X)$, e
+    $S((x_1, \ldots, x_n)) = (f(x_1), \ldots, f(x_n))$ per
+    $x_1$, ..., $x_n$ appartenenti a $X$ e $n$ variabile tra
+    i numeri naturali. \smallskip
+
+    Poiché $f$ è iniettiva, $F$ lo è -- infatti $F(Z) = F(Z') \implies F\inv(F(Z)) = F\inv(F(Z')) \implies Z = Z'$; dunque
+    $\abs{\Fin(X)} \leq \abs{\Fin(Y)}$. \smallskip
+
+    Inoltre, se $\hat x = (x_1, \ldots, x_n)$ e $\hat y = (y_1, \ldots, y_m)$ sono
+    sequenze finite in $\FSeq(X)$ con $m$ e $n$ numeri naturali,
+    allora $S(\hat x) = S(\hat y)$ implica sicuramente $m = n$.
+    D'altra parte, per la proprietà caratterizzante delle coppie ordinate, $S(\hat x) = S(\hat y)$ implica $f(x_i) = f(y_i)$
+    per ogni $i$ naturale tra $1$ e $n$. Dacché $f$ è iniettiva,
+    questo vuol dire che $x_i = y_i$ per ogni tale $i$, e dunque
+    che $\hat x = \hat y$, ovverosia $S$ è iniettiva. Pertanto
+    $\abs{\FSeq(X)} \leq \abs{\FSeq(Y)}$.
+\end{solution}
+
+\begin{problem}{Se $A \cap A' = \emptyset$, $\abs{\Fun(A, B) \times \Fun(A', B)} = \abs{\Fun(A \cup A', B)}$}{problem-16}
+    Siano $A$ e $A'$ due insiemi per cui $A \cap A' = \emptyset$. Sia anche $B$ un insieme. Si mostri
+    allora che $\abs{\Fun(A, B) \times \Fun(A', B)} = \abs{\Fun(A \cup A', B)}$.
+\end{problem}
+
+\begin{solution}
+    Siano $f : A \to B$ e $g : A' \to B$ due funzioni. Dal momento che
+    $A \cap A' = \emptyset$, $f \cup g$ è ancora una funzione -- infatti
+    non vi sono collisioni nel dominio. Allora $F : \Fun(A, B) \times \Fun(A', B) \to \Fun(A \cup A', B)$ dove $F((f, g)) = f \cup g$ è ben definita. \smallskip
+
+    Sia $G : \Fun(A \cup A', B) \to \Fun(A, B) \times \Fun(A', B)$ definita
+    in modo tale che $G(h) = (\restr{h}{A}, \restr{h}{A'})$, dove
+    $\restr{f}{X'} := f \cap (X' \times \imm f)$ è la restrizione di $f : X \to Y$
+    sul dominio $X' \subseteq X$. Mostriamo
+    che $F$ e $G$ sono l'una l'inversa destra dell'altra.
+
+    \begin{itemize}
+        \item $G(F((f, g)) = G(f \cup g) = ((\restr{f \cup g}{A}), (\restr{f \cup g}{A'}))$. Poiché $A \cap A' = \emptyset$, non vi sono collisioni
+        nel dominio, e dunque $G(F((f, g))) = (f, g)$ dacché $f$ ha dominio
+        $A$ e $g$ ha dominio $A'$. Dunque $F$ è inversa destra di $G$.
+
+        \item $F(G(h)) = F((\restr{h}{A}, \restr{h}{A'})) = \restr{h}{A} \cup \restr{h}{A'} = h$. Dunque $G$ è inversa destra di $F$.
+    \end{itemize}
+
+    Si conclude dunque che $G$ è l'inversa di $F$, ovverosia che $F$ è
+    una bigezione. Dunque $\abs{\Fun(A, B) \times \Fun(A', B)} = \abs{\Fun(A \cup A', B)}$.
+\end{solution}
+
+\begin{problem}{Calcolo di cardinalità riguardanti $\NN$ e $\RR$ (\AC)}{problem-17}
+    Sia $n$ un numero naturale. Si calcoli la cardinalità dei seguenti insiemi, applicando l'assioma di scelta solo dove indicato:
+
+    \begin{tasks}[label=(\alph*.),label-width=20.25777pt](4)
+    \task $\RR^n$,
+    \task $\Fin(\RR)$,
+    \task $\FSeq(\RR)$,
+    \task $\FSeq\!\uparrow\!(\RR)$,
+    \task $\Fun(\NN, \NN)$,
+    \task $\Fun\!\uparrow\!(\NN, \NN))$,
+    \task $\Sym(\NN)$,
+    \task $\Fun(\NN, \RR)$,
+    \task $\Fun\!\uparrow\!(\NN, \RR)$,
+    \task $[\NN]^{\aleph_0}$,
+    \task $[\RR]^{\aleph_0}$ (\AC),
+    \task $\Fun(\RR, \RR)$,
+    \task $C^0(\RR)$,
+    \task $\OO(\RR^2)$.
+    \end{tasks}
+\end{problem}
+
+\begin{solution}
+    Risolviamo ogni punto del problema.
+
+    \begin{enumerate}[(a.)]
+        \item Sappiamo che $\abs{\RR \times \RR} = \cc$.
+        Posto allora che $\abs{\RR^{n-1}} = \cc$, vale
+        che $\abs{\RR^n} = \abs{\RR^{n-1} \times \RR} = \abs{\RR \times \RR} = \cc$. Si conclude allora
+        per induzione che $\abs{\RR^n} = \cc$.
+
+        \item[(b., c.)] Poiché $\RR$ è infinito,
+        $\abs{\Fin(\RR)} = \abs{\FSeq(\RR)} = \abs{\RR} = \cc$
+        (vd. \textit{Problema 14}).
+        \addtocounter{enumi}{2}
+
+        \item Poiché $\FSeq\!\uparrow\!(\RR) \subseteq \FSeq(\RR)$, sicuramente $\abs{\FSeq\!\uparrow\!(\RR)} \leq \cc$ per il punto (c.). D'altra
+        parte $\RR$ si immerge naturalmente in
+        $\FSeq\!\uparrow\!(\RR)$ (un numero è una $1$-sequenza, crescente per mancanza di altri numeri),
+        dunque $\cc \leq \abs{\FSeq\!\uparrow\!(\RR)}$.
+        Allora, per il teorema di Cantor-Bernstein,
+        $\abs{\FSeq\!\uparrow\!(\RR)} = \cc$.
+
+        \item Poiché $\abs{2} \leq \abs{\NN}$, allora
+        $\cc = \abs{2^\NN} \leq \abs{\NN^\NN} \leq \abs{\left(2^\NN\right)^\NN} = \abs{2^{\NN \times \NN}} \leq
+        \abs{2^\NN} = \cc$, dove abbiamo usato anche che $\abs{\NN \times \NN} = \abs{\NN}$. Dunque,
+        per il teorema di Cantor-Bernstein, $\abs{\Fun(\NN, \NN)} = \cc$.
+
+        \item Dacché $\Fun\!\uparrow\!(\NN, \NN) \subseteq \Fun(\NN, \NN)$, allora $\abs{\Fun\!\uparrow\!(\NN, \NN)} \leq \cc$. \smallskip
+
+        Poiché $\NN$ è infinito, $\abs{\Fin(\NN)} = \abs{\NN}$.
+        Allora, dacché $\abs{\PP(\NN)} = \cc$, $\abs{\PP(\NN) \setminus \Fin(\NN)} = \cc$ (vd. \textit{Problema 19}).
+        Sia $A \subseteq \PP(\NN) \setminus \Fin(\NN)$. Possiamo
+        definire per ricorsione numerabile
+        la funzione $f_A : \NN \to \NN$ in modo tale che:
+        \[ 
+            f_A(n) = \begin{cases}
+                \min(A) & \se n = 1, \\
+                \min(A \setminus \{f(1), \ldots, f(n)\}) & \altrimenti.
+            \end{cases}
+        \]
+        Chiaramente $f_A$ è crescente e ha $A$ come immagine (vd. \textit{Problema 12}) -- da
+        cui $f_A = f_B \implies A = B$ (vd. \textit{Problema 14}, (ii.) per una semplice dimostrazione). Dunque
+        la mappa $F : \PP(\NN) \setminus \Fin(\NN) \to \Fun\!\uparrow\!(\NN, \NN)$ tale per cui $F(Y) = f_Y$ è iniettiva, da cui
+        si deduce che $\cc = \abs{\PP(\NN) \setminus \Fin(\NN)} \leq
+        \abs{\Fun\!\uparrow\!(\NN, \NN)}$. \smallskip
+
+        Infine, per il teorema di Cantor-Bernstein, si deduce che
+        $\abs{\Fun\!\uparrow\!(\NN, \NN)} = \cc$.
+
+        \item Dal momento che $\Sym(\NN) \subseteq \Fun(\NN, \NN)$, allora sicuramente $\abs{\Sym(\NN)} \leq \cc$. Da (f.)
+        sappiamo che $\abs{\PP(\NN) \setminus \Fin(\NN)} = \cc$.
+        Sia $A$ un sottinsieme infinito di $\NN$. Definiamo
+        per ricorsione numerabile la funzione $f_A : \NN \to A$
+        tale per cui:
+        \[
+            f_A(n) = \begin{cases}
+                \min(A) & \se n = 1, \\
+                \min(A \setminus \{f(1), \ldots, f(n-1)\}) & \altrimenti.
+            \end{cases}
+        \]
+        Sappiamo che $f_A$ è bigettiva (vd. \textit{Problema 12}).
+        Definiamo allora $\sigma_A : \NN \to \NN$ per ricorsione numerabile in modo tale che:
+        \[
+            \sigma_A(n) = \begin{cases}
+                n & \se n \in \NN \setminus A, \\
+                f_A(n-1) & \se f_A\inv(n) \text{ è pari}, \\
+                f_A(n+1) & \se f_A\inv(n) \text{ è dispari}.
+            \end{cases}
+        \]
+        In altre parole $\sigma_A$ ``modifica'' l'identità
+        $\id_{\NN}$ trasponendo a due a due i numeri consecutivi
+        della lista $( f_A(1), f_A(2), \ldots )$. \smallskip
+
+        Definiamo $F : \PP(\NN) \setminus \Fin(\NN) \to \Sym(\NN)$
+        in modo tale che $F(A) = \sigma_A$. Mostriamo che
+        $F$ è iniettiva. Se $\sigma_A = \sigma_B$, allora
+        $\sigma_A$ e $\sigma_B$ hanno lo stesso insieme di
+        punti fissi, ovverosia, poiché $f_A$ è bigettiva,
+        $\NN \setminus A = \NN \setminus B$, da cui
+        $A = B$. Pertanto $\cc = \abs{\PP(\NN) \setminus \Fin(\NN)} \leq \abs{\Sym(\NN)}$. \smallskip
+
+        Infine, per il teorema di Cantor-Bernstein si conclude che
+        $\abs{\Sym(\NN)} = \cc$.
+
+        \item Si osserva che $\cc = \abs{2^\NN} \leq \abs{\NN^\NN} \leq \abs{\RR^\NN} = \abs{(2^\NN)^\NN} = \abs{2^{\NN \times \NN}} = \abs{2^\NN} = \cc$. Allora, per il teorema di
+        Cantor-Bernstein, $\abs{\Fun(\NN, \RR)} = \cc$.
+
+        \item Poiché $\Fun\!\uparrow\!(\NN, \RR) \subseteq \Fun(\NN, \RR)$, sicuramente $\abs{\Fun\!\uparrow\!(\NN, \RR)} \leq \cc$. \smallskip
+
+        Sia $\iota$ l'immersione di $\NN$ in $\RR$. Poiché $\iota$
+        mantiene l'ordinamento, la funzione $F : \Fun\!\uparrow\!(\NN, \NN) \to \Fun\!\uparrow\!(\NN, \RR)$ tale per cui
+        $F(f) = f \circ \iota$ è ben definita e iniettiva.
+        Dunque $\cc = \abs{\Fun\!\uparrow\!(\NN, \NN)} \leq \abs{\Fun\!\uparrow\!(\NN, \RR)}$. \smallskip
+
+        Si conclude dunque che, per il teorema di Cantor-Bernstein,
+        $\abs{\Fun\!\uparrow\!(\NN, \RR)} = \cc$.
+
+        \item Poiché i sottinsiemi infiniti di $\NN$ sono
+        sono numerabili, $[\NN]^{\aleph_0} = \PP(\NN) \setminus \Fin(\NN)$. Dacché $\abs{\PP(\NN)} = \cc$
+        e $\abs{\Fin(\NN)} = \aleph_0$ (vd. \textit{Problema 14}), allora si sta togliendo
+        un insieme al più numerabile ad un insieme
+        che ha la cardinalità del continuo. Pertanto,
+        per il \textit{Problema 19}, $\abs{[\NN]^{\aleph_0}} = \cc$.
+
+        \item Sia $F : \RR \to [\RR]^{\aleph_0}$ definita
+        in modo tale che $F(x) = \{x-1/n \mid n \in \NN\}$.
+        Chiaramente $F$ è iniettiva, da cui
+        $\cc \leq \abs{[\RR]^{\aleph_0}}$. \smallskip
+
+        Sia $A \in [\RR]^{\aleph_0}$. Poiché $A$ è numerabile,
+        esiste una funzione iniettiva $f_A : \NN \to \RR$
+        con $\imm f_A = A$. In particolare $B_A = \{ f \in \Fun(\NN, \RR) \mid \imm f = A \}$ \underline{non} è vuoto. Pertanto,
+        applicando l'assioma di scelta, $\bigtimes_{A \in [\RR]^{\aleph_0}} B_A$ è \underline{non} vuoto.
+        Sia $F$ dunque una funzione in $\bigtimes_{A \in [\RR]^{\aleph_0}} B_A$. $F$ è iniettiva,
+        infatti $F(A) = F(A') \implies \imm F(A) = \imm F(A')$,
+        da cui $A = A'$. Pertanto $\abs{[\RR]^{\aleph_0}} \leq \abs{\RR^\NN}$, e per il punto (h.) $\abs{\RR^\NN} = \cc$.
+        Pertanto $\abs{[\RR]^{\aleph_0}} \leq \cc$. \smallskip
+
+        Applicando il teorema di Cantor-Bernstein si conclude che
+        $\abs{[\RR]^{\aleph_0}} = \cc$.
+
+        \item Poiché $\cc = \abs{\{0\} \times \RR} \leq \abs{\NN \times \RR} \leq \abs{\RR \times \RR} = \cc$, per il teorema di Cantor-Bernstein vale che
+        $\abs{\NN \times \RR} = \cc$. Dacché $\abs{2^\RR} \leq \abs{\RR^\RR} = \abs{(2^\NN)^\RR} = \abs{2^{\NN \times \RR}} = \abs{2^\RR}$, allora, ancora per il teorema di Cantor-Bernstein,
+        $\abs{\RR^\RR} = \abs{2^\RR} > \cc$.
+
+        \item Dal momento che $\QQ$ è denso in $\RR$, una funzione
+        continua è completamente determinata dalla sua restrizione su $\QQ$.
+        Pertanto la mappa $F : C^0(\RR) \to \Fun(\QQ, \RR)$ tale per cui
+        $F(f) = \restr{f}{\QQ}$ è iniettiva. Dunque $\abs{C^0(\RR)} \leq \abs{\RR^\QQ} = \abs{\RR^\NN}$. Per (h.) $\abs{\Fun(\NN, \RR)} = \cc$,
+        dunque $\abs{C^0(\RR)} \leq \cc$. Allo stesso tempo la mappa
+        $G : \RR \to C^0(\RR)$ tale per cui $G(k) = [x \mapsto x+k]$ è
+        iniettiva, e dunque $\cc \leq \abs{C^0(\RR)}$. Per il teorema
+        di Cantor-Bernstein si deduce allora che $\abs{C^0(\RR)} = \cc$.
+
+        \item Dal\footnote{
+            Il procedimento presentato si può facilmente generalizzare
+            per dimostrare che $\abs{\OO(\RR^n)} = \cc$ per ogni $n \in \NN$.
+        } momento che la topologia euclidea su $\RR^2$ è più fine
+        di quella cofinita, per ogni $(x, y) \in \RR^2$ vale
+        $\RR^2 \setminus \{(x, y)\} \in \OO(\RR^2)$. Dunque
+        la mappa $F : \RR \times \RR \to \OO(\RR^2)$ tale per cui
+        $(x, y) \mapsto \RR^2 \setminus \{(x, y)\}$ è ben definita. Si osserva che
+        $F$ è chiaramente iniettiva, dunque $\cc = \abs{\RR \times \RR} \leq \abs{\OO(\RR^2)}$. \smallskip
+
+        Dacché $\QQ^2$ è denso nello spazio metrico $\RR^2$, $\basis = \{ z \in \PP(\RR^2) \mid 
+\exists q_1 \exists q_2 \exists r (q_1 \in \QQ \land q_2 \in \QQ \land r \in \QQ^+ \land z = B_r(q_1, q_2)) \}$ è una base
+        di $\RR^2$. Dunque per ogni $A \in \OO(\RR^2)$ l'insieme
+        $B_A = \{ z \in \QQ \times \QQ \times \QQ^+ \mid \exists q_1 \exists q_2 \exists r (q_1 \in \QQ \land q_2 \in \QQ \land r \in \QQ^+ \land z = (q_1, q_2, r) \land B_r(q_1, q_2) \in \PP(A) \}$ è \underline{non} vuoto. \smallskip
+
+        Sia $f : \OO(\RR^2) \to \PP(\QQ \times \QQ \times \QQ^+)$
+        tale per cui $f(A) = B_A$. Allora $f$ è chiaramente
+        iniettiva, e dunque $\abs{\OO(\RR^2)} \leq \abs{\PP(\QQ \times \QQ \times \QQ^+)} = \abs{\PP(\NN)} = \cc$. \smallskip
+
+        Infine, per il teorema di Cantor-Bernstein, si conclude che
+        $\abs{\OO(\RR^2)} = \cc$.
+    \end{enumerate}
+\end{solution}
+
+\begin{problem}{Una relazione numerabile ha dominio e immagine al più numerabile (senza fare uso di \AC)}{problem-18}
+    Sia $\rel$ una relazione con $\abs{\rel} = \aleph_0$. Si dimostri allora che
+    $\abs{\dom(\rel)} \leq \aleph_0$ e che $\abs{\imm(\rel)} \leq \aleph_0$, senza
+    impiegare l'assioma di scelta.
+\end{problem}
+
+\begin{solution}
+    Sia $f : \rel \to \NN$ una bigezione tra
+    $\rel$ e $\NN$. Sia $x \in \dom(\rel)$. Definiamo allora
+    $A_x = \{ z \in \rel \mid \exists y (y \in \imm \rel \land z = (x, y))\}$,
+    che è un insieme per l'assioma di separabilità.
+    Poiché $x \in \dom(\rel)$, $A_x$ \underline{non} è vuoto. Pertanto,
+    per il principio del buon ordinamento, $f(A_x)$ ammette un minimo. \smallskip
+
+    Sia $F : \dom(\rel) \to \NN$ tale per cui $F(x) = \min (f(A_x))$. Mostriamo
+    che $F$ è iniettiva. $F(x) = F(y) \implies \min (f(A_x)) = \min (f(A_y))$.
+    Siano $m$, $n \in \imm \rel$ con $(x, m) \in \rel$ e $(y, n) \in \rel$ tali per cui
+    $\min (f(A_x)) = f((x, m))$ e $\min (f(A_y)) = f((y, n))$; allora
+    $f((x, m)) = f((y, n))$. Dacché $f$ è una bigezione, $(x, m) = (y, n)$.
+    Pertanto, per la proprietà caratterizzante delle coppie ordinate,
+    $x = y$. Dunque $F$ è iniettiva, da cui $\abs{\dom(\rel)} \leq \abs{\NN} = \aleph_0$. \smallskip
+
+    Analogamente, se $y \in \imm(\rel)$, si può definire tramite l'assioma
+    di separabilità l'insieme $B_y = \{ z \in \rel \mid \exists x (x \in \dom \rel \land z = (x, y))\}$. In questo modo possiamo costruire
+    $G : \imm(\rel) \to \NN$ tale per cui $G(y) = \min (f(B_y))$, che
+    si mostra allo stesso modo essere iniettiva, da cui $\abs{\imm(\rel)} \leq \abs{\NN} = \aleph_0$.
+\end{solution}
+
+\begin{problem}{Se $A$ è al più numerabile e $B$ ha almeno la cardinalità del continuo, $\abs{B \setminus A} = \abs{B}$}{problem-19}
+    Si assuma già di sapere che, dato $C \subseteq \RR \times \RR$ con $\abs{C} \leq \aleph_0$,
+    vale che $\abs{(\RR \times \RR) \setminus C} = \abs{\RR \times \RR} = \cc$. Si deduca che, dati $B$ con $\abs{B} \geq \cc$
+    e $A$ con $\abs{A} \leq \aleph_0$, allora $\abs{B \setminus A} = \abs{B}$.
+\end{problem}
+
+\begin{solution}
+    Possiamo assumere senza perdita di generalità che $A$ sia sottinsieme
+    di $B$. Infatti $B \setminus A = B \setminus (A \cap B)$ e
+    $\abs{A \cap B} \leq \abs{A} \leq \aleph_0$, dunque le ipotesi sono ancora
+    vere scegliendo $A \cap B$ al posto di $A$, dando lo stesso risultato. \smallskip
+
+    Poiché $\abs{B} = \cc$, esiste una funzione bigettiva $f : B \to \RR \times \RR$.
+    In particolare $\abs{f(A)} = \abs{A} \leq \aleph_0$ e $f(A) \subseteq f(B) = \RR \times \RR$. Allora, per ipotesi vale $\abs{f(B) \setminus f(A)} = \abs{f(B)}$,
+    da cui $\abs{B} =\abs{f(B)} = \abs{f(B) \setminus f(A)} = \abs{B \setminus A}$. \smallskip
+
+    Poiché $\abs{B} \geq \cc$, esiste una funzione iniettiva $f : \RR \times \RR \to B$.
+    In particolare $\abs{f\inv(A)} \leq \abs{A} = \aleph_0$ e $f\inv(A) \subseteq f\inv(B) = \RR \times \RR$. Allora, per ipotesi vale $\abs{f\inv(B) \setminus f\inv(A)} = \abs{f\inv(B)}$, da cui $\abs{B} \geq \abs{f\inv(B)} = \abs{f\inv(B) \setminus f\inv(A)} $
+\end{solution}
+
+\begin{problem}{Cardinalità di $A \setminus B$ e $A \cup B$ se $\abs{B} < \abs{A}$ e $A$ è infinito (\AC)}{problem-20}
+    Sia $A$ un insieme infinito e sia $B$ tale per cui $\abs{B} < \abs{A}$. Si dimostri che
+    $\abs{A \setminus B} = \abs{A \cup B} = \abs{A}$, assumendo l'assioma di scelta.
+\end{problem}
+
+\begin{solution}
+
+\end{solution}
+
+\begin{problem}{Proprietà dei numeri naturali (1) -- Definizione equivalente dell'ordinamento stretto}{problem-21}
+    Siano $n$, $m \in \omega$. Si dimostri che $n \in m \iff n \subsetneq m$.
+\end{problem}
+
+\begin{solution}
+    Mostriamo per induzione che $\varphi(m)$ è vera per ogni $m \in \omega$, dove:
+    \[
+        \varphi(m) = \forall n (n \in m \implies n \subsetneq m).
+    \]
+    \begin{enumerate}
+        \item[$\boxed{\varphi(0)}$] Dal momento che $0 = \emptyset$ non
+        ammette elementi,
+        $\Psi(0)$ è vacuamente vera.
+
+        \item[$\boxed{\varphi(m+1)}$] Se $n \in m+1$, allora
+        $n \in m$ o $n = m$. Se $n \in m$, allora,
+        per l'ipotesi induttiva, vale che $n \subsetneq m$.
+        Dal momento che $m+1 = m \cup \{m\}$, allora
+        $n \subsetneq m+1$. Se invece $n = m$, per
+        definizione di $m+1$ vale $n \subsetneq m+1$. Pertanto
+        $\varphi(m+1)$ vale se vale $\varphi(m)$.
+    \end{enumerate}
+    Pertanto, applicando il principio di induzione, se $m$ è un elemento di $\omega$, $n \in m \implies n \subsetneq m$. Mostriamo infine per induzione che
+    $\Psi(m)$ è vera per ogni $m \in \omega$, dove:
+    \[
+        \Psi(m) = \forall n (n \in \omega \implies (n \in m \iff n \subsetneq m)).
+    \]
+    \begin{enumerate}
+        \item[$\boxed{\Psi(0)}$] Dal momento che $0 = \emptyset$ non
+        ammette elementi né sottinsiemi propri,
+        $\Psi(0)$ è vacuamente vera.
+
+        \item[$\boxed{\Psi(m+1)}$] Una direzione è già verificata
+        dal momento che vale $\varphi(m+1)$. Sia pertanto
+        $n \subsetneq m+1 = m \cup \{m\}$ con $n \in \omega$. Se valesse
+        $m \in n$, allora -- poiché vale $\varphi(n)$ (qui è cruciale che $n$ sia un numero naturale!) --
+        $m \subsetneq n$, da cui $m+1 = m \cup \{m\} \subseteq n$;
+        questo è tuttavia assurdo, dacché implicherebbe
+        $n = m+1$, \Lightning. Pertanto $m \notin n$, da cui
+        $n \subseteq m$. Se $n = m$, allora $n = m \in m+1$ per
+        costruzione; altrimenti $n \subsetneq m$, da cui,
+        per l'ipotesi induttiva, si ricava che
+        $n \in m$, e dunque che $n \in m+1$. Pertanto
+        $\Psi(m+1)$ vale se vale $\Psi(m)$,
+    \end{enumerate}
+    Infine si conclude che $\Psi(m)$ è vera per ogni $m \in \omega$ applicando
+    il principio d'induzione, ovverosia è vera la tesi.
+\end{solution}
+
+\begin{problem}{Proprietà dei numeri naturali (2) -- Massimo e minimo tra $n$ e $m$}{problem-22}
+    Siano $n$, $m \in \omega$. Si dimostri che $\min \{n, m\} = n \cap m$ e che $\max \{n, m\} = n \cup m$.
+\end{problem}
+
+\begin{solution}
+    Se $n \leq m$, allora $n \subseteq m$ per il \textit{Problema 21}. Dunque $\min \{n, m\} = n = n \cap m$ e $\max \{n, m\} = m = n \cup m$. Analogamente se $m \leq n$, allora $m \subseteq n$, da cui $\min \{n, m\} = m = n \cap m$ e $\max \{n, m\} = n = n \cup m$.
+\end{solution}
+
+\begin{problem}{Proprietà dei numeri naturali (3) -- $\omega$ è un insieme transitivo}{problem-23}
+    Si mostri che $\omega$ è transitivo, ovvero si dimostri che gli elementi degli elementi di $\omega$ sono elementi di $\omega$.
+\end{problem}
+
+\begin{solution}
+    Mostriamo per induzione che $\Psi(m)$
+    è vera per ogni $m \in \omega$, dove:
+    \[
+        \Psi(m) = \forall n(n \in m \implies n \in \omega).
+    \]
+    \begin{enumerate}
+        \item[$\boxed{\Psi(0)}$] Dal momento che $0 = \emptyset$ non
+        ammette elementi,
+        $\Psi(0)$ è vacuamente vera.
+
+        \item[$\boxed{\Psi(m+1)}$] Sia $n \in m + 1$. Allora
+        $n = m$ o $n \in m$. Nel primo caso, $n$ appartiene
+        a $\omega$ (infatti $m \in \omega$); nel secondo caso,
+        per ipotesi induttiva, $n \in \omega$. Dunque $\Psi(m+1)$
+        vale se $\Psi(m)$.
+    \end{enumerate}
+    Pertanto, applicando il principio di induzione si ricava
+    che $\Psi(m)$ è vera per ogni $m \in \omega$, ovverosia
+    $\omega$ è un insieme transitivo.
+\end{solution}
+
+\begin{problem}{Proprietà dei numeri naturali (4) -- $\hat{x} \in \omega \implies x \in \omega$}{problem-24}
+    Si mostri che se $\hat{x} := x \cup \{x\}$ appartiene a
+    $\omega$, allora $x \in \omega$.
+\end{problem}
+
+\begin{solution}
+    Sappiamo grazie al \textit{Problema 23} che $\omega$ è un insieme
+    transitivo. Dal momento che $x \in \hat x$ e
+    $\hat x \in \omega$, allora $x \in \omega$, essendo
+    elemento di un elemento di $\omega$.
+\end{solution}
+
+\begin{problem}{Infinito $\implies$ Dedekind-infinito (\AC)}{problem-25}
+    Sia $A$ un insieme infinito. Assumendo l'assioma di scelta,
+    si dimostri che $A$ è Dedekind-infinito, ovverosia si mostri
+    che esiste $B \subsetneq A$ tale per cui $\abs{B} = \abs{A}$.
+\end{problem}
+
+\begin{solution}
+    Poiché vale \AC{} e $A$ è infinito, esiste una funzione iniettiva
+    $f : \omega \to A$. Dacché $\abs{\omega} = \abs{\omega \setminus \{0\}}$ tramite
+    la bigezione indotta dal successore $S : n \mapsto n+1$, allora
+    $\abs{f(\omega)} = \abs{f(\omega \setminus \{0\})}$. Detto allora
+    $B = f(\omega \setminus \{0\})$, chiaramente $A \neq B$ dal momento
+    che $f$ è iniettiva. Dunque $B$ è l'insieme desiderato.
+\end{solution}
+
+\begin{problem}{Caratterizzazioni delle bigezioni su insiemi finiti}{problem-26}
+    Sia $A$ un insieme finito e sia $f : A \to A$ una funzione. Si mostri che
+    sono equivalenti le seguenti affermazioni:
+    \begin{enumerate}[(i.)]
+        \item $f$ è bigettiva,
+        \item $f$ è iniettiva,
+        \item $f$ è surgettiva.
+    \end{enumerate}
+\end{problem}
+
+\begin{solution}
+    Mostriamo il ciclo di implicazioni (i.) $\implies$ (ii.) $\implies$ (iii.) $\implies$ (i.), in modo tale da dimostrare tutte le equivalenze.
+
+    \begin{itemize}
+        \item[\fbox{(i.) $\implies$ (ii.)}] Se $f$ è bigettiva, allora $f$ è
+        per definizione anche iniettiva.
+
+        \item[\fbox{(ii.) $\implies$ (iii.)}] Se $f : A \to A$ è iniettiva,
+        Se $f$ \underline{non} fosse surgettiva, allora $f(A)$ sarebbe un sottinsieme proprio
+        di $A$, e dunque si avrebbe $\abs{f(A)} < \abs{A}$, violando il principio
+        dei cassetti. Dunque $f$ è surgettiva.
+
+        \item[\fbox{(iii.) $\implies$ (i.)}] Poiché
+        $A$ è finito\footnote{
+            Se $A$ è \underline{finito}, $f$ è ammette sempre un'inversa destra, anche senza
+            utilizzare \AC. 
+        }, $f$ ammette un'inversa destra $g : A \to A$, che è iniettiva. Allora,
+        poiché (ii.) $\implies$ (iii.), $g$ è surgettiva, e dunque $g$ è bigettiva.
+        Pertanto $f$ è anch'essa bigettiva essendo l'inversa di $g$.
+    \end{itemize}
+\end{solution}
+
+\begin{problem}{$A$, $B$ finiti $\implies$ $A \cap B$, $A \cup B$, $A \times B$, $\PP(A)$ finiti}{problem-27}
+    Siano $A$ e $B$ due insiemi finiti. Si mostri che i seguenti insiemi sono
+    finiti:
+    \begin{tasks}[label=(\alph*.),label-width=17.21605pt](4)
+        \task $A \cap B$,
+        \task $A \cup B$,
+        \task $A \times B$,
+        \task $\PP(A)$.
+    \end{tasks}
+\end{problem}
+
+\begin{solution}
+    Mostriamo le varie richieste ordinatamente.
+    \begin{enumerate}[(a.)]
+        \item Poiché $A \cap B \subseteq A$ e $A$ è finito, allora
+        $A \cap B$ è sottinsieme di un insieme finito e dunque è
+        finito.
+
+        \item Mostriamo per induzione che vale $\Psi(m)$ per ogni $m \in \omega$, dove:
+        \[
+            \Psi(m) = \forall n \forall A \forall B ((\abs{A} = m \land \abs{B} = n) \implies \exists k (k \in \omega \land \abs{A \cup B} = k)). 
+        \]
+        \begin{enumerate}
+            \item[$\boxed{\Psi(0)}$] Se $\abs{A} = 0$, allora $A$ necessariamente
+            è l'insieme vuoto. Dunque $\abs{A \cup B} = \abs{B} = m$. Pertanto
+            $\Psi(0)$ è vera.
+    
+            \item[$\boxed{\Psi(m+1)}$] Sappiamo che $\abs{A} = m+1$. Sia $f : A \to m+1$
+            una bigezione. Se poniamo $A' = f\inv(m+1 \setminus \{m\}$, allora
+            $\abs{A'} = \abs{m}$. Pertanto, per l'ipotesi induttiva esiste $k \in \omega$
+            tale per cui $\abs{A' \cup B} = k$; in particolare esiste una bigezione
+            $g : A' \cup B \to k$. Se $f\inv(\{m\}) \in B$, $A' \cup B = A \cup B$ e
+            dunque $\abs{A \cup B} = k$. Altrimenti, possiamo estendere $g$ ad
+            $h : A \cup B \to k+1$ ponendo $\restr{h}{A' \cup B} = g$ e
+            $h(f\inv(\{m\})) = k$. Dal momento che $h$ è l'incollamento di due bigezioni,
+            la cui seconda va da $\{f\inv(\{m\})\}$ in $\{k\}$, a dominio e immagini
+            disgiunte, $h$ è una bigezione, e dunque $\abs{A \cup B} = k+1$. Pertanto
+            $\Psi(m+1)$ vale se vale $\Psi(m)$.
+        \end{enumerate}
+        Si conclude dunque per il principio di induzione che $A \cup B$ è sempre
+        finito se $A$ e $B$ lo sono.
+
+        \item Se $\abs{B} = n$, allora esiste una bigezione $f : n \to B$.
+        Costruiamo allora $\sigma : n \to A \times B$ in modo tale che
+        $\sigma(i) = A \times \{f(i)\}$. In particolare, dacché
+        $\abs{A} = \abs{A \times \{f(i)\}}$ per ogni $i \in n$, $\sigma(i)$ è
+        sempre finito. Osserviamo che $A \times B = \bigcup \imm \sigma = \bigcup_{i \in n} A \times \{f(i)\}$. Allora $A \times B$ è unione finita di insiemi finiti,
+        e dunque è finita per il punto (b.)\footnote{
+            In realtà il punto (b.) dimostra solo che l'unione di due insiemi finiti
+            è finita, ma si può estendere la tesi a un numero finito di insiemi finiti applicando il principio di induzione.
+        }.
+
+        \item Dal momento che $\abs{A} = m \implies \abs{\PP(A)} = \abs{\PP(m)}$,
+        è sufficiente mostrare che $\PP(m)$ è finito. Mostriamo
+        dunque per induzione che vale $\varphi(m)$ per ogni $m \in \omega$, dove:
+        \[
+            \varphi(m) = \forall A ((\abs{A} = m) \implies \exists j(j \in \omega \land \abs{\PP(A)} = j)).
+        \]
+        \begin{enumerate}
+            \item[$\boxed{\varphi(0)}$] $\abs{A} = 0$ è possibile se e solo se
+            $A = 0$. Allora $\PP(0) = 1$, che è finito.
+    
+            \item[$\boxed{\varphi(m+1)}$] È sufficiente mostrare la tesi per
+            $m+1$ dacché, per il \textit{Problema 11}, insiemi equipotenti hanno
+            parti equipotenti. Si osserva che $\PP(m+1) = \PP(m \cup \{m\}) = \bigcup_{i \in m+1} \PP(m \setminus \{i\} \cup \{m\})$. Ogni $m \setminus \{i\} \cup \{m\}$
+            ha la cardinalità di $m$, e dunque, per l'ipotesi induttiva,
+            $\PP(m \setminus \{i\} \cup \{m\})$ è finito. Allora, per (b.)\footnotemark[\value{footnote}], $\PP(m+1)$ è finito. Dunque
+            $\varphi(m+1)$ vale se vale $\varphi(m)$.
+        \end{enumerate}
+        Si conclude dunque per il principio di induzione che $\PP(A)$ è sempre finito se
+        $A$ è finito.
+    \end{enumerate}
+\end{solution}
+
+\begin{problem}{La somma e il prodotto su $\omega$ sono ben definiti}{problem-28}
+    Siano $m$ e $n \in \omega$. Ricordiamo allora che, dati $A$ e $B$ insiemi qualsiasi
+    tali per cui $\abs{A} = m$, $\abs{B} = n$ e $A \cap B = \emptyset$, si definiscono
+    somma e prodotto come segue:
+    \[
+        m + n = \abs{A \cup B}, \quad m \cdot n = \abs{m \times n}.
+    \]
+    Si mostri che entrambe le definizioni sono ben poste.
+\end{problem}
+
+\begin{solution}
+    Per il \textit{Problema 27}, sia $A \cup B$ che $m \times n$ sono finiti,
+    essendo $A$, $B$, $m$ e $n$ finiti. Pertanto il prodotto è già ben definito.
+    Per il \textit{Problema 11}, scambiando $A$ e $B$ con insiemi equipotenti ancora
+    disgiunti, si ottiene ancora un insieme equipotente a $A \cup B$, e dunque
+    anche la somma è ben definita.
+\end{solution}
+
+\begin{problem}{Associatività della somma su $\omega$}{problem-29}
+    $+$ è associativa, cioè:
+    \[
+        \forall x, y, z, (x+y)+z=x+(y+z).
+    \]
+\end{problem}
+
+\begin{solution}
+    
+\end{solution}
+
+\begin{problem}{Distributività della somma rispetto al prodotto su $\omega$}{problem-30}
+    $+$ è distributiva rispetto a $\cdot$, cioè:
+    \[
+        \forall x, y, z, x(y+z)=x\cdot y+x\cdot z.
+    \]
+\end{problem}
+
+\begin{solution}
+    
+\end{solution}
+
+\begin{problem}{La somma e il prodotto di elementi non nulli è non nulla}{problem-31}
+    Se $x$, $y \neq 0$, allora $x+y \neq 0$ e
+    $x \cdot y \neq 0$.
+\end{problem}
+
+\begin{solution}
+    
+\end{solution}
+
+\begin{problem}{Relazione d'ordine totale sui modelli di \PA}{problem-32}
+    Se $(N, 0, S, +, \cdot)$ è un modello di \PA{}, ossia un
+    modello degli assiomi
+    di Peano al primo
+    ordine, allora
+    la relazione:
+    \[
+        x <  y \iff \exists z (z \neq 0 \land x+y=y)
+    \]
+    è tale per cui:
+
+    \begin{enumerate}[(i.)]
+        \item $<$ è un ordine totale su $N$,
+        \item $x < y$,
+        allora $\forall z (z \in N \implies x+z<y+z)$.
+        \item $x < y$,
+        allora $\forall z (z \in N \land z \neq 0 \implies x+z<y+z)$.
+        \item Su $\omega$,
+        $x < y$ se e solo
+        se $x \in y$.
+    \end{enumerate}
+\end{problem}
+
+\begin{problem}{$(\omega, \in)$ è un insieme ben ordinato}{problem-33}
+    Si dimostri che $(\omega, \in)$ è un insieme ben ordinato.
+\end{problem}
+
+\begin{problem}{Equivalenza tra l'induzione forte e il buon ordinamento}{problem-34}
+    Sia $(A, <)$ un insieme totalmente ordinato avente minimo $0 := \min A$. Si mostri che sono
+    equivalenti:
+
+    \begin{enumerate}[(i.)]
+        \item $(A, <)$ è buon ordinato.
+        \item Se $P(\cdot)$ è una formula e vale $\forall x (x \in A \rightarrow ((\forall y((y \in A \land y < x) \rightarrow P(y))) \rightarrow P(x)))$, allora
+            $\forall x (x \in A \rightarrow P(x))$ (induzione forte).
+    \end{enumerate}
+\end{problem}
+
+\begin{problem}{Equivalenza tra l'induzione (debole) e il buon ordinamento su insiemi di successori}{problem-35}
+    Sia $(A, <)$ un insieme totalmente ordinato avente minimo $0 := \min A$ tale per cui ogni elemento in
+    $A \setminus \{0\}$ è successore. Si mostri che sono equivalenti:
+
+    \begin{enumerate}[(i.)]
+        \item $(A, <)$ è buon ordinato.
+        \item Se $P(\cdot)$ è una formula, vale $P(0)$ e $\forall x (x \in A \rightarrow (P(x) \rightarrow P(x+1)))$, allora
+            $\forall x (x \in A \rightarrow P(x))$ (induzione debole).
+    \end{enumerate}
+\end{problem}
+
+\begin{problem}{Caratterizzazione dei buon ordinamenti con i segmenti iniziali}{problem-36}
+    Sia $(A, <)$ un insieme totalmente ordinato. Si dimostri che $(A, <)$ è ben ordinato se e solo se
+    ogni suo segmento iniziale proprio è generato da un elemento $a \in A$. 
+\end{problem}
+
+\begin{problem}{Unicità dell'isomorfismo d'ordine tra insiemi ben ordinati}{problem-37}
+    Siano $(A, <)$ e $(B, \prec)$ insiemi ben ordinati isomorfi tra loro. Si dimostri che
+    esiste un solo isomorfismo tra i due.
+\end{problem}
+
+\begin{problem}{Gli insiemi totalmente ordinati finiti sono isomorfi a un $(n, \in)$}{problem-38}
+    Sia $(A, <)$ un insieme totalmente ordinato finito. Si dimostri che se $\abs{A} \cong \abs{n}$, allora
+    $(A, <) \cong (n, \in)$.
+\end{problem}
+
+\begin{problem}{La restrizione di un isomorfismo d'ordine ai segmenti generati è ancora un isomorfismo}{problem-39}
+    Sia $\varphi : (A, <) \rightarrow (B, \prec)$ un isomorfismo tra due insiemi ben ordinati. Si dimostri che
+    $\restr{\varphi}{A_a} : \left(A_a, \restr{<}{A_a}\right) \rightarrow \left(B_{\varphi(a)}, \restr{\prec}{B_{\varphi(a)}}\right)$ è ancora un isomorfismo.
+\end{problem}
+
+\begin{problem}{Caratterizzazione degli insiemi totalmente ordinati isomorfi a $(\omega, \in)$}{problem-40}
+    Sia $(A, <)$ un insieme totalmente ordinato e infinito. Si mostri che sono equivalenti:
+
+    \begin{enumerate}[(i.)]
+        \item $(A, <) \cong (\omega, in)$.
+        \item Ogni segmento iniziale proprio di $A$ è finito.
+        \item Ogni sottinsieme infinito di $A$ non ammette massimo. 
+    \end{enumerate}
+\end{problem}
+
+\begin{problem}{Il tipo d'ordine di $A + \{*\}$ è il più piccolo di quelli che maggiorano il tipo d'ordine di $A$}{problem-41}
+    Si mostri che per ogni insieme ben ordinato $(B, \prec)$ con $\ot(A) < \ot(B)$ si ha $\ot(A + \{*\}) \leq \ot(B)$.
+\end{problem}
+
+\begin{problem}{Una catena di insiemi totalmente ordinati induce un insieme totalmente ordinato limite}{problem-42}
+    Sia $\{A_i\}_{i \in I}$ una catena di insiemi totalmente ordinati su $I$ totalmente ordinato. Si mostri che
+    $\bigcup_{i \in I} A_i$ con l'ordinamento indotto dagli $A_i$ è totalmente ordinato.
+\end{problem}
+
+\begin{problem}{Proprietà distributiva a destra dell'isomorfismo tra buoni ordini}{problem-43}
+    Siano $A$, $B$ e $C$ tre insiemi ben ordinati. Si mostri che:
+    \[ A \times (B + C) \cong (A \times B) + (A \times C). \]
+\end{problem}
+
+\begin{problem}{$\Fun(\omega, \omega)$ con l'ordine della minima differenza \underline{non} è ben ordinato}{problem-44}
+    Si mostri che $\Fun(\omega, \omega)$ con l'ordine della minima differenza \underline{non} è un insieme ben ordinato.
+\end{problem}
+
+\begin{problem}{Unione e intersezione di ordinali sono ordinali, e corrispondono all'estremo superiore e al minimo}{problem-45}
+    Sia $A \neq \emptyset$ un insieme di ordinali. Si mostri che $\bigcup A$ corrisponde all'estremo superiore $\sup A$ e che
+    $\bigcap A$ corrisponde al minimo $\min A$.
+\end{problem}
+
+\begin{problem}{$\omega_1$ è il più piccolo ordinale avente cardinalità maggiore di quella di $\omega$}{problem-46}
+    Si mostri che $\omega_1 = \{ \alpha \text{ ordinale} \mid \abs{\alpha} \leq \abs{\omega} \}$ è il più piccolo ordinale avente cardinalità maggiore di quella di $\omega$.
+\end{problem}
+
+\begin{problem}{Sugli ordinali $0 + \alpha = \alpha$}{problem-47}
+    Sia $\alpha$ un ordinale. Si mostri che $0 + \alpha = \alpha$.
+\end{problem}
+
+\begin{problem}{La somma tra ordinali è associativa}{problem-48}
+    Siano $\alpha$, $\beta$ e $\gamma$ ordinali. Allora:
+    \[ \alpha + (\beta + \gamma) = (\alpha + \beta) + \gamma. \]
+\end{problem}
+
+\begin{problem}{Il prodotto tra ordinali è isomorfo al prodotto tra ordinali intesi come buoni ordini}{problem-49}
+    Siano $\alpha$ e $\beta$ ordinali. Allora:
+    \[ \alpha \cdot \beta \cong \alpha \times \beta. \]
+\end{problem}
+
+\begin{problem}{Proprietà fondamentali dell'esponenziale di ordinali}{problem-50}
+    Siano $\alpha$, $\beta$ e $\gamma$ ordinali con $\alpha \neq 0$. Si mostri che:
+
+    \begin{enumerate}[(i.)]
+        \item $\alpha^\beta \alpha^\gamma = \alpha^(\beta + \gamma)$.
+        \item $(\alpha^\beta)^\gamma = \alpha^(\beta \cdot \gamma)$.
+    \end{enumerate}
+\end{problem}
+
+\begin{problem}{Alcune disuguaglianze sugli ordinali}{problem-51}
+    Siano $\alpha$ e $\beta \neq 0$ ordinali. Allora si mostri che:
+
+    \begin{enumerate}[(i.)]
+        \item $\alpha + \beta > \alpha$.
+        \item $\alpha + \beta \geq \beta$.
+        \item $\alpha + \beta + 1 > \beta$.
+        \item $\alpha \cdot \beta > \alpha$, se anche $\alpha \neq 0$.
+    \end{enumerate}
+\end{problem}
+
+\begin{problem}{Disuguaglianze strette sugli ordinali con ordinale fisso a sinistro}{problem-52}
+    Siano $\alpha$ e $\gamma < \gamma'$ ordinali. Allora si mostri che:
+
+    \begin{enumerate}[(i.)]
+        \item $\alpha + \gamma < \alpha + \gamma'$.
+        \item $\alpha \cdot \gamma < \alpha \cdot \gamma'$, se anche $\alpha \neq 0$.
+    \end{enumerate}
+\end{problem}
+
+\begin{problem}{Distributività a destra degli ordinali}{problem-53}
+    Siano $\alpha$, $\beta$ e $\gamma$ ordinali. Si mostri allora che:
+    \[ \alpha \cdot (\beta + \gamma) = \alpha \cdot \beta + \alpha \cdot \gamma. \]
+\end{problem}
+
+\begin{problem}{Forme normali di Cantor di $(\omega + 3) \cdot n$, $(\omega + 3)^2$, $(\omega + 3)^n$ e $(\omega + 3)^{\omega + 3}$}{problem-54}
+    Si calcolino le forme normali di Cantor di:
+
+    \begin{tasks}[label=(\roman*.), label-width=19.4064pt](4)
+        \task $(\omega + 3) \cdot n$,
+        \task $(\omega + 3)^2$,
+        \task $(\omega + 3)^n$,
+        \task $(\omega + 3)^{\omega + 3}$.
+    \end{tasks}
+\end{problem}
+
+\begin{problem}{Equivalenza tra la ricorsione transfinita per casi e la ricorsione transfinita con una sola dichiarazione}{problem-55}
+    Si mostri che sono equivalenti la ricorsione transfinita per casi e quella che impiega invece una sola funzione classe.
+\end{problem}
+
+\begin{problem}{Assorbimento a sinistra per ordinali finiti di $\omega$}{problem-56}
+    Si mostri che $n + \omega = \omega$ per ogni $n \in \omega$.
+\end{problem}
+
+\begin{problem}{Caratterizzazione degli ordinali che rispettano \underline{sulla somma} la proprietà di assorbimento a sinistra per ordinali più piccoli}{problem-57}
+    Sia $\alpha \neq 0$ un ordinale. Si mostri che sono equivalenti:
+
+    \begin{enumerate}[(i.)]
+        \item $\beta + \gamma < \alpha$ se $\beta$, $\gamma < \alpha$ ($\alpha$ è additivamente chiuso).
+        \item $\beta + \alpha = \alpha$ se $\beta < \alpha$ ($\alpha$ rispetta \underline{sulla somma} la proprietà di assorbimento a sinistra per ordinali più piccoli).
+        \item $\exists \, \delta$ ordinale per cui $\alpha = \omega^\delta$.
+    \end{enumerate}
+\end{problem}
+
+\begin{problem}{Caratterizzazione degli ordinali che rispettano \underline{sul prodotto} la proprietà di assorbimento a sinistra per ordinali più piccoli}{problem-58}
+    Sia $\alpha \neq 0$ un ordinale. Si mostri che sono equivalenti:
+
+    \begin{enumerate}[(i.)]
+        \item $\beta \cdot \gamma < \alpha$ se $\beta$, $\gamma < \alpha$ ($\alpha$ è moltiplicativamente chiuso).
+        \item $\beta \cdot \alpha = \alpha$ se $\beta < \alpha$ ($\alpha$ rispetta \underline{sul prodotto} la proprietà di assorbimento a sinistra per ordinali più piccoli).
+        \item $\exists \, \delta$ ordinale per cui $\alpha = \omega^{(\omega ^ \delta)}$.
+    \end{enumerate}
+\end{problem}
+
+\begin{problem}{Moltiplicare a destra per $\omega$ trasforma l'ordinale nella più piccola potenza di $\omega$ che lo maggiora}{problem-59}
+    Sia $\alpha$ un ordinale per cui $\omega^\delta \leq \alpha < \omega^{\delta+1}$. Allora $\alpha  \cdot \omega = \omega^{\delta + 1}$.
+\end{problem}
+
+\begin{problem}{$\alpha \cdot \omega = \beta \cdot \omega$ se e solo se $\alpha$ e $\beta$ sono contenuti tra due stesse potenze successive di $\omega$}{problem-60}
+    Siano $\alpha$, $\beta$ ordinali. Se $\alpha \cdot \omega = \beta \cdot \omega$, allora esiste $\delta$ ordinale per cui
+    $\omega^\delta \leq \alpha$, $\beta < \omega^{\delta + 1}$.
+\end{problem}
+
+\begin{problem}{Condizioni sull'assorbimento della somma}{problem-61}
+    Siano $\alpha$, $\beta \neq 0$. Allora vale una e una sola delle seguenti affermazioni:
+
+    \begin{enumerate}[(i.)]
+        \item $\alpha + \beta = \beta$.
+        \item $\beta + \alpha = \alpha$.
+        \item $\exists \, \delta$ con $\omega^\delta \leq \alpha$, $\beta < \omega^{\delta + 1}$.
+    \end{enumerate}
+\end{problem}
+
+\begin{problem}{Proprietà fondamentali dell'algebra cardinale}{problem-62}
+    Siano $\kappa$, $\mu$, $\ni$ cardinali. Allora:
+
+    \begin{enumerate}[(i.)]
+        \item $(\kappa + \mu) + \nu = \kappa + (\mu + \nu)$.
+        \item $(\kappa \cdot \mu) \cdot \nu = \kappa \cdot (\mu \cdot \nu)$.
+        \item $\kappa + \mu = \mu + \kappa$.
+        \item $\kappa \cdot \mu = \mu \cdot \kappa$.
+        \item $\kappa \cdot (\mu + \nu) = \kappa \cdot \mu + \kappa \cdot \nu$.
+        \item $\kappa^\mu \cdot \kappa^\nu = \kappa^{\mu + \nu}$.
+        \item $(\kappa^\mu)^\nu = \kappa^{\mu \cdot \nu}$. 
+    \end{enumerate}
+\end{problem}
+
+\begin{problem}{$\aleph_\alpha \leq \beth_\alpha$ per ogni ordinale $\alpha$}{problem-63}
+    Sia $\alpha$ un ordinale. Si mostri che $\aleph_\alpha \leq \beth_\alpha$.
+\end{problem}
+
+\begin{problem}{Proprietà fondamentali della somma infinita di cardinali}{problem-64}
+    Sia $I$ un insieme. Si mostri allora che:
+
+    \begin{enumerate}[(i.)]
+        \item $\sum_{i \in I} 1 = \abs{I}$.
+        \item $\sum_{i \in I} \kappa = \kappa \cdot \abs{I}$.
+        \item $\sum_{i \in I} \kappa_i = \sum_{i \in I} \kappa_{\sigma(i)}$ per ogni permutazione $\sigma \in \Sym(I)$.
+        \item Se $\kappa_i \leq \mu_i$ per ogni $i \in I$, allora $\sum_{i \in I} \kappa_i \leq \sum_{i \in I} \mu_i$.
+    \end{enumerate}
+\end{problem}
+
+\begin{problem}{Proprietà fondamentali del prodotto infinito di cardinali}{problem-65}
+    Sia $I$ un insieme. Si mostri allora che:
+
+    \begin{enumerate}[(i.)]
+        \item $\prod_{i \in I} \kappa_i = \prod_{i \in I} \kappa_{\sigma(i)}$ per ogni permutazione $\sigma \in \Sym(I)$.
+        \item $\prod_{i \in I} \kappa^{\mu_i} = \kappa^{\sum_{i \in I} \mu_i}$, e quindi $\prod_{i \in I} \kappa = \kappa^{\abs{I}}$.
+        \item $\left( \prod_{i \in I} \kappa_i \right)^\mu = \prod_{i \in I} \kappa_i^\mu$.
+        \item Se $I = \bigsqcup_{j \in J} I_j$, allora $\prod_{i \in I} \kappa_i = \prod_{j \in J} \prod_{i \in I_j} \kappa_i$ (associatività generalizzata).
+    \end{enumerate}
+\end{problem}
+
+\begin{problem}{Le cofinalità sono regolari: $\cof(\cof(A)) = \cof(A)$}{problem-66}
+    Sia $(A, <)$ un insieme totalmente ordinato. Si mostri allora che:
+
+    \[ \cof(\cof(A)) = \cof(A). \]
+\end{problem}
+
+\begin{problem}{$\cof(\alpha + \beta) = \cof(\beta)$}{problem-67}
+    Siano $\alpha$ e $\beta$ ordinali. Allora $\cof(\alpha + \beta) = \cof(\beta)$.
+\end{problem}
+
+\begin{problem}{Ogni cardinalità regolare è la cofinalità di un ordinale arbitrariamente grande}{problem-68}
+    Sia $\mu$ un cardinale regolare. Si mostri allora che per ogni cardinale $\kappa$ esiste $\nu \geq \kappa$ (come ordinali)
+    tale per cui $\cof(\nu) = \mu$.
+\end{problem}
+
+\begin{problem}{Per $\lambda$ ordinale limite, $\cof(\aleph_\lambda) = \cof(\beth_\lambda) = \cof(\lambda)$}{problem-69}
+    Sia $\lambda$ un ordinale limite, si mostri allora che $\cof(\aleph_\lambda) = \cof(\beth_\lambda) = \cof(\lambda)$.
+\end{problem}
+
+\begin{problem}{$V_\alpha$ è chiuso per sottinsiemi, unioni e chiusure transitive}{problem-70}
+    Sia $V_\alpha$ il livello $\alpha$-esimo della gerarchia di von Neumann. Si mostri che:
+
+    \begin{enumerate}[(i.)]
+        \item Se $x \subseteq y \in V_\alpha$, allora $x \in V_\alpha$.
+        \item Se $A \in V_\alpha$, allora $\bigcup A \in V_\alpha$.
+        \item Se $A \in V_\alpha$, allora $\TC(A) \in V_\alpha$, dove $\TC(A)$ è la chiusura transitiva di $A$. 
+    \end{enumerate}
+\end{problem}
+
+\begin{problem}{$V_* = \bigcup_{\alpha \in \ORD} V_\alpha$ è una classe propria}{problem-70}
+    Sia $V_* := \bigcup_{\alpha \in \ORD} V_\alpha$. Si mostri che $V_*$ è una classe propria.
+\end{problem}
+
+\begin{problem}{Caratterizzazione della validità degli assiomi di coppia, delle parti, dell'infinito
+    e della scelta per i livelli della gerarchia di von Neumann}
+    Sia $\alpha$ un ordinale. Si mostri che:
+
+    \begin{enumerate}[(i.)]
+        \item Vale l'assioma della coppia in $V_\alpha$ se e solo se $\alpha$ è limite.
+        \item Vale l'assioma delle parti in $V_\alpha$ se e solo se $\alpha$ è limite.
+        \item Vale l'assioma dell'infinito in $V_\alpha$ se e solo se $\alpha > \omega$.
+        \item Vale l'assioma della scelta in $V_\alpha$ se e solo se $\alpha$ è limite.
+    \end{enumerate}
+\end{problem}
+
+\end{document}
