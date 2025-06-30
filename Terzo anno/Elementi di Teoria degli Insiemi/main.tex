@@ -1220,6 +1220,13 @@ originale in una formula esplicita:
     Si dimostri che $(\omega, \in)$ è un insieme ben ordinato.
 \end{problem}
 
+\begin{solution}
+    La tesi deriva immediatamente dal fatto che $\omega$ è un insieme
+    totalmente ordinato per il quale ogni elemento in $\omega \setminus {0}$ è
+    un successore. Poiché su $\omega$ vale il principio di induzione (debole),
+    allora $\omega$ è ben ordinato (vd. \textit{Problema 35}).
+\end{solution}
+
 \begin{problem}{Equivalenza tra l'induzione forte e il buon ordinamento}{problem-34}
     Sia $(A, <)$ un insieme totalmente ordinato avente minimo $0 := \min A$. Si mostri che sono
     equivalenti:
@@ -1231,7 +1238,7 @@ originale in una formula esplicita:
     \end{enumerate}
 \end{problem}
 
-\begin{problem}{Equivalenza tra l'induzione (debole) e il buon ordinamento su insiemi di successori}{problem-35}
+\begin{problem}{Equivalenza tra l'induzione (debole) e il buon ordinamento su insiemi con tutti gli elementi eccetto il minimo successori}{problem-35}
     Sia $(A, <)$ un insieme totalmente ordinato avente minimo $0 := \min A$ tale per cui ogni elemento in
     $A \setminus \{0\}$ è successore. Si mostri che sono equivalenti:
 
@@ -1536,6 +1543,11 @@ originale in una formula esplicita:
     $\omega^\delta \leq \alpha$, $\beta < \omega^{\delta + 1}$.
 \end{problem}
 
+\begin{solution}
+    La tesi deriva immediatamente dal \textit{Problema 59}, dal momento che $\alpha \cdot \omega$ è la più piccola potenza di $\omega$
+    che maggiora $\alpha$, e che lo stesso succede con $\beta \cdot \omega$.
+\end{solution}
+
 \begin{problem}{Condizioni sull'assorbimento della somma}{problem-61}
     Siano $\alpha$, $\beta \neq 0$. Allora vale una e una sola delle seguenti affermazioni:
 
@@ -1586,11 +1598,20 @@ originale in una formula esplicita:
     \end{enumerate}
 \end{problem}
 
-\begin{problem}{Le cofinalità sono regolari: $\cof(\cof(A)) = \cof(A)$}{problem-66}
+\begin{problem}{Le cofinalità sono cardinali regolari: $\cof(\cof(A)) = \cof(A)$}{problem-66}
     Sia $(A, <)$ un insieme totalmente ordinato. Si mostri allora che:
 
     \[ \cof(\cof(A)) = \cof(A). \]
 \end{problem}
+
+\begin{solution}
+    Se fosse $\cof(\cof(A)) < \cof(A)$, esisterebbe un sottinsieme cofinale in $\cof(A)$
+    di cardinalità strettamente minore di quella di $\cof(A)$. Questo sottinsieme sarebbe cofinale
+    anche in $A$, essendo $\cof(A)$ cofinale in $A$. Allora $A$ ammetterebbe un sottinsieme
+    cofinale di cardinalità strettamente minore di $\cof(A)$, $\Lightning$. Dunque
+    $\cof(\cof(A)) \geq \cof(A)$, da cui la tesi, osservando che vale $\cof(A) \leq \abs{A}$ per
+    ogni insieme $A$.
+\end{solution}
 
 \begin{problem}{$\cof(\alpha + \beta) = \cof(\beta)$}{problem-67}
     Siano $\alpha$ e $\beta$ ordinali. Allora $\cof(\alpha + \beta) = \cof(\beta)$.
@@ -1618,6 +1639,14 @@ originale in una formula esplicita:
 \begin{problem}{$V_* = \bigcup_{\alpha \in \ORD} V_\alpha$ è una classe propria}{problem-71}
     Sia $V_* := \bigcup_{\alpha \in \ORD} V_\alpha$. Si mostri che $V_*$ è una classe propria.
 \end{problem}
+
+\begin{solution} % TODO: motivazione sul perché c'è \alpha in V_{\alpha + 1}
+    Osserviamo innanzitutto che per ogni ordinale $\alpha$, $\alpha \subseteq V_\alpha$, e quindi
+    $\alpha \in V_{\alpha + 1}$,
+    Sia dunque $F : \ORD \to V_*$ la funzione-classe che associa un ordinale $\alpha$ a sé stesso
+    in $V_{\alpha + 1} \subseteq V_*$. $F$ è iniettiva, e dunque se $V_*$ fosse un insieme,
+    lo sarebbe anche $\ORD$, $\Lightning$. Dunque $V_*$ è una classe propria.
+\end{solution}
 
 \begin{problem}{Caratterizzazione della validità degli assiomi di coppia, delle parti, dell'infinito
     e della scelta per i livelli della gerarchia di von Neumann}
