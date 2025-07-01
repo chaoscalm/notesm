@@ -1307,6 +1307,12 @@ originale in una formula esplicita:
     Si mostri che per ogni insieme ben ordinato $(B, \prec)$ con $\ot(A) < \ot(B)$ si ha $\ot(A + \{*\}) \leq \ot(B)$.
 \end{problem}
 
+\begin{solution}
+    Poiché $\ot(A) < \ot(B)$, allora $A \cong B_b$ per un qualche $b \in B$ e con qualche isomorfismo $\varphi$.
+    Allora $A + \{*\}$ è isomorfo a $B_{b+1}$, dove $A$ viene mappato su $B_b \subsetneq B_{b+1}$ secondo
+    $\varphi$ e $*$ viene mandato in $b$. Da ciò si deriva immediatamente la tesi.
+\end{solution}
+
 \begin{problem}{Una catena di insiemi totalmente ordinati induce un insieme totalmente ordinato limite}{problem-42}
     Sia $\{A_i\}_{i \in I}$ una catena di insiemi totalmente ordinati compatibili tra loro, su $I$ totalmente ordinato. Si mostri che
     $\bigcup_{i \in I} A_i$ con l'ordinamento indotto dagli $A_i$ è totalmente ordinato.
@@ -1316,15 +1322,15 @@ originale in una formula esplicita:
     Si mostrano separatamente le varie proprietà.
 
     \begin{enumerate}
-        \item[$\boxed{\text{Riflessività}}$] Se $i \in I$ è tale per cui $a \in A_i$, allora $a \leq_i a$, e quindi $a \leq a$.
-        \item[$\boxed{\text{Simmetria}}$] Se $a$ e $b$ sono elementi
+        \item[\fbox{Riflessività}] Se $i \in I$ è tale per cui $a \in A_i$, allora $a \leq_i a$, e quindi $a \leq a$.
+        \item[\fbox{Simmetria}] Se $a$ e $b$ sono elementi
     di $\bigcup_{i \in I} A_i$, detti $i$ e $j$ gli indici in $I$ per cui $a \in A_i$ e $b \in A_j$, detto $k = \max\{i, j\}$,
     $a$ e $b$ sono entrambi elementi di $A_k$. Se $a \leq b$ e $b \leq a$, allora, dalla compatibilità e dalla totalità
     di $\leq_k$, $a \leq_i b$ e $b \leq_i a$, dunque $a = b$ per la riflessività di $\leq_i$.
-        \item[$\boxed{\text{Transitività}}$] Analogamente a prima, se $a$, $b$ e $c$ sono elementi di $\bigcup_{i \in I} A_i$ si può trovare un indice
+        \item[\fbox{Transitività}] Analogamente a prima, se $a$, $b$ e $c$ sono elementi di $\bigcup_{i \in I} A_i$ si può trovare un indice
     $k \in I$ per cui $a$, $b$, $c \in A_k$. Dunque, se $a \leq b$ e $b \leq c$, per compatibilità e totalità di $\leq_k$,
     $a \leq_k b$ e $b \leq_k c$, dunque $a \leq_k c$ per transitività di $\leq_k$, e infine $a \leq c$.
-        item[$\boxed{\text{Totalità}}$] Come prima, si può trovare un indice $k$ per cui $a$, $b \in A_k$. Per la totalità
+        \item[\fbox{Totalità}] Come prima, si può trovare un indice $k$ per cui $a$, $b \in A_k$. Per la totalità
             di $\leq_k$, allora $a$ e $b$ sono confrontabili, e quindi lo sono anche su $\leq$.
     \end{enumerate}
 \end{solution}
@@ -1333,6 +1339,13 @@ originale in una formula esplicita:
     Siano $A$, $B$ e $C$ tre insiemi ben ordinati. Si mostri che:
     \[ A \times (B + C) \cong (A \times B) + (A \times C). \]
 \end{problem}
+
+\begin{solution}
+    L'isomorfismo naturale tra i due buoni ordini in esame è dato da
+    $\varphi : A \times (B + C) \to (A \times B) + (A \times C)$ tale per cui
+    $\varphi(a, (x, i)) = ((a, x), i)$, con $a \in A$, $x \in B \cup C$ e $i \in \{0, 1\}$.
+    $\varphi$ è chiaramente bigettiva, e preserva l'ordinamento.
+\end{solution}
 
 \begin{problem}{$\Fun(\omega, \omega)$ con l'ordine della minima differenza \underline{non} è ben ordinato}{problem-44}
     Si mostri che $\Fun(\omega, \omega)$ con l'ordine della minima differenza \underline{non} è un insieme ben ordinato.
@@ -1501,6 +1514,10 @@ originale in una formula esplicita:
     Si mostri che sono equivalenti la ricorsione transfinita per casi e quella che impiega invece una sola funzione classe.
 \end{problem}
 
+\begin{solution}
+    
+\end{solution}
+
 \begin{problem}{Assorbimento a sinistra per ordinali finiti di $\omega$}{problem-56}
     Si mostri che $n + \omega = \omega$ per ogni $n \in \omega$.
 \end{problem}
@@ -1518,25 +1535,93 @@ originale in una formula esplicita:
     Sia $\alpha \neq 0$ un ordinale. Si mostri che sono equivalenti:
 
     \begin{enumerate}[(i.)]
-        \item $\beta + \gamma < \alpha$ se $\beta$, $\gamma < \alpha$ ($\alpha$ è additivamente chiuso).
         \item $\beta + \alpha = \alpha$ se $\beta < \alpha$ ($\alpha$ rispetta \underline{sulla somma} la proprietà di assorbimento a sinistra per ordinali più piccoli).
+        \item $\beta + \gamma < \alpha$ se $\beta$, $\gamma < \alpha$ ($\alpha$ è additivamente chiuso).
         \item $\exists \, \delta$ ordinale per cui $\alpha = \omega^\delta$.
     \end{enumerate}
 \end{problem}
+
+\begin{solution}
+    Mostriamo la serie di implicazioni (i.) $\implies$ (ii.) $\implies$ (iii.) $\implies$ (i.) per ottenere tutte
+    le equivalenze.
+
+    \begin{enumerate}[(i.)]
+        \item[\fbox{(i.) $\implies$ (ii.)}] Poiché $\gamma < \alpha$, allora $\beta + \gamma < \beta + \alpha$. Inoltre
+            $\beta < \alpha$, dunque per assorbimento $\beta + \alpha = \alpha$, da cui $\beta + \gamma < \alpha$.
+        \item[\fbox{(ii.) $\implies$ (iii.)}] Mostriamo la contronominale, ovverosia che se $\alpha$ non è un $\omega^\delta$,
+            allora $\alpha$ non è additivamente chiuso. Esiste comunque un $\delta$ ordinale per cui
+            $\omega^\delta < \alpha < \omega^{\delta + 1}$. Dal momento che $\omega^{\delta + 1} = \omega^\delta \cdot \omega$,
+            esiste $n \in \omega \setminus \{0\}$ tale per cui $\omega^\delta \cdot n < \alpha \leq \omega^\delta \cdot (n + 1)$. Ma allora
+            $\omega^\delta + \omega^\delta \cdot n = \omega^\delta \cdot (n+1) \geq \alpha$, mentre
+            $\omega^\delta$, $\omega^\delta \cdot n < \alpha$, dunque $\alpha$ non è additivamente chiuso.
+        \item[\fbox{(iii.) $\implies$ (i.)}] Mostriamo la validità della tesi nel caso in cui $\delta$ è nullo, è successore o è limite non nullo.
+            \begin{enumerate}
+                \item[$\boxed{\delta = 0}$] Se $\delta = 0$, allora $\alpha = 1$, per il quale ovviamente $0 + 1 = 1$
+            (vd. \textit{Esercizio 47}).
+                \item[$\boxed{\delta + 1}$] Se $\delta = \delta' + 1$ è un successore, allora, dato $\beta < \alpha = \omega^{\delta'} \cdot \omega$,
+            si deve avere $\beta < \omega^{\delta'} \cdot n$ per qualche $n \in \omega$. Pertanto:
+            \[ \omega^{\delta' + 1} \leq \beta + \alpha \leq \omega^{\delta'} (n + \omega) = \omega^{\delta' + 1}, \]
+            da cui $\beta + \alpha = \omega^\delta$.
+                \item[$\boxed{\delta = \lambda \text{ limite}}$] Se invece $\delta = \lambda$ è un limite, $\beta < \omega^\lambda$ implica che esiste
+            $\gamma < \lambda$ per cui $\beta < \omega^\gamma$. Per il teorema della differenza a destra, esiste inoltre
+            $\varepsilon < \lambda$ per cui $\gamma + \varepsilon =\lambda$. Pertanto si deduce che:
+            \[ \omega^\lambda \leq \beta + \omega^\lambda \leq \omega^\gamma + \omega^\lambda = \omega^\gamma(1 + \omega^\varepsilon) = \omega^\lambda, \]
+            dove si è usato che $1 + \omega^\varepsilon = \omega^\varepsilon$, dal momento che $\omega^\varepsilon$ è infinito.
+            \end{enumerate}
+    \end{enumerate}
+\end{solution}
 
 \begin{problem}{Caratterizzazione degli ordinali che rispettano \underline{sul prodotto} la proprietà di assorbimento a sinistra per ordinali più piccoli}{problem-58}
     Sia $\alpha \neq 0$ un ordinale. Si mostri che sono equivalenti:
 
     \begin{enumerate}[(i.)]
+        \item $\beta \cdot \alpha = \alpha$ se $0 < \beta < \alpha$ ($\alpha$ rispetta \underline{sul prodotto} la proprietà di assorbimento a sinistra per ordinali più piccoli).
         \item $\beta \cdot \gamma < \alpha$ se $\beta$, $\gamma < \alpha$ ($\alpha$ è moltiplicativamente chiuso).
-        \item $\beta \cdot \alpha = \alpha$ se $\beta < \alpha$ ($\alpha$ rispetta \underline{sul prodotto} la proprietà di assorbimento a sinistra per ordinali più piccoli).
         \item $\exists \, \delta$ ordinale per cui $\alpha = \omega^{(\omega ^ \delta)}$.
     \end{enumerate}
 \end{problem}
 
+\begin{solution}
+    Mostriamo la serie di implicazioni (i.) $\implies$ (ii.) $\implies$ (iii.) $\implies$ (i.) per ottenere tutte
+    le equivalenze.
+
+    \begin{enumerate}[(i.)]
+        \item[\fbox{(i.) $\implies$ (ii.)}] Se $\beta = 0$, la tesi è banale. Sia ora invece $\beta > 0$. Poiché $\gamma < \alpha$ e $\beta \neq 0$, allora $\beta \cdot \gamma < \beta \cdot \alpha$. Inoltre
+            $\beta < \alpha$, dunque per assorbimento $\beta \cdot \alpha = \alpha$, da cui $\beta \cdot \gamma < \alpha$.
+        \item[\fbox{(ii.) $\implies$ (iii.)}] Mostriamo la contronominale, ovverosia che se $\alpha$ non è un $\omega^{(\omega^\delta)}$,
+            allora $\alpha$ non è moltiplicativamente chiuso. Esiste comunque un $\delta$ ordinale per cui
+            $\omega^{(\omega^\delta)} < \alpha < \omega^{(\omega^{\delta + 1})}$. Dal momento che $\omega^{\delta + 1} = \omega^\delta \cdot \omega$,
+            allora $\omega^{(\omega^{\delta + 1})} = \omega^{(\omega^\delta \omega)} = {(\omega^{(\omega^\delta)})}^\omega$.
+            Esiste dunque $n \in \omega \setminus \{0\}$ tale per cui ${(\omega^{(\omega^\delta)})}^n < \alpha \leq {(\omega^{(\omega^\delta)})}^{n+1}$. Ma allora
+            ${(\omega^{(\omega^\delta)})}^n \omega^{(\omega^\delta)} = {(\omega^{(\omega^\delta)})}^{n+1} \geq \alpha$, mentre
+            $\omega^{(\omega^\delta)}$, ${(\omega^{(\omega^\delta)})}^n < \alpha$, dunque $\alpha$ non è moltiplicativamente chiuso.
+        \item[\fbox{(iii.) $\implies$ (i.)}] Se $\beta = 0$, la tesi è banale. Supponiamo ora $\beta > 0$. Mostriamo la validità della tesi nel caso in cui $\delta$ è nullo, è successore o è limite non nullo.
+            \begin{enumerate}
+                \item[$\boxed{\delta = 0}$] Se $\delta = 0$, la tesi è banale dato che non ha minoranti stretti non nulli.
+                \item[$\boxed{\delta + 1}$] Se $\delta = \delta' + 1$ è un successore, allora, dato $\beta < \alpha = {(\omega^{(\omega^{\delta'})})}^\omega$,
+            si deve avere $\beta < {(\omega^{(\omega^{\delta'})})}^n$ per qualche $n \in \omega$. Pertanto:
+            \[ \alpha = {(\omega^{(\omega^{\delta'})})}^\omega \leq \beta \cdot \alpha \leq {(\omega^{(\omega^{\delta'})})}^n \cdot {(\omega^{(\omega^{\delta'})})}^\omega = {(\omega^{(\omega^{\delta'})})}^{n+\omega} = \alpha, \]
+            da cui $\beta + \alpha = \omega^\delta$ (si è usato che $n + \omega = \omega$, vd. \textit{Esercizio 56}).
+                \item[$\boxed{\delta = \lambda \text{ limite}}$] Se invece $\delta = \lambda$ è un limite, dacché $\omega^{(\omega^\lambda)} = \sup_{\gamma < \lambda} \omega^{(\omega^\gamma)}$, $\beta < \omega^{(\omega^\lambda)}$ implica che esiste
+            $\gamma < \lambda$ per cui $\beta < \omega^{(\omega^\gamma)}$. Per il teorema della differenza a destra, esiste inoltre
+            $\varepsilon < \lambda$ per cui $\gamma + \varepsilon =\lambda$. Pertanto si deduce che:
+            \[ \omega^{(\omega^\lambda)} \leq \beta \cdot \omega^{(\omega^\lambda)} \leq \omega^{(\omega^\gamma)} \cdot {(\omega^{(\omega^\gamma)})}^{\omega^\varepsilon} = {(\omega^{(\omega^\gamma)})}^{1 + \omega^\varepsilon} = \omega^{(\omega^\lambda)}, \]
+            dove si è usato che $1 + \omega^\varepsilon = \omega^\varepsilon$, dal momento che $\omega^\varepsilon$ è infinito.
+            \end{enumerate}
+    \end{enumerate}
+\end{solution}
+
 \begin{problem}{Moltiplicare a destra per $\omega$ trasforma l'ordinale nella più piccola potenza di $\omega$ che lo maggiora}{problem-59}
     Sia $\alpha$ un ordinale per cui $\omega^\delta \leq \alpha < \omega^{\delta+1}$. Allora $\alpha  \cdot \omega = \omega^{\delta + 1}$.
 \end{problem}
+
+\begin{solution}
+    Sia $\alpha = \omega^\delta \cdot n + \rho$, dove $n$ e $\rho < \omega^\delta$ sono rispettivamente il quoziente e il resto di $\alpha$ diviso
+    $\omega^\delta$. $n$ è necessariamente un naturale, altrimenti $\alpha$ maggiorerebbe debolmente $\omega^{\delta+1}$.
+    Allora:
+    \[ \omega^{\delta + 1} = \omega^\delta \omega \leq \alpha \cdot \omega = (\omega^\delta \cdot n + \rho) \omega \leq (\omega^\delta \cdot (n + 1)) \omega = \omega^\delta \omega = \omega^{\delta + 1}, \]
+    dove si è usato che $(n+1) \cdot \omega = \omega$ (vd. \textit{Esercizio 58}).
+\end{solution}
 
 \begin{problem}{$\alpha \cdot \omega = \beta \cdot \omega$ se e solo se $\alpha$ e $\beta$ sono contenuti tra due stesse potenze successive di $\omega$}{problem-60}
     Siano $\alpha$, $\beta$ ordinali. Se $\alpha \cdot \omega = \beta \cdot \omega$, allora esiste $\delta$ ordinale per cui
