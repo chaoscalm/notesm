@@ -725,7 +725,7 @@ originale in una formula esplicita:
 
         \item[(b., c.)] Poiché $\RR$ è infinito,
         $\abs{\Fin(\RR)} = \abs{\FSeq(\RR)} = \abs{\RR} = \cc$
-        (vd. \textit{Problema 14}).
+        (vd.~\textit{Problema 14}).
         \addtocounter{enumi}{2}
 
         \item Poiché $\FSeq\!\uparrow\!(\RR) \subseteq \FSeq(\RR)$, sicuramente $\abs{\FSeq\!\uparrow\!(\RR)} \leq \cc$ per il punto (c.). D'altra
@@ -743,7 +743,7 @@ originale in una formula esplicita:
         \item Dacché $\Fun\!\uparrow\!(\NN, \NN) \subseteq \Fun(\NN, \NN)$, allora $\abs{\Fun\!\uparrow\!(\NN, \NN)} \leq \cc$. \smallskip
 
         Poiché $\NN$ è infinito, $\abs{\Fin(\NN)} = \abs{\NN}$.
-        Allora, dacché $\abs{\PP(\NN)} = \cc$, $\abs{\PP(\NN) \setminus \Fin(\NN)} = \cc$ (vd. \textit{Problema 19}).
+        Allora, dacché $\abs{\PP(\NN)} = \cc$, $\abs{\PP(\NN) \setminus \Fin(\NN)} = \cc$ (vd.~\textit{Problema 19}).
         Sia $A \subseteq \PP(\NN) \setminus \Fin(\NN)$. Possiamo
         definire per ricorsione numerabile
         la funzione $f_A : \NN \to \NN$ in modo tale che:
@@ -753,8 +753,8 @@ originale in una formula esplicita:
                 \min(A \setminus \{f(1), \ldots, f(n)\}) & \altrimenti.
             \end{cases}
         \]
-        Chiaramente $f_A$ è crescente e ha $A$ come immagine (vd. \textit{Problema 12}) -- da
-        cui $f_A = f_B \implies A = B$ (vd. \textit{Problema 14}, (ii.) per una semplice dimostrazione). Dunque
+        Chiaramente $f_A$ è crescente e ha $A$ come immagine (vd.~\textit{Problema 12}) -- da
+        cui $f_A = f_B \implies A = B$ (vd.~\textit{Problema 14}, (ii.) per una semplice dimostrazione). Dunque
         la mappa $F : \PP(\NN) \setminus \Fin(\NN) \to \Fun\!\uparrow\!(\NN, \NN)$ tale per cui $F(Y) = f_Y$ è iniettiva, da cui
         si deduce che $\cc = \abs{\PP(\NN) \setminus \Fin(\NN)} \leq
         \abs{\Fun\!\uparrow\!(\NN, \NN)}$. \smallskip
@@ -773,7 +773,7 @@ originale in una formula esplicita:
                 \min(A \setminus \{f(1), \ldots, f(n-1)\}) & \altrimenti.
             \end{cases}
         \]
-        Sappiamo che $f_A$ è bigettiva (vd. \textit{Problema 12}).
+        Sappiamo che $f_A$ è bigettiva (vd.~\textit{Problema 12}).
         Definiamo allora $\sigma_A : \NN \to \NN$ per ricorsione numerabile in modo tale che:
         \[
             \sigma_A(n) = \begin{cases}
@@ -812,7 +812,7 @@ originale in una formula esplicita:
 
         \item Poiché i sottinsiemi infiniti di $\NN$ sono
         sono numerabili, $[\NN]^{\aleph_0} = \PP(\NN) \setminus \Fin(\NN)$. Dacché $\abs{\PP(\NN)} = \cc$
-        e $\abs{\Fin(\NN)} = \aleph_0$ (vd. \textit{Problema 14}), allora si sta togliendo
+        e $\abs{\Fin(\NN)} = \aleph_0$ (vd.~\textit{Problema 14}), allora si sta togliendo
         un insieme al più numerabile ad un insieme
         che ha la cardinalità del continuo. Pertanto,
         per il \textit{Problema 19}, $\abs{[\NN]^{\aleph_0}} = \cc$.
@@ -1222,9 +1222,9 @@ originale in una formula esplicita:
 
 \begin{solution}
     La tesi deriva immediatamente dal fatto che $\omega$ è un insieme
-    totalmente ordinato per il quale ogni elemento in $\omega \setminus {0}$ è
+    totalmente ordinato per il quale ogni elemento in $\omega \setminus \{0\}$ è
     un successore. Poiché su $\omega$ vale il principio di induzione (debole),
-    allora $\omega$ è ben ordinato (vd. \textit{Problema 35}).
+    allora $\omega$ è ben ordinato (vd.~\textit{Problema 35}).
 \end{solution}
 
 \begin{problem}{Equivalenza tra l'induzione forte e il buon ordinamento}{problem-34}
@@ -1366,6 +1366,18 @@ originale in una formula esplicita:
     Si mostri che $\omega_1 = \{ \alpha \text{ ordinale} \mid \abs{\alpha} \leq \abs{\omega} \}$ è il più piccolo ordinale avente cardinalità maggiore di quella di $\omega$.
 \end{problem}
 
+\begin{solution}
+    Per rimpiazzamento, abbiamo visto che $\omega_1$ è effettivamente un insieme. Inoltre, $\omega_1$ è un
+    insieme transitivo di ordinali: se $\alpha \in \beta \in \omega_1$, allora
+    $\alpha \subseteq \beta \in \omega_1$, e dunque $\abs{\alpha} \leq \abs{\beta} \leq \abs{\omega}$,
+    da cui $\alpha \in \omega_1$. Pertanto $\omega_1$ stesso è un ordinale. \medskip
+    
+    Sia ora $\gamma$ un ordinale con $\abs{\omega} < \abs{\gamma}$, e
+    mostriamo che $\omega_1 \leq \gamma$. Se fosse $\gamma < \omega_1$, allora si avrebbe, per definizione di $\omega_1$,
+    $\abs{\gamma} \leq \abs{\omega}$, \Lightning. Dunque, per tricotomia degli ordinali,
+    l'unico caso possibile è $\omega_1 \leq \gamma$.
+\end{solution}
+
 \begin{problem}{Sugli ordinali $0 + \alpha = \alpha$}{problem-47}
     Sia $\alpha$ un ordinale. Si mostri che $0 + \alpha = \alpha$.
 \end{problem}
@@ -1404,6 +1416,30 @@ originale in una formula esplicita:
     \[ \alpha \cdot \beta \cong \alpha \times \beta. \]
 \end{problem}
 
+\begin{solution}
+    Mostriamo la tesi per induzione transfinita su $\beta$.
+
+    \begin{enumerate}[(i.)]
+        \item[$\boxed{\beta = 0}$] $\alpha \cdot 0$ per definizione è $0$, che è isomorfo banalmente
+            a $\alpha \times 0$.
+        
+        \item[$\boxed{\beta + 1}$] $\alpha \cdot (\beta + 1)$ è per definizione
+            $\alpha \cdot \beta + \alpha$, che corrisponde all'usuale somma tra buoni
+            ordini. Per ipotesi induttiva $\alpha \cdot \beta \cong \alpha \times \beta$.
+            Se $\varphi$ è una bigezione tra i due insiemi, allora
+            una bigezione tra $\alpha \cdot (\beta + 1)$ e $\alpha \times (\beta + 1)$ si ottiene
+            mappa il fattore $\alpha \cdot \beta$ in $\alpha \times \beta$ secondo $\varphi$,
+            e mandando $\alpha$ in $\alpha \times 1$.
+
+        \item[$\boxed{\beta = \lambda \text{ limite}}$] Per definizione
+            $\alpha \cdot \lambda = \sup_{\gamma < \lambda} \alpha \cdot \gamma$. Poiché
+            ogni $\alpha \cdot \gamma$ è isomorfo ad $\alpha \times \gamma$ per ipotesi
+            induttiva, anche gli estremi
+            superiori devono essere isomorfi: nel caso degli $\alpha \times \gamma$ questo è
+            proprio $\alpha \times \lambda$, da cui la tesi.
+    \end{enumerate}
+\end{solution}
+
 \begin{problem}{Proprietà fondamentali dell'esponenziale di ordinali}{problem-50}
     Siano $\alpha$, $\beta$ e $\gamma$ ordinali con $\alpha \neq 0$. Si mostri che:
 
@@ -1412,6 +1448,13 @@ originale in una formula esplicita:
         \item ${(\alpha^\beta)}^\gamma = \alpha^{\beta \cdot \gamma}$.
     \end{enumerate}
 \end{problem}
+
+\begin{solution}
+    Sappiamo, anche per il \textit{Problema 49}, che le operazioni tra ordinali corrispondono
+    a quelle tra buoni ordini. Allora le tesi si verificano immediatamente usando le
+    bigezioni naturali tra $A^B \times A^C$ e $A^{B \sqcup C}$, e tra ${(A^B)}^C$ e $A^{B \times C}$
+    (vd.~\textit{Problema 62} per la scrittura esplicita di tali bigezioni).
+\end{solution}
 
 \begin{problem}{Alcune disuguaglianze sugli ordinali}{problem-51}
     Siano $\alpha$ e $\beta \neq 0$ ordinali. Allora si mostri che:
@@ -1424,6 +1467,35 @@ originale in una formula esplicita:
     \end{enumerate}
 \end{problem}
 
+\begin{solution}
+    Mostriamo i vari risultati separatamente.
+
+    \begin{enumerate}[(i.)]
+        \item Poiché $\beta > 0$, $\alpha$ è un segmento iniziale proprio di $\alpha + \beta$ e
+            quindi necessariamente $\alpha + \beta > \alpha$, dacché la somma tra ordinali
+            corrisponde alla somma tra buoni ordini. Alternativamente, si può dimostrare
+            la tesi per induzione transfinita, come fatto per il punto (ii.).
+        
+        \item Si mostra la tesi per induzione transfinita su $\beta$.
+            \begin{enumerate}[(i.)]
+                \item[$\boxed{\beta = 0}$] $\alpha + \beta = \alpha + 0 = \alpha$, banalmente.
+                \item[$\boxed{\beta + 1}$] $\alpha + (\beta + 1)$ è per definizione $(\alpha + \beta) + 1$.
+                    Impiegando l'ipotesi induttiva si ottiene allora $\alpha + \beta \geq \beta$, e
+                    dunque $(\alpha + \beta) + 1 \geq \beta + 1$.
+                \item[$\boxed{\beta = \lambda \text{ limite}}$] Per definizione:
+                    $\alpha + \lambda = \sup_{\gamma < \lambda} \alpha + \gamma$. Allora, per
+                    ipotesi induttiva, $\sup_{\gamma < \lambda} \alpha + \gamma \geq \sup_{\gamma < \lambda} \gamma = \lambda$,
+                    da cui la tesi.
+            \end{enumerate}
+
+        \item Deriva immediatamente dal punto (ii.): $\alpha + \beta + 1 > \alpha + \beta \geq \beta$.
+        
+        \item Si mostra per induzione transfinita in modo del tutto simile a come fatto per il punto (ii.),
+            sfruttando l'identità $\alpha \cdot (\beta + 1) = \alpha \cdot \beta + \alpha$ e sapendo che
+            $\alpha \cdot \lambda = \sup_{\gamma < \lambda} \alpha \cdot \gamma$ per $\lambda$ limite.
+    \end{enumerate}
+\end{solution}
+
 \begin{problem}{Disuguaglianze strette sugli ordinali con ordinale fisso a sinistro}{problem-52}
     Siano $\alpha$ e $\gamma < \gamma'$ ordinali. Allora si mostri che:
 
@@ -1433,6 +1505,21 @@ originale in una formula esplicita:
     \end{enumerate}
 \end{problem}
 
+\begin{solution}
+    Poiché $\gamma < \gamma'$, per il teorema della differenza a destra, esiste
+    $\rho > 0$ tale per cui $\gamma + \rho = \gamma'$. Mostriamo ora i due
+    risultati separatamente.
+
+    \begin{enumerate}[(i.)]
+        \item $\alpha + \gamma' = (\alpha + \gamma) + \rho > \alpha + \gamma$, dove
+            si è usato la tesi del \textit{Problema 51}.
+        
+        \item $\alpha \cdot \gamma' = \alpha \cdot (\gamma + \rho) = \alpha \cdot \gamma + \alpha \cdot \rho$.
+            Poiché $\rho$ e $\alpha$ sono diversi da zero, $\alpha \cdot \rho > \alpha > 0$ per il \textit{Problema 51}. Allora
+            si conclude ancora utilizzando la tesi del \textit{Problema 51}, analogamente al punto (i.).
+    \end{enumerate}
+\end{solution}
+
 \begin{problem}{Distributività a destra degli ordinali}{problem-53}
     Siano $\alpha$, $\beta$ e $\gamma$ ordinali. Si mostri allora che:
     \[ \alpha \cdot (\beta + \gamma) = \alpha \cdot \beta + \alpha \cdot \gamma. \]
@@ -1441,7 +1528,7 @@ originale in una formula esplicita:
 \begin{solution}
     La tesi è immediatamente implicata dal fatto che per gli ordinali
     $\alpha \cong \beta \implies \alpha = \beta$ e che il prodotto e la somma tra ordinali
-    corrispondono al prodotto (vd. \textit{Problema 49}) e alla somma tra insiemi ben ordinati, per i quali vale:
+    corrispondono al prodotto (vd.~\textit{Problema 49}) e alla somma tra insiemi ben ordinati, per i quali vale:
     \[ A \times (B + C) \cong (A \times B) + (A \times C), \]
     per il \textit{Problema 43}.
 \end{solution}
@@ -1534,7 +1621,7 @@ originale in una formula esplicita:
     $n$ a $S(n) = n+1$. Assumiamo ora
     la tesi per $n \geq 1$ e mostriamola per $n+1$:
     \[ (n + 1) + \omega = n + (1 + \omega) = n + \omega = \omega, \]
-    dove si è usata l'associatività della somma (vd. \textit{Problema 48}).
+    dove si è usata l'associatività della somma (vd.~\textit{Problema 48}).
 \end{solution}
 
 \begin{problem}{Caratterizzazione degli ordinali che rispettano \underline{sulla somma} la proprietà di assorbimento a sinistra per ordinali più piccoli}{problem-57}
@@ -1563,7 +1650,7 @@ originale in una formula esplicita:
         \item[\fbox{(iii.) $\implies$ (i.)}] Mostriamo la validità della tesi nel caso in cui $\delta$ è nullo, è successore o è limite non nullo.
             \begin{enumerate}
                 \item[$\boxed{\delta = 0}$] Se $\delta = 0$, allora $\alpha = 1$, per il quale ovviamente $0 + 1 = 1$
-            (vd. \textit{Esercizio 47}).
+            (vd.~\textit{Esercizio 47}).
                 \item[$\boxed{\delta + 1}$] Se $\delta = \delta' + 1$ è un successore, allora, dato $\beta < \alpha = \omega^{\delta'} \cdot \omega$,
             si deve avere $\beta < \omega^{\delta'} \cdot n$ per qualche $n \in \omega$. Pertanto:
             \[ \omega^{\delta' + 1} \leq \beta + \alpha \leq \omega^{\delta'} (n + \omega) = \omega^{\delta' + 1}, \]
@@ -1607,7 +1694,7 @@ originale in una formula esplicita:
                 \item[$\boxed{\delta + 1}$] Se $\delta = \delta' + 1$ è un successore, allora, dato $\beta < \alpha = {(\omega^{(\omega^{\delta'})})}^\omega$,
             si deve avere $\beta < {(\omega^{(\omega^{\delta'})})}^n$ per qualche $n \in \omega$. Pertanto:
             \[ \alpha = {(\omega^{(\omega^{\delta'})})}^\omega \leq \beta \cdot \alpha \leq {(\omega^{(\omega^{\delta'})})}^n \cdot {(\omega^{(\omega^{\delta'})})}^\omega = {(\omega^{(\omega^{\delta'})})}^{n+\omega} = \alpha, \]
-            da cui $\beta + \alpha = \omega^\delta$ (si è usato che $n + \omega = \omega$, vd. \textit{Esercizio 56}).
+            da cui $\beta + \alpha = \omega^\delta$ (si è usato che $n + \omega = \omega$, vd.~\textit{Esercizio 56}).
                 \item[$\boxed{\delta = \lambda \text{ limite}}$] Se invece $\delta = \lambda$ è un limite, dacché $\omega^{(\omega^\lambda)} = \sup_{\gamma < \lambda} \omega^{(\omega^\gamma)}$, $\beta < \omega^{(\omega^\lambda)}$ implica che esiste
             $\gamma < \lambda$ per cui $\beta < \omega^{(\omega^\gamma)}$. Per il teorema della differenza a destra, esiste inoltre
             $\varepsilon < \lambda$ per cui $\gamma + \varepsilon =\lambda$. Pertanto si deduce che:
@@ -1626,7 +1713,7 @@ originale in una formula esplicita:
     $\omega^\delta$. $n$ è necessariamente un naturale, altrimenti $\alpha$ maggiorerebbe debolmente $\omega^{\delta+1}$.
     Allora:
     \[ \omega^{\delta + 1} = \omega^\delta \omega \leq \alpha \cdot \omega = (\omega^\delta \cdot n + \rho) \omega \leq (\omega^\delta \cdot (n + 1)) \omega = \omega^\delta \omega = \omega^{\delta + 1}, \]
-    dove si è usato che $(n+1) \cdot \omega = \omega$ (vd. \textit{Esercizio 58}).
+    dove si è usato che $(n+1) \cdot \omega = \omega$ (vd.~\textit{Esercizio 58}).
 \end{solution}
 
 \begin{problem}{$\alpha \cdot \omega = \beta \cdot \omega$ se e solo se $\alpha$ e $\beta$ sono contenuti tra due stesse potenze successive di $\omega$}{problem-60}
@@ -1956,7 +2043,7 @@ originale in una formula esplicita:
 
         \item Supponiamo che $\alpha = \lambda$ sia limite. Sia $X \in V_\lambda \setminus \{\emptyset\}$. In ZFC esiste dunque
             per scelta una funzione di scelta $f : \PP(X) \setminus \{\emptyset\} \to X$, appartenente a $\PP((\PP(X) \setminus \{\emptyset\}) \times X)$,
-            che è un elemento di $V_\lambda$ dal momento che soddisfa l'assioma delle parti (vd. (ii.)), di unione e di separazione (essendo transitivo),
+            che è un elemento di $V_\lambda$ dal momento che soddisfa l'assioma delle parti (vd.~(ii.)), di unione e di separazione (essendo transitivo),
             e dunque $V_\lambda$ soddisfa l'assioma di scelta. \medskip
 
             Viceversa supponiamo che $V_\alpha$ soddisfi scelta. Allora esiste una funzione di scelta $f : \PP(X) \setminus \{\emptyset\} \to X$ per
