@@ -1515,7 +1515,13 @@ originale in una formula esplicita:
 \end{problem}
 
 \begin{solution}
+    La ricorsione transfinita che impiega una sola funzione classe si deriva facilmente da quella per casi, dal momento che
+    non esistono ordinali che siano sia limiti che successori; quindi se $G_1$ è la funzione classe che agisce sui successori, e $G_2$ è
+    quella che agisce sui limiti, è ben definita la funzione classe $G$ che sui successori agisce come $G_1$ e che sui limiti agisce come
+    $G_2$, e tale $G$ restituisce la stessa funzione della ricorsione transfinita per casi. \medskip
     
+    Analogamente la ricorsione transfinita per casi deriva da quella con una sola funzione classe: è sufficiente definire $G_1$ come la
+    restrizione sui successori e $G_2$ come la restrizione sui limiti.
 \end{solution}
 
 \begin{problem}{Assorbimento a sinistra per ordinali finiti di $\omega$}{problem-56}
@@ -1672,6 +1678,22 @@ originale in una formula esplicita:
     \end{enumerate}
 \end{problem}
 
+\begin{solution}
+    Mostriamo le varie richieste separatamente.
+
+    \begin{enumerate}[(i.)]
+        \item[(i.) e (ii.)] Deriva facilmente dal fatto che $\bigsqcup_{i \in I} A$ è definito proprio come $\bigcup_{i \in I} A \times \{i\}$, che
+            risulta essere proprio $A \times I$; il punto (i.) si ottiene ponendo $A = 1$.
+        
+        \item[(iii.)] Come prima, deriva facilmente dal fatto che $\abs{\bigsqcup_{i \in I} A_i} = \abs{\bigsqcup_{i \in I} A_{\sigma(i)}}$, dove la bigezione è data da
+            $(a_i, i) \mapsto (a_i, \sigma(i))$.
+
+        \item[(iv.)] Ancora, deriva dal fatto che $\abs{\bigsqcup_{i \in I} A_i} \leq \abs{\bigsqcup_{i \in I} B_i}$ se $\abs{A_i} \leq \abs{B_i}$ per ogni $i \in I$; se
+            $\varphi_i : A_i \to B_i$ è una funzione iniettiva per ogni $i \in I$, allora la tesi è data da $\varphi : \bigsqcup_{i \in I} A_i \to \bigsqcup_{i \in I} B_i$ tale per
+            cui $\varphi(a_i, i) = (\varphi_i(a_i), i)$, che è iniettiva.
+    \end{enumerate}
+\end{solution}
+
 \begin{problem}{Proprietà fondamentali del prodotto infinito di cardinali}{problem-65}
     Sia $I$ un insieme. Si mostri allora che:
 
@@ -1682,6 +1704,24 @@ originale in una formula esplicita:
         \item Se $I = \bigsqcup_{j \in J} I_j$, allora $\prod_{i \in I} \kappa_i = \prod_{j \in J} \prod_{i \in I_j} \kappa_i$ (associatività generalizzata).
     \end{enumerate}
 \end{problem}
+
+\begin{solution}
+    Mostriamo le varie richieste separatamente.
+
+    \begin{enumerate}[(i.)]
+        \item Deriva facilmente dal fatto che $\abs{\prod_{i \in I} A_i} = \abs{\prod_{i \in I} A_{\sigma(i)}}$, dove la bigezione è data da
+            $f \mapsto [i \to f(\sigma(i))]$.
+
+        \item Come prima, deriva facilmente dal fatto che $\abs{\prod_{i \in I} A^{B_i}} = \abs{A^{\bigsqcup_{i \in I} B_i}}$, dove stavolta la
+            bigezione è data da $f \mapsto [(b, i) \mapsto f(i)(b)]$.
+
+        \item Ancora, deriva dal fatto che $\abs{\left(\prod_{i \in I} A_i\right)^B} = \abs{\prod_{i \in I} A_i^B}$, dove la bigezione è data da
+            $f \mapsto [i \mapsto [b \to f(b)(i)]]$.
+
+        \item Per l'ultima volta, deriva dal fatto che $\abs{\prod_{i \in I} A_i} = \abs{\prod_{j \in J} \prod_{i \in I_j} A_i}$, dove la bigezione è data da
+            $f \mapsto [j \mapsto [i \to f(i)]]$.
+    \end{enumerate}
+\end{solution}
 
 \begin{problem}{Le cofinalità sono cardinali regolari: $\cof(\cof(A)) = \cof(A)$}{problem-66}
     Sia $(A, <)$ un insieme totalmente ordinato. Si mostri allora che:
@@ -1702,14 +1742,40 @@ originale in una formula esplicita:
     Siano $\alpha$ e $\beta$ ordinali. Allora $\cof(\alpha + \beta) = \cof(\beta)$.
 \end{problem}
 
+\begin{solution}
+    Sia $f : \cof(\beta) \to \beta$ una funzione cofinale. Allora $f* : \cof(\beta) \to \alpha + \beta$ definita da
+    $f*(\gamma) = \alpha + f(\gamma)$ è una funzione cofinale, e dunque $\cof(\alpha + \beta) \geq \cof(\beta)$. \medskip
+
+    Se invece $g : \cof(\alpha + \beta) \to \alpha + \beta$ è una funzione cofinale, allora $g* : \cof(\alpha + \beta) \to \beta$ definita da
+    $g*(\gamma) = g(\gamma) - \alpha$ è una funzione cofinale, dove $g(\gamma) - \alpha$ è il $\beta$ tale per cui $g(\gamma) = \alpha + \beta$ (che esiste,
+    per il teorema della differenza a destra). Quindi $\cof(\beta) \geq \cof(\alpha + \beta)$, da cui la tesi.
+\end{solution}
+
 \begin{problem}{Ogni cardinalità regolare è la cofinalità di un ordinale arbitrariamente grande}{problem-68}
     Sia $\mu$ un cardinale regolare. Si mostri allora che per ogni cardinale $\kappa$ esiste $\nu \geq \kappa$ (come ordinali)
     tale per cui $\cof(\nu) = \mu$.
 \end{problem}
 
+\begin{solution}
+    La tesi è una diretta conseguenza del \textit{Problema 67}. Infatti $\cof(\kappa + \mu) = \cof(\mu) = \mu$, dacché
+    $\mu$ è regolare.
+\end{solution}
+
 \begin{problem}{Per $\lambda$ ordinale limite, $\cof(\aleph_\lambda) = \cof(\beth_\lambda) = \cof(\lambda)$}{problem-69}
     Sia $\lambda$ un ordinale limite, si mostri allora che $\cof(\aleph_\lambda) = \cof(\beth_\lambda) = \cof(\lambda)$.
 \end{problem}
+
+\begin{solution}
+    Mostriamo solo che $\cof(\aleph_\lambda) = \cof(\lambda)$, il caso di $\beth_\lambda$ è analogo. \medskip
+
+    Sia $f : \cof(\lambda) \to \lambda$ una funzione cofinale. Allora $g : \cof(\lambda) \to \aleph_\lambda$ definita da
+    $g(\alpha) = \aleph_{f(\alpha)}$ è una funzione cofinale, dunque $\cof(\aleph_\lambda) \leq \cof(\lambda)$. \medskip
+
+    Sia ora $h : \cof(\aleph_\lambda) \to \aleph_\lambda$ una funzione cofinale. Allora $g : \cof(\aleph_\lambda) \to \lambda$ definita da
+    $g(\alpha) = \min \{ \beta \mid h(\beta) < \aleph_\alpha \}$ è una funzione cofinale, dunque $\cof(\lambda) \leq \cof(\aleph_\lambda)$. \medskip
+
+    Dunque $\cof(\aleph_\lambda) = \cof(\lambda)$.
+\end{solution}
 
 \begin{problem}{$V_\alpha$ è chiuso per sottinsiemi, unioni e chiusure transitive}{problem-70}
     Sia $V_\alpha$ il livello $\alpha$-esimo della gerarchia di von Neumann. Si mostri che:
@@ -1720,6 +1786,42 @@ originale in una formula esplicita:
         \item Se $A \in V_\alpha$, allora $\TC(A) \in V_\alpha$, dove $\TC(A)$ è la chiusura transitiva di $A$. 
     \end{enumerate}
 \end{problem}
+
+\begin{solution}
+    Mostriamo i vari risultati separatamente.
+
+    \begin{enumerate}[(i.)]
+        \item Distinguiamo i vari casi.
+        
+        \begin{enumerate}[(i.)]
+            \item[$\boxed{\alpha = 0}$] La tesi è banale per $\alpha = 0$, dal momento che non ammette elementi.
+            \item[$\boxed{\alpha + 1}$] Sia $x \subseteq y \in V_{\alpha + 1}$. Allora $x \subseteq y \subseteq V_{\alpha}$, da
+                cui $x \subseteq V_{\alpha}$, e quindi $x \in \PP(V_\alpha) = V_{\alpha + 1}$.
+            \item[$\boxed{\alpha = \lambda \text{ limite}}$] Sia $x \subseteq y \in V_\lambda$. Allora esiste $\mu < \lambda$ successore per cui
+                $x \subseteq y \in V_\mu$; da prima allora $x \in V_\mu \subseteq V_\lambda$.
+        \end{enumerate}
+
+        \item Distringuiamo ancora i vari casi.
+        
+        \begin{enumerate}[(i.)]
+            \item[$\boxed{\alpha = 0}$] La tesi è ancora banale.
+            \item[$\boxed{\alpha + 1}$] Sia $A \in V_{\alpha + 1}$. Allora $A \subseteq V_{\alpha}$. Per transitività $\bigcup A \subseteq V_{\alpha}$, e
+                dunque $\bigcup A \in V_{\alpha + 1}$.
+            \item[$\boxed{\alpha = \lambda \text{ limite}}$] Sia $A \in V_\lambda$. Allora esiste $\mu < \lambda$ successore per cui
+                $A \in V_\mu$; da prima allora $\bigcup A \in V_\mu \subseteq V_\lambda$.
+        \end{enumerate}
+
+        \item Distringuiamo per un'ultima volta i vari casi.
+
+        \begin{enumerate}[(i.)]
+            \item[$\boxed{\alpha = 0}$] La tesi come sempre è banale.
+            \item[$\boxed{\alpha + 1}$] Sia $A \in V_{\alpha + 1}$. Allora $A \subseteq V_{\alpha}$. Dal momento che $V_\alpha$ è transitivo, si ha che
+                $\TC(A) \subseteq V_{\alpha}$, e quindi $\TC(A) \in V_{\alpha + 1} = \PP(V_\alpha)$.
+            \item[$\boxed{\alpha = \lambda \text{ limite}}$] Sia $A \in V_\lambda$. Allora esiste $\mu < \lambda$ successore per cui
+                $A \in V_\mu$; da prima allora $\TC(A) \in V_\mu \subseteq V_\lambda$.
+        \end{enumerate}
+    \end{enumerate}
+\end{solution}
 
 \begin{problem}{$V_* = \bigcup_{\alpha \in \ORD} V_\alpha$ è una classe propria}{problem-71}
     Sia $V_* := \bigcup_{\alpha \in \ORD} V_\alpha$. Si mostri che $V_*$ è una classe propria.
@@ -1744,5 +1846,49 @@ originale in una formula esplicita:
         \item Vale l'assioma della scelta in $V_\alpha$ se e solo se $\alpha$ è limite.
     \end{enumerate}
 \end{problem}
+
+\begin{solution}
+    Mostriamo i vari risultati separatamente.
+
+    \begin{enumerate}[(i.)]
+        \item Supponiamo che $\alpha = \lambda$ sia limite. Allora, dati $a$, $b \in V_\lambda$, esiste
+            sicuramente $\mu < \lambda$ per cui $a$, $b \in V_\mu$ (basta prendere il massimo tra i due
+            ordinali $\eta$, $\xi$ per cui $a \in V_\eta$, $b \in V_\xi$). Per l'assioma della coppia,
+            esiste $\{a, b\} \subseteq V_\mu$. Allora $\{a, b\} \in \PP(V_\mu) = V_{\mu + 1} \subseteq V_\lambda$. \medskip
+
+            Viceversa supponiamo ora che valga in $V_\alpha$ l'assioma della coppia. Se per assurdo
+            $\alpha$ fosse un successore $\delta + 1$, allora, dacché $0$, $\delta \in V_{\delta + 1} = V_\alpha$,
+            si avrebbe $\{0, \delta\} \in V_\alpha = \PP(V_\delta)$, e quindi $\delta \in \{0, \delta\} \subseteq V_\delta$,
+            che è assurdo dal momento che un ordinale non può appartenere al livello della gerarchia di von Neumann che
+            indicizza, $\Lightning$. Dunque $\alpha$ è limite.
+
+        \item Supponiamo che $\alpha = \lambda$ sia limite. Allora dato $a \in V_\lambda$, esiste sicuramente
+            $\mu < \lambda$ per cui $a \in V_\mu$. Poiché $V_\mu$ è transitivo, $a \subseteq V_\mu$, dunque
+            $\PP(a) \subseteq \PP(V_{\mu}) = V_{\mu + 1}$, e dunque $\PP(a) \in V_{\mu + 2}$. Poiché $\lambda$ è limite,
+            $V_{\mu + 2} \subseteq V_\lambda$, e dunque è verificato l'assioma delle parti. \medskip
+            
+            Viceversa supponiamo ora che valga in $V_\alpha$ l'assioma delle parti. Se per assurdo
+            $\alpha$ fosse un successore $\delta + 1$, allora, dacché $\delta \in V_{\delta + 1} = V_\alpha$,
+            si avrebbe $\PP(\delta) \in V_\alpha$, e quindi $\delta \in \PP(\delta) \subseteq V_\delta$,
+            che è assurdo dal momento che un ordinale non può appartenere al livello della gerarchia di von Neumann che
+            indicizza, $\Lightning$. Dunque $\alpha$ è limite.
+
+        \item Poiché $V_n = n$ per ogni $n$ naturale, $V_\omega = \bigcup_{n \in \omega} V_n$ è esattamente $\omega$.
+            Dunque per $\alpha \leq \omega$ non può essere vero l'assioma dell'infinito in $V_\alpha$: per $\alpha = \omega$,
+            perché altrimenti si avrebbe $\omega \in V_\omega$, assurdo dal momento che un ordinale non può
+            appartenere al livello della gerarchia di von Neumann che indicizza, $\Lightning$; per $\alpha < \omega$,
+            $V_\alpha$ è finito, e dunque non può ammettere per transitività un elemento infinito. Per $\alpha > \omega$, invece
+            $\omega = V_\omega \subseteq V_\alpha$.
+
+        \item Supponiamo che $\alpha = \lambda$ sia limite. Sia $X \in V_\lambda \setminus \{\emptyset\}$. In ZFC esiste dunque
+            per scelta una funzione di scelta $f : \PP(X) \setminus \{\emptyset\} \to X$, appartenente a $\PP((\PP(X) \setminus \{\emptyset\}) \times X)$,
+            che è un elemento di $V_\lambda$ dal momento che soddisfa l'assioma delle parti (vd. (ii.)), di unione e di separazione (essendo transitivo),
+            e dunque $V_\lambda$ soddisfa l'assioma di scelta. \medskip
+
+            Viceversa supponiamo che $V_\alpha$ soddisfi scelta. Allora esiste una funzione di scelta $f : \PP(X) \setminus \{\emptyset\} \to X$ per
+            ogni $X \in V_\alpha \setminus \{\emptyset\}$. Pertanto il dominio di $f$, $\PP(X) \setminus \{\emptyset\}$, deve appartenere a
+            $V_\alpha$, e quindi $\PP(X) \in V_\alpha$. Dunque $V_\alpha$ soddisfa l'assioma delle parti, da cui necessariamente $\alpha$ è limite. 
+    \end{enumerate}
+\end{solution}
 
 \end{document}
