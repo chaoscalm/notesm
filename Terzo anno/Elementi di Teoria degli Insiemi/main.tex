@@ -1258,17 +1258,17 @@ originale in una formula esplicita:
     Si supponga che $(A, <)$ è ben ordinato. Sia $X \subsetneq A$ un segmento iniziale proprio di $A$.
     Poiché $X$ è proprio, $A \setminus X$ \underline{non} è vuoto, quindi ne esiste il minimo, detto $a$.
     Mostriamo che $X = A_a$. Se $x \in A_a$, allora $x < a$, dunque $x \in X$; altrimenti $x$ apparterrebbe a
-    $X \setminus A$ e sarebbe contemporaneamente il suo minimo, $\Lightning$. Viceversa, se $x \in X$,
-    se fosse $a \leq x$, si avrebbe $a \in X$, essendo $A$ un segmento iniziale, $\Lightning$. Dunque
+    $X \setminus A$ e sarebbe contemporaneamente il suo minimo, \Lightning. Viceversa, se $x \in X$,
+    se fosse $a \leq x$, si avrebbe $a \in X$, essendo $A$ un segmento iniziale, \Lightning. Dunque
     $x < a$, ossia $x \in A_a$; si conclude allora che $X = A_a$. \medskip
 
 
     Si supponga che ogni segmento iniziale proprio è generato da un elemento in $A$. Sia $X$ un sottinsieme
     \underline{non} vuoto di $A$. I minoranti stretti di $X$ sono allora un segmento iniziale proprio di $A$, e
     dunque sono generati da un elemento $a \in A$. Mostriamo che $a = \min X$. Sia $x \in X$. Se fosse
-    $x < a$, allora $x$ apparterrebbe ad $A_a$, ovverosia sarebbe un minorante stretto di $X$, $\Lightning$. Dunque
+    $x < a$, allora $x$ apparterrebbe ad $A_a$, ovverosia sarebbe un minorante stretto di $X$, \Lightning. Dunque
     $a \leq x$ per ogni $x \in X$. Se $a$ non appartenesse ad $X$, allora sarebbe $a < x$ per ogni $x \in X$, e dunque
-    si avrebbe $a \in A_a$, $\Lightning$. Dunque $x$ appartiene ad $X$ e ne è minorante debole, ovverosia è il minimo
+    si avrebbe $a \in A_a$, \Lightning. Dunque $x$ appartiene ad $X$ e ne è minorante debole, ovverosia è il minimo
     di $X$.
 \end{solution}
 
@@ -1640,7 +1640,7 @@ originale in una formula esplicita:
 \end{solution}
 
 \begin{problem}{Condizioni sull'assorbimento della somma}{problem-61}
-    Siano $\alpha$, $\beta \neq 0$. Allora vale una e una sola delle seguenti affermazioni:
+    Siano $\alpha$, $\beta \neq 0$ distinti. Allora vale una e una sola delle seguenti affermazioni:
 
     \begin{enumerate}[(i.)]
         \item $\alpha + \beta = \beta$.
@@ -1648,6 +1648,39 @@ originale in una formula esplicita:
         \item $\exists \, \delta$ con $\omega^\delta \leq \alpha$, $\beta < \omega^{\delta + 1}$.
     \end{enumerate}
 \end{problem}
+
+\begin{solution}
+    Mostriamo innanzitutto che al più una affermazione è vera. Se $\alpha + \beta = \beta$,
+    sicuramente non può essere $\beta + \alpha = \alpha$, e viceversa, altrimenti:
+    \[ \beta + \beta = \beta + \alpha + \beta = \beta + \alpha. \]
+    Per il teorema della differenza a destra, allora si avrebbe $\alpha = \beta$, \Lightning.
+    Supponiamo ora senza perdita di generalità che valga $\alpha + \beta = \beta$. Non può esistere
+    $\delta$ tale per cui $\omega^\delta \leq \alpha$, $\beta < \omega^{\delta + 1}$: se così fosse
+    si avrebbe:
+    \[ \alpha + \beta \]
+
+    Supponiamo ora esista $\delta$ tale per cui $\omega^\delta \leq \alpha$, $\beta < \omega^{\delta + 1}$, e
+    mostriamo che né (i.), né (ii.) sono possibili. Poiché $\alpha$, $\beta$ sono compresi tra le
+    stesse potenze successive di $\omega$,
+    esistono $m$, $n \in \omega \setminus \{0\}$ e $\rho$, $\rho' < \omega^\delta$ tali per cui:
+    \[ \alpha = \omega^\delta \cdot m + \rho, \quad \beta = \omega^\delta \cdot n + \rho'. \]
+    Allora:
+    \[ \alpha + \beta = \omega^\delta \cdot m + \rho + \omega^\delta \cdot n + \rho' =
+        \omega^\delta \cdot (m + n) + \rho', \]
+    dove si è usato l'assorbimento di $\omega^\delta$ e che $n > 0$. Allora $\alpha + \beta$ non può
+    coincidere con $\beta$, infatti si avrebbe:
+    \[ \omega^\delta \cdot n + \omega^\delta \cdot m + \rho' = \omega^\delta \cdot n + \rho', \]
+    e quindi per il teorema della differenza a destra i avrebbe $\omega^\delta \cdot m + \rho' = \rho'$, che è
+    assurdo, \Lightning. Analogamente $\beta + \alpha$ non può coincidere con $\alpha$. \medskip
+
+    Mostriamo che una delle tre affermazioni è sempre vera. Se $\exists \, \delta$
+    con $\omega^\delta \leq \alpha$, $\beta < \omega^{\delta + 1}$, la tesi è vera. Altrimenti,
+    esiste $\delta$ tale per cui $\alpha < \omega^\delta \leq \beta$ o
+    $\beta < \omega^\delta \leq \alpha$. Nel primo caso, allora $\beta$ assorbe $\alpha$; nel secondo
+    $\alpha$ assorbe $\beta$. Per vederlo è sufficiente scrivere il maggiore dei due come $\omega^\delta \cdot n + \rho$,
+    come prima, e calcolare la somma direttamente, impiegando l'assorbimento di $\omega^\delta$ nei confronti
+    del minore.
+\end{solution}
 
 \begin{problem}{Proprietà fondamentali dell'algebra cardinale}{problem-62}
     Siano $\kappa$, $\mu$, $\ni$ cardinali. Allora:
@@ -1668,10 +1701,25 @@ originale in una formula esplicita:
     deriva immediatamente.
 
     \begin{enumerate}[(i.)]
-        \item $\abs{(A \sqcup B) \sqcup C} = \abs{A \sqcup (B \sqcup C)}$, dove la bigezione è data dalle seguenti relazioni:
+        \item $\abs{(A \sqcup B) \sqcup C} = \abs{A \sqcup (B \sqcup C)}$, dove una bigezione è data dalle seguenti relazioni:
             \[ ((a, 0), 0) \mapsto (a, 0), \]
             \[ ((b, 1), 0) \mapsto ((b, 0), 1), \]
             \[ (c, 1) \mapsto ((c, 1), 1). \]
+
+        \item $\abs{(A \times B) \times c} = \abs{A \times (B \times C)}$, dove una bigezione è data da $((a, b), c) \mapsto (a, (b, c))$.
+        
+        \item $\abs{A \sqcup B} = \abs{B \sqcup A}$, dove una bigezione è data da $(x, i) \mapsto (x, 1-i)$.
+        
+        \item $\abs{A \times B} = \abs{B \times A}$, dove una bigezione è data da $(a, b) \mapsto (b, a)$.
+        
+        \item $\abs{A \times (B \sqcup C)} = \abs{(A \times B) \sqcup (A \times C)}$, dove una bigezione è data da
+            $(a, (x, i)) \mapsto ((a, x), i)$.
+
+        \item $\abs{A^C \times B^C} = \abs{(A \times B)^C}$, dove una bigezione è data da
+            $(f, g) \mapsto [c \mapsto (f(c), g(c))]$.
+
+        \item $\abs{{(A^B)}^C} = \abs{A^{B \times C}}$, dove una bigezione è data da
+            $f \mapsto [(b, c) \mapsto (f(c)(b))]$ (\textit{currying}).
     \end{enumerate}
 \end{solution}
 
@@ -1759,7 +1807,7 @@ originale in una formula esplicita:
     Se fosse $\cof(\cof(A)) < \cof(A)$, esisterebbe un sottinsieme cofinale in $\cof(A)$
     di cardinalità strettamente minore di quella di $\cof(A)$. Questo sottinsieme sarebbe cofinale
     anche in $A$, essendo $\cof(A)$ cofinale in $A$. Allora $A$ ammetterebbe un sottinsieme
-    cofinale di cardinalità strettamente minore di $\cof(A)$, $\Lightning$. Dunque
+    cofinale di cardinalità strettamente minore di $\cof(A)$, \Lightning. Dunque
     $\cof(\cof(A)) \geq \cof(A)$, da cui la tesi, osservando che vale $\cof(A) \leq \abs{A}$ per
     ogni insieme $A$.
 \end{solution}
@@ -1858,7 +1906,7 @@ originale in una formula esplicita:
     $\alpha \in V_{\alpha + 1}$,
     Sia dunque $F : \ORD \to V_*$ la funzione-classe che associa un ordinale $\alpha$ a sé stesso
     in $V_{\alpha + 1} \subseteq V_*$. $F$ è iniettiva, e dunque se $V_*$ fosse un insieme,
-    lo sarebbe anche $\ORD$, $\Lightning$. Dunque $V_*$ è una classe propria.
+    lo sarebbe anche $\ORD$, \Lightning. Dunque $V_*$ è una classe propria.
 \end{solution}
 
 \begin{problem}{Caratterizzazione della validità degli assiomi di coppia, delle parti, dell'infinito
@@ -1886,7 +1934,7 @@ originale in una formula esplicita:
             $\alpha$ fosse un successore $\delta + 1$, allora, dacché $0$, $\delta \in V_{\delta + 1} = V_\alpha$,
             si avrebbe $\{0, \delta\} \in V_\alpha = \PP(V_\delta)$, e quindi $\delta \in \{0, \delta\} \subseteq V_\delta$,
             che è assurdo dal momento che un ordinale non può appartenere al livello della gerarchia di von Neumann che
-            indicizza, $\Lightning$. Dunque $\alpha$ è limite.
+            indicizza, \Lightning. Dunque $\alpha$ è limite.
 
         \item Supponiamo che $\alpha = \lambda$ sia limite. Allora dato $a \in V_\lambda$, esiste sicuramente
             $\mu < \lambda$ per cui $a \in V_\mu$. Poiché $V_\mu$ è transitivo, $a \subseteq V_\mu$, dunque
@@ -1897,12 +1945,12 @@ originale in una formula esplicita:
             $\alpha$ fosse un successore $\delta + 1$, allora, dacché $\delta \in V_{\delta + 1} = V_\alpha$,
             si avrebbe $\PP(\delta) \in V_\alpha$, e quindi $\delta \in \PP(\delta) \subseteq V_\delta$,
             che è assurdo dal momento che un ordinale non può appartenere al livello della gerarchia di von Neumann che
-            indicizza, $\Lightning$. Dunque $\alpha$ è limite.
+            indicizza, \Lightning. Dunque $\alpha$ è limite.
 
         \item Poiché $V_n = n$ per ogni $n$ naturale, $V_\omega = \bigcup_{n \in \omega} V_n$ è esattamente $\omega$.
             Dunque per $\alpha \leq \omega$ non può essere vero l'assioma dell'infinito in $V_\alpha$: per $\alpha = \omega$,
             perché altrimenti si avrebbe $\omega \in V_\omega$, assurdo dal momento che un ordinale non può
-            appartenere al livello della gerarchia di von Neumann che indicizza, $\Lightning$; per $\alpha < \omega$,
+            appartenere al livello della gerarchia di von Neumann che indicizza, \Lightning; per $\alpha < \omega$,
             $V_\alpha$ è finito, e dunque non può ammettere per transitività un elemento infinito. Per $\alpha > \omega$, invece
             $\omega = V_\omega \subseteq V_\alpha$.
 
