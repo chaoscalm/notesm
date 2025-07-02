@@ -1663,9 +1663,35 @@ originale in una formula esplicita:
     \end{enumerate}
 \end{problem}
 
+\begin{solution}
+    Mostriamo i vari risultati separatamente su generici insiemi $A$, $B$, $C$, da cui la tesi
+    deriva immediatamente.
+
+    \begin{enumerate}[(i.)]
+        \item $\abs{(A \sqcup B) \sqcup C} = \abs{A \sqcup (B \sqcup C)}$, dove la bigezione è data dalle seguenti relazioni:
+            \[ ((a, 0), 0) \mapsto (a, 0), \]
+            \[ ((b, 1), 0) \mapsto ((b, 0), 1), \]
+            \[ (c, 1) \mapsto ((c, 1), 1). \]
+    \end{enumerate}
+\end{solution}
+
 \begin{problem}{$\aleph_\alpha \leq \beth_\alpha$ per ogni ordinale $\alpha$}{problem-63}
     Sia $\alpha$ un ordinale. Si mostri che $\aleph_\alpha \leq \beth_\alpha$.
 \end{problem}
+
+\begin{solution}
+    Dimostriamo la tesi per induzione transfinita su $\alpha$.
+
+    \begin{enumerate}[(i.)]
+        \item[$\boxed{\alpha = 0}$] Per definizione $\aleph_0 = \beth_0 = \omega$, dunque la tesi è vera.
+        \item[$\boxed{\alpha + 1}$] Per definizione $\aleph_\alpha \leq \beth_\alpha$, e dunque
+            $\aleph_{\alpha + 1} = \HH(\aleph_\alpha) \leq \HH(\beth_\alpha)$. Poiché $\beth_{\alpha + 1} = 2^{\beth_\alpha} > \beth_\alpha$,
+            essendo il numero di Hartogs di $\beth_\alpha$ il più piccolo cardinale maggiore di $\beth_\alpha$, si ottiene infine:
+            \[ \aleph_{\alpha + 1} = \HH(\aleph_\alpha) \leq \HH(\beth_\alpha) \leq \beth_{\alpha + 1}. \]
+        \item[$\boxed{\alpha = \lambda \text{ limite}}$] Per definizione $\aleph_\lambda = \sup_{\beta < \lambda} \aleph_\beta$ e $\beth_\lambda = \sup_{\beta < \lambda} \beth_\beta$. La tesi
+            segue allora immediatamente dall'ipotesi induttiva.
+    \end{enumerate}
+\end{solution}
 
 \begin{problem}{Proprietà fondamentali della somma infinita di cardinali}{problem-64}
     Sia $I$ un insieme. Si mostri allora che:
