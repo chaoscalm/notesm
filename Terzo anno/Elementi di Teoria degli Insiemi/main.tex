@@ -1209,12 +1209,90 @@ originale in una formula esplicita:
         \item $x < y$,
         allora $\forall z (z \in N \implies x+z<y+z)$.
         \item $x < y$,
-        allora $\forall z (z \in N \land z \neq 0 \implies x+z<y+z)$.
+        allora $\forall z (z \in N \land z \neq 0 \implies x \cdot z<y \cdot z)$.
         \item Su $\omega$,
         $x < y$ se e solo
         se $x \in y$.
     \end{enumerate}
 \end{problem}
+
+\begin{solution}
+    Mostriamo i vari risultati separatamente.
+
+    \begin{enumerate}[(i.)]
+        \item Mostriamo separatamente antiriflessività, transitività e
+            confrontabilità.
+
+            \begin{enumerate}
+                \item[\fbox{Antiriflessività}] Per induzione su $x$ con la
+                    formula $P(x) = \forall x \lnot \exists y (y \neq 0 \land x = x + y)$.
+
+                    \begin{enumerate}
+                        \item[$\boxed{P(0)}$] $0 + y = y$, dunque la tesi è banale.
+
+                        \item[$\boxed{P(x + 1)}$] Supponiamo sia $x + 1 = (x + 1) + y = (x + y) + 1$.
+                            Se fosse $y \neq 0$, per ipotesi induttiva $x \neq x + y$, e questo violerebbe
+                            l'iniettività di $\cdot + 1$. Dunque $y = 0$.
+                    \end{enumerate}
+
+                \item[\fbox{Transitività}] Per induzione su $x$ con la
+                    formula $P(x) = \forall y \forall z (x < y < z \implies x < z)$.
+
+                    \begin{enumerate}
+                        \item[$\boxed{P(0)}$] Poiché vale $0 < y$, allora esiste $y' \neq 0$
+                            tale per cui $y = y' + 0 = y'$. Quindi $y' \neq 0$. Allora da
+                            $y < z$ si ricava invece $z = y + z'$ con $z' \neq 0$, e quindi
+                            $z = 0 + (y + z')$, dove $y + z' \neq 0$, e quindi $0 < z$.
+                        
+                        \item[$\boxed{P(x + 1)}$] Sia $x + 1 < y < z$. Allora esistono
+                            $y'$, $z'$ non nulli tali per cui $y = (x + 1) + y'$ e
+                            $z = y + z'$. Dunque, poiché $(x + 1) + y' = x + (y' + 1)$,
+                            si ottiene $y > x$, e dunque $z > x$ per ipotesi induttiva, ovverosia
+                            esiste $z''$ non nullo tale per cui $z = x + z''$. Poiché
+                            $z''$ è non nullo, esiste $m$ tale per cui $z'' = m + 1$. Quindi
+                            $z = x + (m + 1) = (x + 1) + m$. Se fosse $m = 0$, si avrebbe
+                            $(x + 1) + y' = y + z' = z = x + 1$, \Lightning. Dunque
+                            $z > x + 1$.
+                    \end{enumerate}
+
+                \item[\fbox{Confrontabilità}] Per induzione su $x$ con la formula
+                    $P(x) = \forall y( x < y \lor x = y \lor x > y)$.
+                    
+                    \begin{enumerate}
+                        \item[$\boxed{P(0)}$] Se $y \neq 0$, allora $0 < y$ dal momento che
+                            $y = 0 + y$.
+                        
+                        \item[$\boxed{P(x + 1)}$] Per ipotesi induttiva, vale $y < x$, $y = x$ o
+                            $y > x$. Se vale $y < x$, allora, per transitività, $y < x + 1$. Se
+                            $y = x$, allora banalmente $y < x + 1$. Se invece $y > x$, esiste
+                            $y'$ non nullo tale per cui $y = x + y'$. Poiché $y'$ non è nullo, allora
+                            esiste $t$ tale per cui $y' = t + 1$. Dunque $y = x + (t + 1) =
+                            (x + 1) + t$. Se $t = 0$, $y = x + 1$; altrimenti $y > x + 1$. 
+                    \end{enumerate}
+            \end{enumerate}
+
+            \item Se $y > x$, allora esiste $y'$ non nullo per cui $y = x + y''$. Allora:
+                \[ y + z = (x + y'') + z = (x + z) + y'', \]
+                e quindi $y + z > x + z$.
+
+            \item Se $y > x$, allora esiste $y'$ non nullo per cui $y = x + y''$. Allora:
+                \[ y \cdot z = (x + y'') \cdot z = x \cdot z  + y'' \cdot z, \]
+                e quindi, poiché $y'' \cdot z$ (sia $y''$, che $z$ sono non nulli),
+                $y \cdot z > x \cdot z$.
+                
+            \item Mostriamo le due implicazioni.
+
+                \begin{enumerate}
+                    \item[$\boxed{n \in m \implies n < m}$] Se $n \in m$, allora $m = n \sqcup \underbrace{\{n, \ldots, m-1\}}_{=A}$.
+                        Allora $m = n + \abs{A}$, e $\abs{A} \neq 0$ essendo $A$ non vuoto. Dunque $n < m$.
+
+                    \item[$\boxed{n \in m \impliedby n < m}$] Usiamo il fatto che $\in$ è un ordine totale su $\omega$.
+                        Se $n \in m$, si conclude. Non si può avere $n = m$ per antiriflessività. Se fosse
+                        $m \in n$, si avrebbe per l'implicazione inversa $m < n$, e quindi $m < m$, ancora contro
+                        l'antiriflessività.
+                \end{enumerate}
+    \end{enumerate}
+\end{solution}
 
 \begin{problem}{$(\omega, \in)$ è un insieme ben ordinato}{problem-33}
     Si dimostri che $(\omega, \in)$ è un insieme ben ordinato.
