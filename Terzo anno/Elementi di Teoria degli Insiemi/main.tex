@@ -1232,22 +1232,68 @@ originale in una formula esplicita:
     equivalenti:
 
     \begin{enumerate}[(i.)]
-        \item $(A, <)$ è buon ordinato.
+        \item $(A, <)$ è ben ordinato.
         \item Se $P(\cdot)$ è una formula e vale $\forall x (x \in A \rightarrow ((\forall y((y \in A \land y < x) \rightarrow P(y))) \rightarrow P(x)))$, allora
             $\forall x (x \in A \rightarrow P(x))$ (induzione forte).
     \end{enumerate}
 \end{problem}
+
+\begin{solution}
+    Mostriamo le due implicazioni.
+
+    \begin{enumerate}[(i.)]
+        \item[\fbox{(i.) $\implies$ (ii.)}] Assumiamo le ipotesi dell'induzione forte.
+            Sia $B = \{ a \in A \mid \lnot P(a) \}$. Se $B$ è vuoto, allora la tesi è dimostrata. Mostriamo
+            che questa è l'unica possibilità. \medskip
+
+            Se per assurdo $B$ non fosse vuoto, poiché $A$ è ben ordinato, esiste $m := \min B$. Allora, essendo $m$ il minimo
+            $a$ per cui non vale $P(a)$, per ogni $y < m$ vale $P(y)$; pertanto, per ipotesi dell'induzione
+            forte, varrebbe $P(m)$, \Lightning.
+
+        \item[\fbox{(ii.) $\implies$ (i.)}] Sia $X$ un sottinsieme di $A$ che non ammette minimo. Consideriamo la
+            formula $P(a) = a \notin X$, e mostriamo che $P(\cdot)$ vale in tutto $A$. Se infatti $a$ è un elemento
+            di $A$ i cui minoranti stretti soddisfano $P(\cdot)$, allora necessariamente deve valere $P(a)$; se così
+            non fosse, $a$ sarebbe un minimo di $X$, \Lightning. Dunque è soddisfatta l'ipotesi induttiva, e si
+            conclude che vale $P(a)$ per ogni elemento $a \in A$. Quindi $A \setminus X = A$, da cui
+            $X = \emptyset$.
+    \end{enumerate}
+\end{solution}
 
 \begin{problem}{Equivalenza tra l'induzione (debole) e il buon ordinamento su insiemi con tutti gli elementi eccetto il minimo successori}{problem-35}
     Sia $(A, <)$ un insieme totalmente ordinato avente minimo $0 := \min A$ tale per cui ogni elemento in
     $A \setminus \{0\}$ è successore. Si mostri che sono equivalenti:
 
     \begin{enumerate}[(i.)]
-        \item $(A, <)$ è buon ordinato.
+        \item $(A, <)$ è ben ordinato.
         \item Se $P(\cdot)$ è una formula, vale $P(0)$ e $\forall x (x \in A \rightarrow (P(x) \rightarrow P(x+1)))$, allora
             $\forall x (x \in A \rightarrow P(x))$ (induzione debole).
     \end{enumerate}
 \end{problem}
+
+\begin{solution}
+    Mostriamo le due implicazioni, nello stesso spirito del \textit{Problema 34}.
+
+    \begin{enumerate}[(i.)]
+        \item[\fbox{(i.) $\implies$ (ii.)}] Assumiamo le ipotesi dell'induzione (debole).
+            Sia $B = \{ a \in A \mid \lnot P(a) \}$. Se $B$ è vuoto, allora la tesi è dimostrata. Mostriamo
+            che questa è l'unica possibilità. \medskip
+
+            Se per assurdo $B$ non fosse vuoto, poiché $A$ è ben ordinato, esiste $m := \min B$. Poiché vale
+            $P(0)$, sicuramente $m \neq 0$. Allora, $m = m' + 1$ è un successore per ipotesi; tuttavia, essendo $m' < m$,
+            vale $P(m')$, da cui, per ipotesi dell'induzione
+            forte, varrebbe $P(m' + 1)$, ossia $P(m)$, \Lightning.
+
+        \item[\fbox{(ii.) $\implies$ (i.)}] Sia $X$ un sottinsieme di $A$ che non ammette minimo. Consideriamo la
+            formula $P(a) = \forall b( b \leq a \implies a \notin X)$, e mostriamo che $P(\cdot)$ vale in tutto $A$. 
+            
+            Essendo $0$ il minimo di $A$, chiaramente vale $P(0)$ -- altrimenti $X$ ammetterebbe come minimo $0$ stesso.
+            Inoltre, se vale $P(x)$, $x+1$ è un elemento
+            di $A$ i cui minoranti stretti soddisfano $P(\cdot)$, e dunque necessariamente deve valere $P(x+1)$; se così
+            non fosse, $x+1$ sarebbe un minimo di $X$, \Lightning. Dunque è soddisfatta l'ipotesi induttiva, e si
+            conclude che vale $P(a)$ per ogni elemento $a \in A$. Quindi $A \setminus X = A$, da cui
+            $X = \emptyset$.
+    \end{enumerate}
+\end{solution}
 
 \begin{problem}{Caratterizzazione dei buon ordinamenti con i segmenti iniziali}{problem-36}
     Sia $(A, <)$ un insieme totalmente ordinato. Si dimostri che $(A, <)$ è ben ordinato se e solo se
@@ -1284,14 +1330,35 @@ originale in una formula esplicita:
 \end{solution}
 
 \begin{problem}{Gli insiemi totalmente ordinati finiti sono isomorfi a un $(n, \in)$}{problem-38}
-    Sia $(A, <)$ un insieme totalmente ordinato finito. Si dimostri che se $\abs{A} \cong \abs{n}$, allora
-    $(A, <) \cong (n, \in)$.
+    Sia $(A, <)$ un insieme totalmente ordinato e finito. Si dimostri che se $\abs{A} \cong \abs{n}$, allora
+    $(A, <) \cong (n, \in)$, e che dunque ammette massimo e minimo.
 \end{problem}
+
+\begin{solution}
+    Mostriamo la tesi per induzione su $n$.
+
+    \begin{enumerate}
+        \item[$\boxed{n = 0}$] Se $A$ è vuoto, la tesi è banale.
+        \item[$\boxed{n + 1}$] Sia $\abs{A} \cong \abs{n + 1}$. Allora esiste un elemento $a \in A$ tale per
+            cui $\abs{A \setminus \{a\}} = \abs{n}$. Allora, per ipotesi induttiva, dacché $A \setminus \{a\}$ è
+            ancora totalmente ordinato e finito, $(A \setminus \{a\}, <) \cong (n, \in)$. Pertanto $A \setminus \{a\}$ ammette
+            un massimo $a' := \max A \setminus \{a\}$. È immediato verificare che $a^* = \max \{a, a'\}$ è un massimo di $A$,
+            e dunque si può estendere un isomorfismo tra $A \setminus \{a^*\}$ e $n$ mandando $a^*$ in $n \in n+1$, completando
+            il passo induttivo.
+    \end{enumerate}
+\end{solution}
 
 \begin{problem}{La restrizione di un isomorfismo d'ordine ai segmenti generati è ancora un isomorfismo}{problem-39}
     Sia $\varphi : (A, <) \rightarrow (B, \prec)$ un isomorfismo tra due insiemi ben ordinati. Si dimostri che
     $\restr{\varphi}{A_a} : \left(A_a, \restr{<}{A_a}\right) \rightarrow \left(B_{\varphi(a)}, \restr{\prec}{B_{\varphi(a)}}\right)$ è ancora un isomorfismo.
 \end{problem}
+
+\begin{solution}
+    È sufficiente verificare che $\restr{\varphi}{A_a}$ ha come immagine $B_{\varphi(a)}$ (essendo restrizione è necessariamente ancora
+    iniettiva, e preserva l'ordine). Sia $b' < \varphi(a)$. Essendo $\varphi$ un isomorfismo, esiste $a' \in A$ tale per cui
+    $\varphi(a') = b'$. Se fosse $a' \geq a$, si avrebbe $b' \geq \varphi(a)$, dacché $\varphi$ preserva l'ordine, \Lightning.
+    DUnque $a' \in A_a$, da cui la tesi.
+\end{solution}
 
 \begin{problem}{Caratterizzazione degli insiemi totalmente ordinati isomorfi a $(\omega, \in)$}{problem-40}
     Sia $(A, <)$ un insieme totalmente ordinato e infinito. Si mostri che sono equivalenti:
@@ -1302,6 +1369,29 @@ originale in una formula esplicita:
         \item Ogni sottinsieme infinito di $A$ non ammette massimo. 
     \end{enumerate}
 \end{problem}
+
+\begin{solution}
+    Dimostriamo le implicazioni (i.) $\implies$ (ii.) $\implies$ (iii.) $\implies$ (i.), da cui
+    deriva la tesi.
+
+    \begin{enumerate}[(i.)]
+        \item[\fbox{(i.) $\implies$ (ii.)}] È sufficiente verificare la tesi su $(\omega, \in)$, per il quale
+            ogni segmento iniziale proprio è finito per definizione, dacché un tale segmento è necessariamente
+            un elemento di $\omega$.
+        
+        \item[\fbox{(ii.) $\implies$ (iii.)}] Mostriamo la contronominale.
+            Se esistesse un sottoinsieme infinito di $A$ con massimo $M$,
+            allora il segmento iniziale $A_M \supseteq A$ sarebbe infinito. Non può essere $A_M = A$, dal momento che
+            si avrebbe $M < M$, \Lightning. Dunque $A_M$ è un segmento iniziale proprio infinito.
+
+        \item[\fbox{(iii.) $\implies$ (i.)}] Sia $X \neq \emptyset$ un sottinsieme di $A$. Sia $x$ un elemento di $X$.
+            I minoranti deboli di $x$ appartenenti a $X$ ammettono massimo ($x$ stesso), dunque formano un sottinsieme
+            finito. Allora tali minoranti ammettono minimo (vd. \textit{Problema 38}), e tale minimo è un minimo di $X$. Dunque $A$ è ben ordinato.
+            Essendo infinito, $A$ non può essere isomorfo a un segmento iniziale di $\omega$; né $\omega$ può essere isomorfo
+            a un segmento iniziale di $A$, dato che altrimenti esisterebbe un sottinsieme infinito con massimo in $A$. Pertanto,
+            per la tricotomia dei buoni ordini, l'unica possibilità rimasta è $(A, <) \cong (\omega, \in)$.
+    \end{enumerate}
+\end{solution}
 
 \begin{problem}{Il tipo d'ordine di $A + \{*\}$ è il più piccolo di quelli che maggiorano il tipo d'ordine di $A$}{problem-41}
     Si mostri che per ogni insieme ben ordinato $(B, \prec)$ con $\ot(A) < \ot(B)$ si ha $\ot(A + \{*\}) \leq \ot(B)$.
@@ -1361,6 +1451,25 @@ originale in una formula esplicita:
     Sia $A \neq \emptyset$ un insieme di ordinali. Si mostri che $\bigcup A$ corrisponde all'estremo superiore $\sup A$ e che
     $\bigcap A$ corrisponde al minimo $\min A$.
 \end{problem}
+
+\begin{solution}
+    Mostriamo i due risultati separatamente.
+
+    \begin{enumerate}
+        \item Sicuramente, $\forall \alpha \in A$, $\bigcap A \subseteq \alpha$, e quindi $\bigcap A$ è un minorante
+            debole di $A$. Se $A$ ha due elementi distinti, allora $\bigcap A$ necessariamente deve essere sottinsieme stretto
+            di un elemento $\alpha \in A$, e quindi $\bigcap A \in \alpha$; pertanto, per transitività $\bigcap A \in A$, e
+            dunque $\bigcap A$ è proprio il minimo cercato. Se $A$ ha un solo elemento, la tesi è banale poiché
+            $\bigcap A$ coincide con tale elemento.
+
+        \item $\bigcup A$ è ben ordinato su $\in$, essendo un insieme di ordinali, grazie al punto (i.) (gli ordinali sono insiemi
+            di ordinali). Inoltre $\bigcup A$ è transitivo, dacché $x \in \bigcup A$ vuol dire che esiste un $\alpha \in A$ tale
+            per cui $x \in \alpha$, e dunque, se $y \in x$, allora $y \in x \in \alpha$, da cui $y \in \alpha$ per la transitività di
+            $\alpha$, e quindi $y \in \bigcup A$. Mostriamo ora che è l'estremo superiore di $A$. Chiaramente $\bigcup A$ è un
+            maggiorante debole; inoltre se $\alpha \subseteq B$ per ogni $\alpha \in B$, allora $\bigcup \alpha \subseteq B$,
+            completando la dimostrazione. 
+    \end{enumerate}
+\end{solution}
 
 \begin{problem}{$\omega_1$ è il più piccolo ordinale avente cardinalità maggiore di quella di $\omega$}{problem-46}
     Si mostri che $\omega_1 = \{ \alpha \text{ ordinale} \mid \abs{\alpha} \leq \abs{\omega} \}$ è il più piccolo ordinale avente cardinalità maggiore di quella di $\omega$.
