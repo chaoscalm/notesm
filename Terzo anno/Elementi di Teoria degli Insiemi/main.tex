@@ -925,7 +925,16 @@ originale in una formula esplicita:
 \end{problem}
 
 \begin{solution}
+    Il caso per $B$ finito è già stato trattato; occupiamoci del caso in cui anche $B$ è infinito.
+    Mostriamo innanzitutto che $\abs{A \cup B} = \abs{A}$. Si ha chiaramente $\abs{A \cup B} \leq \abs{A \sqcup B}$. Inoltre
+    $\abs{A \sqcup B} \leq \abs{A \times B}$, grazie all'infinità di $B$. Allora:
+    \[ \abs{A} \leq \abs{A \cup B} \leq \abs{A \times B} \leq \abs{A \times A} = \abs{A}, \]
+    dove \AC{} è stato usato per giustificare $\abs{A \times A} = \abs{A}$. Si conclude allora
+    per il teorema di Cantor-Bernstein che $\abs{A} = \abs{A \cup B}$.
 
+    Per dimostrare che $\abs{A \setminus B} = \abs{A}$, osserviamo che $\abs{A} = \abs{A \setminus B \sqcup B}$.
+    Se fosse $\abs{A \setminus B} \leq \abs{B}$, si avrebbe $\abs{A} = \abs{B}$ per il punto precedente, \Lightning.
+    Allora $\abs{A \setminus B \sqcup B} = \abs{A \setminus B}$, da cui la tesi. 
 \end{solution}
 
 \begin{problem}{Proprietà dei numeri naturali (1) -- Definizione equivalente dell'ordinamento stretto}{problem-21}
@@ -1170,34 +1179,60 @@ originale in una formula esplicita:
 \end{problem}
 
 \begin{solution}
-    
+    Mostriamo la tesi per induzione su $y$, applicando ripetutamente gli assiomi di Peano e la commutatività di $+$.
+
+    \begin{enumerate}[(i.)]
+        \item[$\boxed{y = 0}$] $(x + 0) + z = x + z = x + (0 + z)$, dove abbiamo usato la commutatività di $+$ e il primo assioma di Peano.
+        \item[$\boxed{S(y)}$] $(x + S(y)) + z = S(x + y) + z = S((x + y) + z) = S(x + (y + z)) = x + S(y + z) = x + (S(y) + z)$.
+    \end{enumerate}
 \end{solution}
 
 \begin{problem}{Distributività della somma rispetto al prodotto su $\omega$}{problem-30}
     $+$ è distributiva rispetto a $\cdot$, cioè:
     \[
-        \forall x, y, z, x(y+z)=x\cdot y+x\cdot z.
+        \forall x, y, z, x \cdot (y+z)=x\cdot y+x\cdot z.
     \]
 \end{problem}
 
 \begin{solution}
-    
+    Mostriamo la tesi per induzione su $y$, applicando ripetutamente gli assiomi di Peano e la commutatività di $+$.
+
+    \begin{enumerate}
+        \item[$\boxed{y = 0}$] $x \cdot (0 + z) = x \cdot z = 0 + x \cdot z = x \cdot 0 + x \cdot z$.
+        \item[$\boxed{S(y)}$] $x \cdot (S(y) + z) = x \cdot S(y + z) = x \cdot (y + z) + x$, quindi:
+            \[ x \cdot (y + z) + x = x \cdot y + x \cdot z + x = x \cdot y + x \cdot S(z) = x \cdot (y + S(z)) = x \cdot (S(y) + z). \]
+    \end{enumerate}
 \end{solution}
 
 \begin{problem}{La somma e il prodotto di elementi non nulli è non nulla}{problem-31}
-    Se $x$, $y \neq 0$, allora $x+y \neq 0$ e
-    $x \cdot y \neq 0$.
+    Si dimostrino i seguenti due risultati.
+
+    \begin{enumerate}[(i.)]
+        \item Se $x$ o $y$ sono non nulli, allora $x + y \neq 0$.
+        \item Se sia $x$ che $y$ sono non nulli, allora $x \cdot y \neq 0$.
+    \end{enumerate}
 \end{problem}
 
 \begin{solution}
-    
+    Mostriamo i due risultati separatamente, applicando ripetutamente gli assiomi di Peano e la commutatività di $+$.
+
+    \begin{enumerate}[(i.)]
+        \item Mostriamo il risultato per $x \neq 0$: è sufficiente utilizzare la commutatività di $+$
+            per ricondursi a questo caso. Poiché $x \neq 0$, $x = S(z)$ per qualche $y$. Allora
+            $x + y = S(z) + y = S(z + y)$. Essendo allora $x + y$ un successore, questo è diverso da zero.
+
+        \item Mostriamo il risultato per induzione su $x$ a partire da $S(0)$:
+            \begin{enumerate}
+                \item[$\boxed{S(0)}$] $S(0) \cdot y = 0 \cdot y + y = 0 + y = y \neq 0$.
+                \item[$\boxed{S(x)}$] $S(x) \cdot y = x \cdot y + y$. Per ipotesi induttiva $x \cdot y \neq 0$; poiché
+                    anche $y \neq 0$, si conclude per (i.).
+            \end{enumerate}
+    \end{enumerate}
 \end{solution}
 
 \begin{problem}{Relazione d'ordine totale sui modelli di \PA}{problem-32}
     Se $(N, 0, S, +, \cdot)$ è un modello di \PA{}, ossia un
-    modello degli assiomi
-    di Peano al primo
-    ordine, allora
+    modello degli assiomi di Peano al primo ordine, allora
     la relazione:
     \[
         x <  y \iff \exists z (z \neq 0 \land x+y=y)
@@ -1230,9 +1265,9 @@ originale in una formula esplicita:
                     \begin{enumerate}
                         \item[$\boxed{P(0)}$] $0 + y = y$, dunque la tesi è banale.
 
-                        \item[$\boxed{P(x + 1)}$] Supponiamo sia $x + 1 = (x + 1) + y = (x + y) + 1$.
+                        \item[$\boxed{P(S(x))}$] Supponiamo sia $S(x) = S(x) + y = S(x + y)$.
                             Se fosse $y \neq 0$, per ipotesi induttiva $x \neq x + y$, e questo violerebbe
-                            l'iniettività di $\cdot + 1$. Dunque $y = 0$.
+                            l'iniettività di $S(\cdot)$. Dunque $y = 0$.
                     \end{enumerate}
 
                 \item[\fbox{Transitività}] Per induzione su $x$ con la
@@ -1244,15 +1279,15 @@ originale in una formula esplicita:
                             $y < z$ si ricava invece $z = y + z'$ con $z' \neq 0$, e quindi
                             $z = 0 + (y + z')$, dove $y + z' \neq 0$, e quindi $0 < z$.
                         
-                        \item[$\boxed{P(x + 1)}$] Sia $x + 1 < y < z$. Allora esistono
-                            $y'$, $z'$ non nulli tali per cui $y = (x + 1) + y'$ e
-                            $z = y + z'$. Dunque, poiché $(x + 1) + y' = x + (y' + 1)$,
+                        \item[$\boxed{P(S(x))}$] Sia $S(x) < y < z$. Allora esistono
+                            $y'$, $z'$ non nulli tali per cui $y = S(x) + y'$ e
+                            $z = y + z'$. Dunque, poiché $S(x) + y' = x + S(y)$,
                             si ottiene $y > x$, e dunque $z > x$ per ipotesi induttiva, ovverosia
                             esiste $z''$ non nullo tale per cui $z = x + z''$. Poiché
-                            $z''$ è non nullo, esiste $m$ tale per cui $z'' = m + 1$. Quindi
-                            $z = x + (m + 1) = (x + 1) + m$. Se fosse $m = 0$, si avrebbe
-                            $(x + 1) + y' = y + z' = z = x + 1$, \Lightning. Dunque
-                            $z > x + 1$.
+                            $z''$ è non nullo, esiste $m$ tale per cui $z'' = S(m)$. Quindi
+                            $z = x + S(m) = S(x) + m$. Se fosse $m = 0$, si avrebbe
+                            $S(x) + y' = y + z' = z = S(x)$, \Lightning. Dunque
+                            $z > S(x)$.
                     \end{enumerate}
 
                 \item[\fbox{Confrontabilità}] Per induzione su $x$ con la formula
@@ -1262,12 +1297,12 @@ originale in una formula esplicita:
                         \item[$\boxed{P(0)}$] Se $y \neq 0$, allora $0 < y$ dal momento che
                             $y = 0 + y$.
                         
-                        \item[$\boxed{P(x + 1)}$] Per ipotesi induttiva, vale $y < x$, $y = x$ o
-                            $y > x$. Se vale $y < x$, allora, per transitività, $y < x + 1$. Se
-                            $y = x$, allora banalmente $y < x + 1$. Se invece $y > x$, esiste
+                        \item[$\boxed{P(S(x))}$] Per ipotesi induttiva, vale $y < x$, $y = x$ o
+                            $y > x$. Se vale $y < x$, allora, per transitività, $y < S(x)$. Se
+                            $y = x$, allora banalmente $y < S(x)$. Se invece $y > x$, esiste
                             $y'$ non nullo tale per cui $y = x + y'$. Poiché $y'$ non è nullo, allora
-                            esiste $t$ tale per cui $y' = t + 1$. Dunque $y = x + (t + 1) =
-                            (x + 1) + t$. Se $t = 0$, $y = x + 1$; altrimenti $y > x + 1$. 
+                            esiste $t$ tale per cui $y' = S(t)$. Dunque $y = x + S(t) =
+                            S(x) + t$. Se $t = 0$, $y = S(x)$; altrimenti $y > S(x)$. 
                     \end{enumerate}
             \end{enumerate}
 
@@ -1277,13 +1312,13 @@ originale in una formula esplicita:
 
             \item Se $y > x$, allora esiste $y'$ non nullo per cui $y = x + y''$. Allora:
                 \[ y \cdot z = (x + y'') \cdot z = x \cdot z  + y'' \cdot z, \]
-                e quindi, poiché $y'' \cdot z$ (sia $y''$, che $z$ sono non nulli),
+                e quindi, poiché $y'' \cdot z$ (sia $y''$, che $z$ sono non nulli, vd. \textit{Problema 31}),
                 $y \cdot z > x \cdot z$.
                 
             \item Mostriamo le due implicazioni.
 
                 \begin{enumerate}
-                    \item[$\boxed{n \in m \implies n < m}$] Se $n \in m$, allora $m = n \sqcup \underbrace{\{n, \ldots, m-1\}}_{=A}$.
+                    \item[$\boxed{n \in m \implies n < m}$] Se $n \in m$, allora $m = n \sqcup \underbrace{\{n, \ldots\}}_{=\,A}$.
                         Allora $m = n + \abs{A}$, e $\abs{A} \neq 0$ essendo $A$ non vuoto. Dunque $n < m$.
 
                     \item[$\boxed{n \in m \impliedby n < m}$] Usiamo il fatto che $\in$ è un ordine totale su $\omega$.
