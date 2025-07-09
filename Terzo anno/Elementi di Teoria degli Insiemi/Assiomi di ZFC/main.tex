@@ -1,0 +1,116 @@
+\documentclass[letterpaper, 11pt]{extarticle}
+
+\usepackage{setspace}
+
+\usepackage{amsmath}
+\usepackage[italian]{babel}
+\usepackage[margin = 1in]{geometry}
+\usepackage{scrextend}
+\usepackage{titlesec}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1ex}
+
+\usepackage{lmodern}
+\renewcommand{\familydefault}{\sfdefault}
+
+\NewDocumentEnvironment{axiom}{m +b}{
+  \par\medskip
+  \noindent\textbf{#1}\par
+  \begin{addmargin}[2em]{4em}
+  #2
+  \end{addmargin}
+  \par\medskip
+}{}
+
+\begin{document}
+
+\begin{LARGE}
+    \textsf{\textbf{Assiomi della teoria di Zermelo-Fraenkel con scelta (ZFC)}}
+\end{LARGE}
+
+\vspace{1ex}
+
+\linespread{1.3}
+
+L'alfabeto del linguaggio consiste di una successione infinita di variabili
+che rappresentano gli insiemi, dei connettivi logici $\lnot$ (``non''), $\lor$ (``o''), $\land$ (``e''), dei quantificatori $\forall$ (``per ogni''), $\exists$ (``esiste''), del simbolo di uguaglianza $=$,
+del simbolo di appartenenza a un insieme $\in$ e delle parentesi tonde $($ e $)$.
+
+
+Con questo alfabeto, si dicono formule ben formate le formule atomiche $x = y$ e $x \in y$, dove $x$ e $y$ sono metavariabili, e per ricorsione le formule $\exists x \, \varphi$, $\forall x \, \varphi$, $\lnot \varphi$, $(\varphi \land \phi)$, $(\varphi \lor \psi)$, dove $\varphi$ e $\psi$ sono a loro volta
+formule ben formate.
+
+
+Impieghiamo $(a \rightarrow b)$ (``$a$ implica $b$'') come abbreviazione per $(\lnot a \lor b)$, così come
+$(a \leftrightarrow b)$ (``$a$ se e solo se $b$'') per $(a \rightarrow b \land b \rightarrow a)$. Per chiarezza ammettiamo come abbreviazione anche $(\varphi)$ per $\varphi$.
+
+\begin{axiom}{Assioma dell'estensionalità (ZF1)}
+    Se due insiemi $x$ e $y$ hanno gli stessi elementi, allora sono lo stesso insieme.
+    \[ \forall x \forall y(\forall z(z \in x \leftrightarrow z \in y) \rightarrow x = y). \]
+\end{axiom}
+
+\begin{axiom}{Assioma dell'insieme vuoto (ZF2)}
+    Esiste un insieme privo di elementi.
+    \[ \exists x \lnot \exists y (y \in x). \]
+\end{axiom}
+
+\begin{axiom}{Assioma della coppia (ZF3)}
+    Dati due insiemi $x$, $y$, esiste un insieme contenente esattamente $x$ e $y$, ovverosia $\{x, y\}$.
+    \[ \forall x \forall y \exists z\forall k (k \in z \leftrightarrow (k = x \lor k=y)). \]
+\end{axiom}
+
+\begin{axiom}{Assioma delle parti (ZF4)}
+    Dato un insieme $x$, esiste l'insieme dei sottinsiemi di $x$, ovverosia l'insieme
+    delle parti $\mathcal{P}(x)$.
+    \[ \forall x \exists y \forall z(z \in y \leftrightarrow \forall k(k \in z \rightarrow k \in x)). \]
+\end{axiom}
+
+\begin{axiom}{Assioma dell'unione (ZF5)}
+    Dato un insieme $x$, esiste l'insieme che contiene esattamente gli elementi degli elementi di $x$, ovverosia
+    l'insieme $\bigcup x$.
+    \[ \forall x \exists y \forall z(z \in y \leftrightarrow \exists k(k \in x \land z \in k)). \]
+\end{axiom}
+
+\newpage
+
+\begin{axiom}{Assioma dell'infinito (ZF6)}
+    Esiste un insieme a cui appartiene l'insieme vuoto, e a cui appartiene $a \cup \{a\}$ se $a$ gli
+    appartiene.
+    \[ \exists x(\exists y(y \in x \land \lnot\exists z( z \in y)) \land \forall a (a \in x \rightarrow \exists b( b \in x \land \forall c( c \in b \leftrightarrow (c \in a \lor c = a))))). \]
+\end{axiom}
+
+\begin{axiom}{Schema di assiomi di separazione (ZF7)}
+    Data una formula $\Psi(z, u_1, \ldots, u_n)$ dipendente dalla variabile $z$ libera
+    e da $u_1$, ..., $u_n$ eventualmente libere, esiste per ogni insieme $x$ il sottinsieme
+    $\{ z \in x \mid \Psi(z, u_1, \ldots, u_n) \}$.
+    \[ \forall u_1 \ldots \forall u_n \left[ \forall x \exists y\forall z(z \in y \leftrightarrow (z \in x \land \Psi(z, u_1, \ldots, u_n))) \right]. \]
+\end{axiom}
+
+\begin{axiom}{Schema di assiomi di rimpiazzamento (ZF8)}
+    Data una formula funzionale $\Psi(x, y, u_1, \ldots, u_n)$ dipendente dalle variabili $x$ e $y$
+    libere e da $u_1$, ..., $u_n$ eventualmente libere, esiste per ogni insieme $x$ l'insieme
+    $\{ y \mid \exists z\,(z \in x \land \Psi(z, y, u_1, \ldots, u_n)) \}$.
+    \begin{multline*}
+        \forall u_1 \ldots \forall u_n \bigl[ \forall x \forall y \forall z((\Psi(x, y, u_1, \ldots, u_n) \land \Psi(x, z, u_1, \ldots, u_n)) \rightarrow y = z) \rightarrow \\
+        \forall a \exists b \forall c(c \in b \leftrightarrow \exists d (d \in a \land \Psi(d, c, u_1, \ldots, u_n))) \bigr].
+    \end{multline*}
+\end{axiom}
+
+\begin{axiom}{Assioma di buona fondazione (ZF9)}
+    Ogni insieme non vuoto $x$ contiene un elemento $y$ disgiunto da $x$.
+    \[ \forall x (\exists y (y \in x) \rightarrow \exists z (z \in x \land \forall a \lnot(a \in x \land a \in z))). \]
+\end{axiom}
+
+\begin{axiom}{Assioma di scelta (AC)}
+    Data una famiglia $x$ di insiemi non vuoti a due a due disgiunti esiste un
+    insieme $e$ tale per cui l'intersezione $e \cap f$ contiene esattamente un elemento
+    per ogni $f \in x$.
+    \begin{multline*}
+        \forall x((\forall y(y \in x \rightarrow \exists z(z \in y)) \land \forall a \forall b((a \in x \land b \in x \land \lnot(a = b)) \rightarrow \\
+        \lnot \exists d(d \in a \land d \in b))) \rightarrow \exists e \forall f (f \in x \rightarrow \\
+        \exists g (g \in e \land g \in f \land \forall h ((h \in e \land h \in f) \rightarrow h = g)))).
+    \end{multline*}
+\end{axiom}
+
+\end{document}
