@@ -1,0 +1,64 @@
+\documentclass[letterpaper, 11pt]{extarticle}
+
+\usepackage{amsmath}
+\usepackage[margin = 0.5in]{geometry}
+
+\pagestyle{empty}
+
+\NewDocumentEnvironment{axiom}{m +b}{
+  (\textbf{#1}) #2
+  \vskip 0.25in
+}{}
+
+\begin{document}
+
+{\Large\textbf{Assiomi della teoria di Zermelo-Fraenkel con scelta (ZFC)}}
+
+\vskip 0.25in
+
+\large
+\begin{axiom}{ZF1}
+    $\forall x \forall y(\forall z(z \in x \leftrightarrow z \in y) \rightarrow x = y)$.
+\end{axiom}
+
+\begin{axiom}{ZF2}
+    $\exists x \lnot \exists y (y \in x)$.
+\end{axiom}
+
+\begin{axiom}{ZF3}
+    $\forall x \forall y \exists z\forall k (k \in z \leftrightarrow (k = x \lor k=y))$.
+\end{axiom}
+
+\begin{axiom}{ZF4}
+    $\forall x \exists y \forall z(z \in y \leftrightarrow \forall k(k \in z \rightarrow k \in x))$.
+\end{axiom}
+
+\begin{axiom}{ZF5}
+    $\forall x \exists y \forall z(z \in y \leftrightarrow \exists k(k \in x \land z \in k))$.
+\end{axiom}
+
+\begin{axiom}{ZF6}
+    $\exists x(\exists y(y \in x \land \lnot\exists z( z \in y)) \land \forall a (a \in x \rightarrow \exists b( b \in x \land \forall c( c \in b \leftrightarrow (c \in a \lor c = a)))))$.
+\end{axiom}
+
+\begin{axiom}{ZF7}
+    $\forall u_1 \ldots \forall u_n \left[ \forall x \exists y\forall z(z \in y \leftrightarrow (z \in x \land \Psi(z, u_1, \ldots, u_n))) \right]$.
+\end{axiom}
+
+\begin{axiom}{ZF8}
+    $\forall u_1 \ldots \forall u_n \bigl[ \forall x \forall y \forall z((\Psi(x, y, u_1, \ldots, u_n)
+    \land \Psi(x, z, u_1, \ldots, u_n)) \rightarrow y = z) \rightarrow \forall a \exists b
+    \forall c(c \in b \leftrightarrow \exists d (d \in a \land \Psi(d, c, u_1, \ldots, u_n))) \bigr]$.
+\end{axiom}
+
+\begin{axiom}{ZF9}
+    $\forall x (\exists y (y \in x) \rightarrow \exists z (z \in x \land \forall a \lnot(a \in x \land a \in z)))$.
+\end{axiom}
+
+\begin{axiom}{AC}
+    $\forall x((\forall y(y \in x \rightarrow \exists z(z \in y)) \land \forall a \forall b((a \in x \land b \in x \land \lnot(a = b)) \rightarrow
+    \lnot \exists d(d \in a \land d \in b))) \rightarrow \exists e \forall f (f \in x \rightarrow
+    \exists g (g \in e \land g \in f \land \forall h ((h \in e \land h \in f) \rightarrow h = g))))$.
+\end{axiom}
+
+\end{document}
