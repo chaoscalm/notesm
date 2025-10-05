@@ -14,11 +14,4 @@ appunti sul corso dell'A.A. 2023-2024, prendendo molto spunto dagli
 [appunti di Algebra 1](https://github.com/diego-unipi/Algebra-1),
 che tuttavia riprendono principalmente il programma del corso dell'A.A. 2022-2023.
 
-Ho diviso gli appunti in base ai moduli del corso di Algebra 1. In particolare, per adesso è quasi completata la scrittura
-della sezione relativa a *Teoria dei gruppi*, a sua volta divisa in macrosezioni. Per il momento verrà trascurata la
-parte di *Teoria degli anelli* per completare la sezione di *Teoria dei campi*, e verrà ripresa alla fine.
-
-Dalla fine del 2022 ho iniziato a contribuire alla riscrittura dei [Complementi di Algebra 1](https://github.com/diego-unipi/Algebra-1),
-a cui sto dedicando tutte le mie energie. Una volta integrate tutte le mancanze dei _Complementi di Algebra 1_ (e riviste anche le
-_Dispense di Algebra 1_), non vi sarà motivo di aggiungere appunti in questa sede, e rimanderò direttamente al repository di
-queste due dispense, ad esclusione della *Scheda riassuntiva di Teoria dei campi e di Galois*.
+Verso la fine del 2023 ho iniziato a contribuire alla riscrittura dei [Complementi di Algebra 1](https://github.com/diego-unipi/Algebra-1).

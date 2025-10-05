@@ -11,5 +11,3 @@ dei risultati pratici dell'analisi; e quella di *analysis*, ossia di rifondazion
 moderna, e dunque di rivisitazione in chiave strettamente più formale dei concetti intravisti nella parte di *calculus*.
 Si è preferito tuttavia rendere disponibile soltanto gli appunti di questa seconda parte, dal momento che i primi appunti
 risultavano poco comprensibili e superflui.
-
-Inizialmente gli appunti sono stati presi con [Microsoft Journal](https://apps.microsoft.com/store/detail/microsoft-journal/9N318R854RHH?hl=it-it&gl=it). Successivamente ho finito col prenderli in LaTeX con [TeXstudio](https://www.texstudio.org/).
