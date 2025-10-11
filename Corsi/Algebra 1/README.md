@@ -9,9 +9,8 @@
 - [Schede di Andrea Gallese 📖](https://uz.sns.it/~Gall/Algebra.pdf)
 - [Pagina e-learning del corso 🔗](https://elearning.dm.unipi.it/course/view.php?id=548)
 
-Questa cartella raccoglie tutti gli appunti che ho preso in relazione al corso di Algebra 1. Sto basando i miei
-appunti sul corso dell'A.A. 2023-2024, prendendo molto spunto dagli
+Questa cartella raccoglie tutti gli appunti che ho preso in relazione al corso di Algebra 1 dell'A.A. 2023-2024, prendendo molto spunto dagli
 [appunti di Algebra 1](https://github.com/diego-unipi/Algebra-1),
-che tuttavia riprendono principalmente il programma del corso dell'A.A. 2022-2023.
+che riprendono il programma del corso dell'A.A. 2022-2023.
 
-Verso la fine del 2023 ho iniziato a contribuire alla riscrittura dei [Complementi di Algebra 1](https://github.com/diego-unipi/Algebra-1).
+Verso la fine del 2023 ho contribuito alla riscrittura dei [Complementi di Algebra 1](https://github.com/diego-unipi/Algebra-1).
