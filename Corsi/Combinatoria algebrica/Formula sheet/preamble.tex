@@ -1,0 +1,45 @@
+\usepackage[top=1.5cm,bottom=1.5cm,left=1.5cm,right=1.5cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{hyperref}
+\usepackage{mathtools}
+\usepackage{multicol}
+\usepackage{nicefrac}
+\usepackage{relsize}
+\usepackage{stmaryrd}
+
+\makeatletter
+\newtheoremstyle{plaintext}
+{20pt}
+{20pt}
+{\normalfont}
+{}
+{\bfseries}
+{.}
+{\newline}
+{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+\makeatother
+\theoremstyle{plaintext}
+
+\newtheorem{formula}{Formula}
+\providecommand*{\formulaautorefname}{Formula}
+
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+
+\newcommand{\inv}{^{-1}}
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\dx}{\, \mathrm{d}x}
+
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\mdeg}{mdeg}
+\DeclareMathOperator*{\bigplus}{\mathlarger{\mathlarger{\mathlarger{+}}}}
+
+\allowdisplaybreaks

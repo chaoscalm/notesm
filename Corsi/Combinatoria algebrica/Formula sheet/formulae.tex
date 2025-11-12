@@ -1,0 +1,110 @@
+\begin{formula}[Sum of two power series]
+  \[ \sum_{i \geq 0} a_i x^i + \sum_{i \geq 0} b_i x^i \triangleq \sum_{i \geq 0} (a_i + b_i) x^i. \]
+\end{formula}
+
+\begin{formula}[Sum of multiple power series]
+  \[ \bigplus_{i \in [n]} \sum_{j \geq 0} a_{i, j} \, x^j = \sum_{j \geq 0} \left(\sum_{i \in [n]} a_{i, j}\right) x^j. \]
+\end{formula}
+
+\begin{formula}[Product of two power series]
+  \[ \left( \sum_{i \geq 0} a_i x^i \right) \cdot \left( \sum_{i \geq 0} b_i x^i \right) \triangleq \sum_{i \geq 0} \left( \sum_{j = 0}^i a_j b_{i-j} \right) x^i. \]
+\end{formula}
+
+\begin{formula}[Product of multiple power series]
+  \[ \prod_{i \in [n]} \sum_{j \geq 0} a_{i, j} \, x^j = \sum_{j \geq 0} \left( \sum_{k_1 + \ldots + k_n = j} a_{1, k_1} \cdots a_{n, k_n} \right) x^j. \]
+\end{formula}
+
+\begin{formula}[Geometric series]
+  \[ \frac{x^k}{(1-x)} = \sum_{i \geq k} x^i \in \CC[[x]]. \]
+
+  Prove the formula for $k = 1$ and then group $x$'s to retrieve the
+  general formula.
+\end{formula}
+
+\begin{formula}[Exponential series]
+  \[ e^x \triangleq \sum_{i \geq 0} \frac{x^i}{i!}. \]
+\end{formula}
+
+\begin{formula}[Logarithmic series]
+  \[ \log(1+x) \triangleq \sum_{i \geq 1} (-1)^{i+1} \, \frac{x^i}{i}. \]
+
+  It's ``$\int \nicefrac{1}{(1+x)} \dx$''.
+\end{formula}
+
+\begin{formula}
+  \[ \log\left(\frac{1}{1-x}\right) = - \log(1-x) = \sum_{i \geq 1} \frac{x^i}{i}. \]
+\end{formula}
+
+\begin{formula}[Binomial coefficient]
+  \[ \binom{n}{k} \triangleq \# \{B \subseteq [n] \mid \abs{B} = k\}. \]
+
+  Number of ways for choosing $k$ elements out of $n$.
+\end{formula}
+
+\begin{formula} \label{fm:binomial_recursion}
+  \[ \binom{n}{k} = \binom{n-1}{k} + \binom{n-1}{k-1}, \quad n \geq 1. \]
+
+  You either choose $n$ or you don't.
+\end{formula}
+
+\begin{formula}[Newton's binomial theorem] \label{fm:newton}
+  \[ (1+x)^n = \sum_{k=0}^n \binom{n}{k} x^k \]
+
+  Apply \autoref{fm:binomial_recursion} using induction.
+\end{formula}
+
+\begin{formula}
+  \[ \#\{B \subseteq [n]\} = 2^n. \]
+
+  Apply \autoref{fm:newton} with $x = 1$. Alternatively,
+  each subset $B$ is uniquely identified by
+  its characteristics function $1_B$, hence the subsets of $[n]$
+  are counted by the functions from $[n]$ to $[2]$.
+\end{formula}
+
+\begin{formula}
+  \[ (a+b)^n = \sum_{k=0}^n \binom{n}{k} a^k b^{n-k}. \]
+
+  Apply \autoref{fm:newton}.
+\end{formula}
+
+\begin{formula}[Formula for the binomial coefficient]
+  \[ \binom{n}{k} = \frac{n!}{(n-k)! k!}. \]
+
+  Apply \autoref{fm:newton} and derive $(1+x)^n$ $k$ times.
+\end{formula}
+
+\begin{formula}[Falling factorials]
+  \[ (x)_k \triangleq x(x-1) \cdots (x-k+1) = \prod_{i=0}^{k-1} (x-i), \quad x \in \CC. \]
+\end{formula}
+
+\begin{formula}[Rising factorials]
+  \[ x^{(k)} \triangleq x(x+1) \cdots (x+k-1) = \prod_{i=0}^{k-1} (x+i), \quad x \in \CC. \]
+\end{formula}
+
+\begin{formula}[Binomial coefficients with $n \in \CC$]
+  \[ \binom{n}{k} \triangleq \frac{(n)_k}{k!}, \quad n \in \CC, k \in \NN. \]
+
+  This is compatible with how binomials
+  were previously defined.
+\end{formula}
+
+\begin{formula}[Newton's binomial theorem for falling factorials] \label{fm:newton_falling}
+  \[ (a+b)_n = \sum_{i=0}^n (a)_i (b)_{n-i}. \]
+
+  By induction on $n$.
+\end{formula}
+
+\begin{formula}[Order of a formal power series]
+  \[ \ord(f(x)) \triangleq \mdeg(f(x)) \triangleq \min \{ i \mid a_i \neq 0 \}. \]
+\end{formula}
+
+\begin{formula}[Existence of $k$-roots in $\CC$-power series]
+  $f(x)$ admits a $k$-root in $\CC[[x]]$ if and only if $k \mid \ord(f(x))$.
+\end{formula}
+
+\begin{formula}[$k$-roots of $(1+x)$]
+  \[ (1+x)^{\nicefrac{1}{k}} = \sum_{i\geq 0} \binom{\nicefrac{1}{k}}{i} x^i. \]
+
+  Apply \autoref{fm:newton_falling}).
+\end{formula}
